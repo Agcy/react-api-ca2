@@ -1,5 +1,4 @@
 import React, {useEffect} from "react";
-import i18n from '../components/languageOptions/index'
 
 export const getMovies = (args) => {
     const [, pageMode] = args.queryKey
