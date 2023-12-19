@@ -65,7 +65,7 @@ const SiteHeader = () => {
         navigate(pageURL, { replace: true });
     };
 
-    const handleMenu = (event) => {
+    const handleMenu = () => {
         setState({ MY: true });
     };
 
