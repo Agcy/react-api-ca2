@@ -3,7 +3,8 @@ import {
     getUpcomingMovies,
     getMoviesGenres,
     getTrendingMovies,
-    getMovies
+    getMovies,
+    getMovieCredits
 } from '../tmdb-api';
 import asyncHandler from 'express-async-handler';
 import express from 'express';
@@ -65,6 +66,13 @@ router.get('/tmdb/genres'), asyncHandler(async (req, res) => {
     const moviesGenres = await getMoviesGenres();
     res.status(200).json(moviesGenres)
 });
+
+// 获取演员电影作品
+router.get('/tmdb/movie_credits/:id', asyncHandler(async (req, res) => {
+    const id = req.params.id;
+    const movieCredits = await getMovieCredits({ queryKey: ['actorMovieCredits', { id }] });
+    res.status(200).json(movieCredits);
+}));
 
 
 
