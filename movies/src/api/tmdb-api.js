@@ -47,8 +47,8 @@ export const getGenres = async (language) => {
 
 // 获取单个电影的详细信息
 export const getMovie = async (args) => {
-    const [, idNum] = args.queryKey
-    const {id} = idNum
+    const [, idPart] = args.queryKey
+    const {id} = idPart
     const response = await fetch(`http://localhost:8080/api/movies/tmdb/movie/${id}`, {
         headers: {
             'Content-Type': 'application/json'
@@ -59,8 +59,8 @@ export const getMovie = async (args) => {
 };
 
 export const getMovieImages = async (args) => {
-    const [, idNum] = args.queryKey
-    const {id} = idNum
+    const [, idPart] = args.queryKey
+    const {id} = idPart
     const response = await fetch(`http://localhost:8080/api/movies/tmdb/movie/${id}/image`, {
         headers: {
             'Content-Type': 'application/json'
@@ -71,8 +71,8 @@ export const getMovieImages = async (args) => {
 };
 
 export const getMovieCredits = async (args) => {
-    const [, idNum] = args.queryKey
-    const {id} = idNum
+    const [, idPart] = args.queryKey
+    const {id} = idPart
     const response = await fetch(`http://localhost:8080/api/movies/tmdb/movie_credits/${id}`, {
         headers: {
             'Content-Type': 'application/json'
@@ -121,10 +121,10 @@ export const getTrendingMovies = async (args) => {
 };
 
 // 获取单个演员的详细信息
-export const getActor = async (queryKey) => {
-    const [, idPart] = queryKey;
+export const getActor = async (args) => {
+    const [, idPart] = args.queryKey;
     const {id} = idPart;
-    const response = await fetch(`http://localhost:8080/api/actors/${id}`, {
+    const response = await fetch(`http://localhost:8080/api/actors/tmdb/actor/${id}`, {
         headers: {
             'Content-Type': 'application/json'
         },
@@ -137,7 +137,7 @@ export const getActor = async (queryKey) => {
 export const getPopularActors = async (args) => {
     const [, pageMode] = args.queryKey
     const {language, page} = pageMode
-    const response = await fetch(`http://localhost:8080/api/actors/tmdb/popular?page=${page}&language=${language}`, {
+    const response = await fetch(`http://localhost:8080/api/actors/tmdb/actors?page=${page}&language=${language}`, {
         headers: {
             'Content-Type': 'application/json'
         },
@@ -147,8 +147,8 @@ export const getPopularActors = async (args) => {
 };
 
 // 演员海报
-export const getActorImages = async (queryKey) => {
-    const [, idPart] = queryKey;
+export const getActorImages = async (args) => {
+    const [, idPart] = args.queryKey;
     const {id} = idPart;
     const response = await fetch(`http://localhost:8080/api/actors/tmdb/images/${id}`, {
         headers: {
@@ -160,10 +160,12 @@ export const getActorImages = async (queryKey) => {
 };
 
 // 演员相关电影
-export const getActorMovieCredits = async (queryKey) => {
-    const [, idPart] = queryKey;
-    const {id} = idPart;
-    const response = await fetch(`http://localhost:8080/api/actors/tmdb/movie_credits/${id}`, {
+export const getActorMovieCredits = async (args) => {
+    const [, idPart] = args.queryKey;
+    const {id, language} = idPart;
+    // const [, pageMode] = args.queryKey
+    // const {language} = pageMode
+    const response = await fetch(`http://localhost:8080/api/actors/tmdb/movie_credits/${id}?language=${language}`, {
         headers: {
             'Content-Type': 'application/json'
         },

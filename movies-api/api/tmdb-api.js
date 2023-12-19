@@ -115,8 +115,7 @@ export const getTrendingMovies = (language, page) => {
 
 };
 
-export const getActor = ({queryKey}) => {
-    const [, {id}] = queryKey;
+export const getActor = (id) => {
     return fetch(
         `https://api.themoviedb.org/3/person/${id}?api_key=${process.env.REACT_APP_TMDB_KEY}`
     ).then(response => {
@@ -133,9 +132,7 @@ export const getPopularActors = (language, page) => {
     ).then(response => response.json());
 };
 
-export const getActorImages = ({queryKey}) => {
-    const [, idPart] = queryKey;
-    const {id} = idPart;
+export const getActorImages = (id) => {
     return fetch(
         `https://api.themoviedb.org/3/person/${id}/images?api_key=${process.env.REACT_APP_TMDB_KEY}`
     ).then(response => {
@@ -149,9 +146,7 @@ export const getActorImages = ({queryKey}) => {
         });
 };
 
-export const getActorMovieCredits = ({queryKey}, language) => {
-    const [, idPart] = queryKey;
-    const {id} = idPart;
+export const getActorMovieCredits = (id, language) => {
     return fetch(
         `https://api.themoviedb.org/3/person/${id}/movie_credits?api_key=${process.env.REACT_APP_TMDB_KEY}&language=${language}`
     ).then(response => response.json());

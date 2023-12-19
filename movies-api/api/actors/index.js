@@ -42,22 +42,32 @@ router.get('/:id', asyncHandler(async (req, res) => {
 }));
 
 // 获取流行演员
-router.get('/tmdb/popular', asyncHandler(async (req, res) => {
-    const popularActors = await getPopularActors();
+router.get('/tmdb/actors', asyncHandler(async (req, res) => {
+    const page = req.query.page
+    const language = req.query.language
+    const popularActors = await getPopularActors(language, page);
+    res.status(200).json(popularActors);
+}));
+
+// 获取单个演员
+router.get('/tmdb/actor/:id', asyncHandler(async (req, res) => {
+    const id = parseInt(req.params.id)
+    const popularActors = await getActor(id);
     res.status(200).json(popularActors);
 }));
 
 // 获取演员图片
 router.get('/tmdb/images/:id', asyncHandler(async (req, res) => {
-    const id = req.params.id;
-    const actorImages = await getActorImages({ queryKey: ['actorImages', { id }] });
+    const id = parseInt(req.params.id);
+    const actorImages = await getActorImages(id);
     res.status(200).json(actorImages);
 }));
 
 // 获取演员电影作品
 router.get('/tmdb/movie_credits/:id', asyncHandler(async (req, res) => {
-    const id = req.params.id;
-    const actorMovieCredits = await getActorMovieCredits({ queryKey: ['actorMovieCredits', { id }] });
+    const id = parseInt(req.params.id);
+    const language = req.query.language
+    const actorMovieCredits = await getActorMovieCredits(id, language);
     res.status(200).json(actorMovieCredits);
 }));
 
