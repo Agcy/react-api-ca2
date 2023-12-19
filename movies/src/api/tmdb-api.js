@@ -1,87 +1,72 @@
 import React, {useEffect} from "react";
-import i18n from '../components/languageOptions/index'
 
-export const getMovies = (args) => {
-    const [, pageMode] = args.queryKey
-    const {language, page} = pageMode
-    return fetch(
-        `https://api.themoviedb.org/3/discover/movie?api_key=${process.env.REACT_APP_TMDB_KEY}&language=${language}&include_adult=false&include_video=false&page=${page}`
-    ).then((response) => {
-        if (!response.ok) {
-            throw new Error(response.json().message);
-        }
-        return response.json();
-    })
-        .catch((error) => {
-            throw error
-        });
+export const login = async (username, password) => {
+    const response = await fetch('http://localhost:8080/api/users', {
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        method: 'post',
+        body: JSON.stringify({ username: username, password: password })
+    });
+    return response.json();
 };
 
-export const getMovie = (args) => {
-    // console.log(args)
-    const [, idPart] = args.queryKey;
-    const {id} = idPart;
-    return fetch(
-        `https://api.themoviedb.org/3/movie/${id}?api_key=${process.env.REACT_APP_TMDB_KEY}`
-    ).then((response) => {
-        if (!response.ok) {
-            throw new Error(response.json().message);
-        }
-        return response.json();
-    })
-        .catch((error) => {
-            throw error
-        });
+export const signup = async (username, password) => {
+    const response = await fetch('http://localhost:8080/api/users?action=register', {
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        method: 'post',
+        body: JSON.stringify({ username: username, password: password })
+    });
+    return response.json();
+};
+
+// 获取所有电影
+export const getMovies = async () => {
+    const response = await fetch(`http://localhost:8080/api/movies`, {
+        headers: {
+            'Content-Type': 'application/json'
+        },
+    });
+    return response.json();
 };
 
 export const getGenres = async (language) => {
-    return fetch(
-        "https://api.themoviedb.org/3/genre/movie/list?api_key=" +
-        process.env.REACT_APP_TMDB_KEY +
-        "&language=" +
-        language
-    ).then((response) => {
-        if (!response.ok) {
-            throw new Error(response.json().message);
-        }
-        return response.json();
-    })
-        .catch((error) => {
-            throw error
-        });
+    const response = await fetch(`http://localhost:8080/api/tmdb/genres`, {
+        headers: {
+            'Content-Type': 'application/json'
+        },
+    });
+    return response.json();
 };
 
-export const getMovieImages = ({queryKey}) => {
-    const [, idPart] = queryKey;
-    const {id} = idPart;
-    return fetch(
-        `https://api.themoviedb.org/3/movie/${id}/images?api_key=${process.env.REACT_APP_TMDB_KEY}`
-    ).then((response) => {
-        if (!response.ok) {
-            throw new Error(response.json().message);
-        }
-        return response.json();
-
-    })
-        .catch((error) => {
-            throw error
-        });
+// 获取单个电影的详细信息
+export const getMovie = async (id) => {
+    const response = await fetch(`http://localhost:8080/api/movies/${id}`, {
+        headers: {
+            'Content-Type': 'application/json'
+        },
+    });
+    return response.json();
 };
 
-export const getMovieCredits = ({queryKey}) => {
-  const [, idPart] = queryKey;
-  const {id} = idPart;
-    return fetch(`https://api.themoviedb.org/3/movie/${id}/credits?api_key=${process.env.REACT_APP_TMDB_KEY}&language=en-US`
-    ).then((response) => {
-        if (!response.ok) {
-            throw new Error(response.json().message);
-        }
-        return response.json();
+export const getMovieImages = async (id) => {
+    const response = await fetch(`http://localhost:8080/api/tmdb/movie/${id}/image`, {
+        headers: {
+            'Content-Type': 'application/json'
+        },
+    });
+    return response.json();
+};
 
-    })
-        .catch((error) => {
-            throw error
-        });
+export const getMovieCredits = async (id) => {
+    const response = await fetch(`http://localhost:8080/api/tmdb/movie_credits/${id}`, {
+        headers: {
+            'Content-Type': 'application/json'
+        },
+    });
+    return response.json();
 };
 
 export const getMovieReviews = (id) => {
@@ -95,85 +80,61 @@ export const getMovieReviews = (id) => {
         });
 };
 
-export const getUpcomingMovie = (args) => {
-    const [, pageMode] = args.queryKey
-    const {language, page} = pageMode
-    return fetch(
-        `https://api.themoviedb.org/3/movie/upcoming?api_key=${process.env.REACT_APP_TMDB_KEY}&language=${language}&page=${page}`
-    ).then((response) => {
-        if (!response.ok) {
-            throw new Error(response.json().message);
-        }
-        return response.json();
-    })
-        .catch((error) => {
-            throw error
-        });
-}
-
-export const getTrendingMovies = (args) => {
-    const [, pageMode] = args.queryKey
-    const {language, page} = pageMode
-    return fetch(
-        `https://api.themoviedb.org/3/trending/movie/week?api_key=${process.env.REACT_APP_TMDB_KEY}&language=${language}&page=${page}`
-    ).then(response => {
-        if (!response.ok) {
-            throw new Error(response.json().message);
-        }
-        return response.json();
-    })
-        .catch((error) => {
-            throw error
-        });
-
-};
-
-export const getActor = ({queryKey}) => {
-    const [, {id}] = queryKey;
-    return fetch(
-        `https://api.themoviedb.org/3/person/${id}?api_key=${process.env.REACT_APP_TMDB_KEY}`
-    ).then(response => {
-        if (!response.ok) {
-            throw new Error('Network response was not ok');
-        }
-        return response.json();
+// 获取即将上映的电影
+export const getUpcomingMovie = async () => {
+    const response = await fetch(`http://localhost:8080/api/movies/tmdb/upcoming`, {
+        headers: {
+            'Content-Type': 'application/json'
+        },
     });
+    return response.json();
 };
 
-export const getPopularActors = (args) => {
-    const [, pageMode] = args.queryKey
-    const {language, page} = pageMode
-    return fetch(
-        `https://api.themoviedb.org/3/person/popular?api_key=${process.env.REACT_APP_TMDB_KEY}&language=${language}&page=${page}`
-    ).then(response => response.json());
+export const getTrendingMovies = async () => {
+    const response = await fetch(`http://localhost:8080/api/movies/tmdb/trending`, {
+        headers: {
+            'Content-Type': 'application/json'
+        },
+    });
+    return response.json();
 };
 
-export const getActorImages = ({queryKey}) => {
-    const [, idPart] = queryKey;
-    const {id} = idPart;
-    return fetch(
-        `https://api.themoviedb.org/3/person/${id}/images?api_key=${process.env.REACT_APP_TMDB_KEY}`
-    ).then(response => {
-        if (!response.ok) {
-            throw new Error(response.json().message);
-        }
-        return response.json();
-    })
-        .catch(error => {
-            throw error;
-        });
+// 获取单个演员的详细信息
+export const getActor = async (id) => {
+    const response = await fetch(`http://localhost:8080/api/actors/${id}`, {
+        headers: {
+            'Content-Type': 'application/json'
+        },
+    });
+    return response.json();
 };
 
-export const getActorMovieCredits = ({queryKey}, language) => {
-    const [, idPart] = queryKey;
-    const {id} = idPart;
-    return fetch(
-        `https://api.themoviedb.org/3/person/${id}/movie_credits?api_key=${process.env.REACT_APP_TMDB_KEY}&language=${language}`
-    ).then(response => response.json());
+// 获取流行演员
+export const getPopularActors = async () => {
+    const response = await fetch(`http://localhost:8080/api/actors`, {
+        headers: {
+            'Content-Type': 'application/json'
+        },
+    });
+    return response.json();
 };
 
-export const getChangeLanguage = () => {
-    return fetch(
-        'https://api.themoviedb.org/3/configuration/language'
-    )
-}
+// 演员海报
+export const getActorImages = async (id) => {
+    const response = await fetch(`http://localhost:8080/api/tmdb/images/${id}`, {
+        headers: {
+            'Content-Type': 'application/json'
+        },
+    });
+    return response.json();
+};
+
+// 演员相关电影
+export const getActorMovieCredits = async (id) => {
+    const response = await fetch(`http://localhost:8080/api/tmdb/movie_credits/${id}`, {
+        headers: {
+            'Content-Type': 'application/json'
+        },
+    });
+    return response.json();
+};
