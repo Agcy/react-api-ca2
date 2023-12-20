@@ -12,17 +12,22 @@ import Grid from "@mui/material/Grid";
 import placeholderImg from '../../../images/pexels-dziana-hasanbekava-5480827.jpg';
 import FavoriteIcon from "@mui/icons-material/Favorite";
 import {ActorsContext} from "../../../contexts/actorsContext";
+import {AuthContext} from "../../../contexts/mongoAuthContext";
 
 export default function ActorCard({ actor, action }) {
     const { following, addToFollowing } = useContext(ActorsContext);
+    const { isAuthenticated } = useContext(AuthContext)
 
-
-
-    if (following.find((id) => id === actor.id)) {
-        actor.following = true;
-    } else {
+    if(!isAuthenticated){
         actor.following = false
+    }else{
+        if (following.find((id) => id === actor.id)) {
+            actor.following = true;
+        } else {
+            actor.following = false
+        }
     }
+
 
     return (
         <Card sx={{ maxWidth: 345 }}>
