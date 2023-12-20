@@ -8,21 +8,42 @@ import Button from "@mui/material/Button";
 import MailIcon from '@mui/icons-material/Mail';
 import {purple} from "@mui/material/colors";
 import {googleProvider} from "../../../firebase/firebase";
+import Stack from "@mui/material/Stack";
+import Alert from "@mui/material/Alert";
 
 const Login = () => {
     const [account, setAccount] = useState("");
     const [password, setPassword] = useState('');
     const [error, setError] = useState(''); // 新增错误状态
+    const [errorType, setErrorType] = useState('');
     const context = useContext(AuthContext)
     const navigate = useNavigate();
 
     const handleLogin = async () => {
         try {
             setError(''); // 清除之前的错误消息
-            await context.authenticate(account, password); // 使用 email 和 password 调用 login 函数
-            console.log(account)
-            console.log(password)
-            navigate('/'); // 导航到主页或其他页面
+            const { success, status, message } = await context.authenticate(account, password); // 使用 email 和 password 调用 login 函数
+            if(success === true){
+                setError("Account successfully login")
+                setErrorType('success')
+                navigate('/'); // 导航到主页或其他页面
+
+            }else{
+                switch (status) {
+                    case 401:
+                        setError(status+" "+message || 'Invalid request');
+                        setErrorType('warning');
+                        break;
+                    case 500:
+                        setError(status+" "+message || 'Server error');
+                        setErrorType('error');
+                        break;
+                    default:
+                        setError('An unknown error occurred');
+                        setErrorType('info');
+                }
+            }
+
         } catch (error) {
             // 捕获并显示错误消息
             setError('Failed to log in');
@@ -42,6 +63,11 @@ const Login = () => {
     // };
     return (
         <>
+            {error && (
+                <Stack sx={{width: '100%'}} spacing={2}>
+                    <Alert severity={errorType}>{error}</Alert>
+                </Stack>
+            )}
             <TextField
                 id="account"
                 type="string"
@@ -82,7 +108,7 @@ const Login = () => {
             {/*    onClick={handleGoogleLogin}*/}
             {/*>*/}
             {/*    <MailIcon/>*/}
-            {/*    login with google*/}
+            {/*    login with Google*/}
             {/*</Button>*/}
             <Button
                 onClick={handleLogin}

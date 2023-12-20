@@ -1,14 +1,26 @@
 import React, {useEffect} from "react";
 
 export const login = async (account, password) => {
-    const response = await fetch('http://localhost:8080/api/users', {
-        headers: {
-            'Content-Type': 'application/json'
-        },
-        method: 'post',
-        body: JSON.stringify({ account: account, password: password })
-    });
-    return response.json();
+    try {
+        const response = await fetch('http://localhost:8080/api/users', {
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            method: 'post',
+            body: JSON.stringify({ account: account, password: password })
+        });
+
+        const data = await response.json();
+        if (!response.ok) {
+            // 返回一个包含错误状态和消息的对象
+            return { error: true, status: response.status, message: data.msg || 'Login failed' };
+        }
+
+        return data; // 成功时返回数据
+    } catch (error) {
+        // 处理网络错误或其他意外错误
+        return { error: true, message: error.message || 'An unexpected error occurred' };
+    }
 };
 
 export const signup = async (username, email, password) => {

@@ -19,11 +19,17 @@ const MongoAuthContextProvider = (props) => {
 
     const authenticate = async (account, password) => {
         const result = await login(account, password);
-        if (result.token) {
-            setToken(result.token)
+        console.log(result)
+        if (!result.error) {
+            setToken(result.token);
             setIsAuthenticated(true);
             setAccount(account);
             setUser(result.user);
+            return { success: true, status: result.status, message: result.message };
+        } else {
+            // 返回包含错误信息的对象
+            setMsg(result.message || 'Failed to Login');
+            return { success: false, status: result.status, message: result.message };
         }
     };
 

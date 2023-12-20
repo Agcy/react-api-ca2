@@ -127,6 +127,7 @@ async function authenticateUser(req, res) {
         const token = jwt.sign({username: user.username}, process.env.SECRET);
         res.status(200).json({
             success: true,
+            msg: 'user login successfully',
             token: 'BEARER ' + token,
             user: {
                 "username": user.username,
