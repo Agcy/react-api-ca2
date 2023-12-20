@@ -28,15 +28,14 @@ const UserSignup = () => {
         }
 
         try {
-            console.log(123)
             const {success, status, message} = await context.register(username, email, password);
-            console.log(456)
+            console.log(success, status, message)
             if (success === true) {
                 setError('Account successfully created');
                 setErrorType('success');
                 navigate('/');
             } else {
-                console.log("222"+success+message)
+                // console.log("222"+success+message)
                 switch (status) {
                     case 400:
                         setError(status+" "+message || 'Invalid request');
