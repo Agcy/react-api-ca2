@@ -1,19 +1,19 @@
 import React, { useContext, useState } from "react";
 import { ActorsContext } from "../../contexts/actorsContext";
-import { useAuth } from "../../contexts/authContext";
+import { AuthContext } from "../../contexts/mongoAuthContext";
 import IconButton from "@mui/material/IconButton";
 import Button from "@mui/material/Button";
 import { useNavigate } from "react-router-dom";
 
 const AddToFollowedActorsIcon = ({ actor }) => {
     const context = useContext(ActorsContext);
-    const { isLoggedIn } = useAuth(); // 引入 authContext
+    const { isAuthenticated } = useContext(AuthContext); // 引入 authContext
     const navigate = useNavigate();
 
     const [isFollowing, setIsFollowing] = useState(false);
 
     const handleClick = () => {
-        if (isLoggedIn) {
+        if (isAuthenticated) {
             setIsFollowing(!isFollowing); // 切换激活状态
             context.addToFollowing(actor);
         } else {
