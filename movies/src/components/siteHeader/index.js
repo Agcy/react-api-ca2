@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import { Link, useNavigate } from 'react-router-dom';
 import AppBar from "@mui/material/AppBar";
 import Toolbar from "@mui/material/Toolbar";
@@ -23,12 +23,12 @@ import InboxIcon from '@mui/icons-material/MoveToInbox';
 import MailIcon from '@mui/icons-material/Mail';
 import Avatar from '@mui/material/Avatar';
 import ExitToAppIcon from '@mui/icons-material/ExitToApp'; // 导入退出图标
-import { useAuth } from "../../contexts/authContext"; // 确保路径正确
+import { AuthContext } from "../../contexts/mongoAuthContext"; // 确保路径正确
 
 const Offset = styled('div')(({ theme }) => theme.mixins.toolbar);
 
 const SiteHeader = () => {
-    const { isLoggedIn, user, logout } = useAuth();
+    const { isAuthenticated, user, signout } = useContext(AuthContext);
     const [state, setState] = useState({ MY: false });
     const navigate = useNavigate();
     const theme = useTheme();
@@ -48,7 +48,7 @@ const SiteHeader = () => {
     ];
 
     const handleMyClick = () => {
-        if (!isLoggedIn) {
+        if (!isAuthenticated) {
             navigate('/user/login');
         } else {
             setState({ MY: true });
@@ -56,7 +56,7 @@ const SiteHeader = () => {
     };
 
     const handleLogout = () => {
-        logout();
+        signout();
         setState({ MY: false });
         navigate('/');
     };
@@ -128,7 +128,7 @@ const SiteHeader = () => {
                         </>
                     )}
                     <div>
-                        {isLoggedIn ? (
+                        {isAuthenticated ? (
                             <>
                                 <IconButton onClick={() => setState({ MY: true })}>
                                     <Avatar src={user.photoURL || "/broken-image.jpg"}>

@@ -1,10 +1,12 @@
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
 import TextField from "@mui/material/TextField";
 import { useNavigate } from 'react-router-dom';
-import {useAuth} from '../../../contexts/authContext';
+import { AuthContext } from '../../../contexts/mongoAuthContext';
 import Button from "@mui/material/Button";
 import { purple } from '@mui/material/colors';
 import Alert from '@mui/material/Alert'; // 引入 Alert 组件显示错误消息
+
+// TODO: 保证注册完成后无需再另外登录一次即可达到登陆状态
 
 const UserSignup = () => {
     const [email, setEmail] = useState('');
@@ -13,7 +15,7 @@ const UserSignup = () => {
     const [username, setUsername] = useState('');
     const [error, setError] = useState('');
     const navigate = useNavigate();
-    const { signup } = useAuth();
+    const context = useContext(AuthContext)
 
     const handleSignup = async () => {
         if (password !== confirmPassword) {
@@ -22,7 +24,7 @@ const UserSignup = () => {
         }
 
         try {
-            await signup(email, password, username); // 调用 AuthContext 中的 signup
+            await context.register(username, email, password); // 调用 AuthContext 中的 signup
             navigate('/');
         } catch (error) {
             setError("Failed to create an account: " + error.message);
