@@ -15,15 +15,21 @@ import StarRateIcon from "@mui/icons-material/StarRate";
 import IconButton from "@mui/material/IconButton";
 import Grid from "@mui/material/Grid";
 import img from '../../../images/film-poster-placeholder.png'
+import {AuthContext} from "../../../contexts/mongoAuthContext";
 
 export default function MovieCard({ movie, action }) {
   const { favorites, addToFavorites } = useContext(MoviesContext);
+  const { isAuthenticated } = useContext(AuthContext)
 
-  if (favorites.find((id) => id === movie.id)) {
-    movie.favorite = true;
-  } else {
-    movie.favorite = false
-  }
+    if(!isAuthenticated){
+        movie.favorite = false
+    } else {
+        if (favorites.find((id) => id === movie.id)) {
+            movie.favorite = true;
+        } else {
+            movie.favorite = false
+        }
+    }
 
   const handleAddToFavorite = (e) => {
     e.preventDefault();

@@ -1,5 +1,6 @@
 import mongoose from 'mongoose';
 import bcrypt from 'bcrypt';
+import {MovieSchema} from "../movies/movieModel"
 
 const Schema = mongoose.Schema;
 
@@ -28,7 +29,10 @@ const UserSchema = new Schema({
             },
             message: props => `${props.value} is not a valid password!`
         },
-    }
+    },
+    favorites: [Number],
+    marked: [Number],
+    follow: [Number]
 });
 
 UserSchema.methods.comparePassword = async function (passw) {

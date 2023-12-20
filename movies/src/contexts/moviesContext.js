@@ -1,33 +1,54 @@
-import React, { useState } from "react";
+import React, {useContext, useState} from "react";
+import {addFavorite, removeFavorite} from "../api/tmdb-api";
+import {AuthContext} from "./mongoAuthContext";
 
 export const MoviesContext = React.createContext(null);
 
 const MoviesContextProvider = (props) => {
   const [favorites, setFavorites] = useState( [] )
-  const [myReviews, setMyReviews] = useState( {} ) 
+  const [myReviews, setMyReviews] = useState( {} )
   const [previews, setPreviews] = useState( [] )
+  const { user } = useContext(AuthContext);
 
-  const addToFavorites = (movie) => {
-    let newFavorites = [];
-    if (!favorites.includes(movie.id)){
-      newFavorites = [...favorites, movie.id];
+  // const addToFavorites = (movie) => {
+  //   let newFavorites = [];
+  //   if (!favorites.includes(movie.id)){
+  //     newFavorites = [...favorites, movie.id];
+  //   }
+  //   else{
+  //     newFavorites = [...favorites];
+  //   }
+  //   setFavorites(newFavorites)
+  // };
+
+  const addToFavorites = async (movie) => {
+    try {
+      await addFavorite(user.id, movie.id); // 假设 userId 是当前登录用户的 ID
+      setFavorites([...favorites, movie.id]); // 更新本地状态
+    } catch (error) {
+      console.error('Failed to add to favorites:', error);
     }
-    else{
-      newFavorites = [...favorites];
-    }
-    setFavorites(newFavorites)
   };
 
   const addReview = (movie, review) => {
     setMyReviews( {...myReviews, [movie.id]: review } )
   };
   //console.log(myReviews);
-  
+
   // We will use this function in a later section
-  const removeFromFavorites = (movie) => {
-    setFavorites( favorites.filter(
-      (mId) => mId !== movie.id
-    ) )
+  // const removeFromFavorites = (movie) => {
+  //   setFavorites( favorites.filter(
+  //     (mId) => mId !== movie.id
+  //   ) )
+  // };
+
+  const removeFromFavorites = async (movie) => {
+    try {
+      await removeFavorite(user.id, movie.id); // 假设 userId 是当前登录用户的 ID
+      setFavorites(favorites.filter((mId) => mId !== movie.id)); // 更新本地状态
+    } catch (error) {
+      console.error('Failed to remove from favorites:', error);
+    }
   };
 
   const addToPreviews = (movie) => {

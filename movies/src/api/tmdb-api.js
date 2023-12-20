@@ -106,17 +106,16 @@ export const getMovieCredits = async (args) => {
     return response.json();
 };
 
-export const getMovieReviews = (queryKey) => {
-    const [, idPart] = queryKey;
+export const getMovieReviews = async (args) => {
+    const [, idPart] = args.queryKey;
     const {id} = idPart;
-    return fetch(
-        `https://api.themoviedb.org/3/movie/${id}/reviews?api_key=${process.env.REACT_APP_TMDB_KEY}`
-    )
-        .then((res) => res.json())
-        .then((json) => {
-            // console.log(json.results);
-            return json.results;
-        });
+    const response = await fetch(`http://localhost:8080/api/movies/tmdb/movie/${id}/review`, {
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        method: 'get',
+    });
+    return response.json();
 };
 
 // 获取即将上映的电影
@@ -187,8 +186,6 @@ export const getActorImages = async (args) => {
 export const getActorMovieCredits = async (args) => {
     const [, idPart] = args.queryKey;
     const {id, language} = idPart;
-    // const [, pageMode] = args.queryKey
-    // const {language} = pageMode
     const response = await fetch(`http://localhost:8080/api/actors/tmdb/movie_credits/${id}?language=${language}`, {
         headers: {
             'Content-Type': 'application/json'
@@ -197,3 +194,146 @@ export const getActorMovieCredits = async (args) => {
     });
     return response.json();
 };
+
+
+// 喜欢的电影
+export const getUserFavorites = async (args) => {
+    const [, idPart] = args.queryKey;
+    const {id} = idPart;
+    const response = await fetch(`http://localhost:8080/api/users/${id}/favorites`, {
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        method: 'get',
+    });
+    if (!response.ok) {
+        throw new Error('Network response was not ok.');
+    }
+    return response.json();
+};
+
+// 添加
+export const addFavorite = async (userId, movieId) => {
+    try {
+        const response = await fetch(`http://localhost:8080/api/users/${userId}/favorites`, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({ movieId: movieId })
+        });
+
+        if (!response.ok) {
+            throw new Error('Network response was not ok');
+        }
+        return response.json();
+    } catch (error) {
+        console.error('Error adding favorite:', error);
+        throw error;
+    }
+};
+
+//删除
+export const removeFavorite = async (userId, movieId) => {
+    try {
+        const response = await fetch(`http://localhost:8080/api/users/${userId}/favorites/${movieId}`, {
+            method: 'DELETE',
+            headers: {
+                'Content-Type': 'application/json'
+            }
+        });
+
+        if (!response.ok) {
+            throw new Error('Network response was not ok');
+        }
+        return response.json();
+    } catch (error) {
+        console.error('Error removing favorite:', error);
+        throw error;
+    }
+};
+
+export const getUserMarkedMovies = async (userId) => {
+    const response = await fetch(`http://localhost:8080/api/users/${userId}/marked`, {
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        method: 'get',
+    });
+    if (!response.ok) {
+        throw new Error('Network response was not ok.');
+    }
+    return response.json();
+};
+
+export const addMarkedMovie = async (userId, movieId) => {
+    const response = await fetch(`http://localhost:8080/api/users/${userId}/marked`, {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({ movieId: movieId })
+    });
+
+    if (!response.ok) {
+        throw new Error('Network response was not ok');
+    }
+    return response.json();
+};
+
+export const removeMarkedMovie = async (userId, movieId) => {
+    const response = await fetch(`http://localhost:8080/api/users/${userId}/marked/${movieId}`, {
+        method: 'DELETE',
+        headers: {
+            'Content-Type': 'application/json'
+        }
+    });
+
+    if (!response.ok) {
+        throw new Error('Network response was not ok');
+    }
+    return response.json();
+};
+
+export const getUserFollowedActors = async (userId) => {
+    const response = await fetch(`http://localhost:8080/api/users/${userId}/follow`, {
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        method: 'get',
+    });
+    if (!response.ok) {
+        throw new Error('Network response was not ok.');
+    }
+    return response.json();
+};
+
+export const followActor = async (userId, actorId) => {
+    const response = await fetch(`http://localhost:8080/api/users/${userId}/follow`, {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({ actorId: actorId })
+    });
+
+    if (!response.ok) {
+        throw new Error('Network response was not ok');
+    }
+    return response.json();
+};
+
+export const unfollowActor = async (userId, actorId) => {
+    const response = await fetch(`http://localhost:8080/api/users/${userId}/follow/${actorId}`, {
+        method: 'DELETE',
+        headers: {
+            'Content-Type': 'application/json'
+        }
+    });
+
+    if (!response.ok) {
+        throw new Error('Network response was not ok');
+    }
+    return response.json();
+};
+
