@@ -53,11 +53,11 @@ router.put('/:id', async (req, res) => {
 });
 
 // get all favorite movies
-router.get('/users/:userId/favorites', async (req, res) => {
-    const { userId } = req.params;
+router.get('/:id/favorites', async (req, res) => {
+    const { id } = req.params.id;
 
     try {
-        const user = await User.findById(userId).populate('favorites');
+        const user = await User.findById(id).populate('favorites');
         if (!user) {
             return res.status(404).json({ message: 'User not found' });
         }
@@ -70,14 +70,15 @@ router.get('/users/:userId/favorites', async (req, res) => {
 
 
 // add to favorite
-router.post('/users/:userId/favorites', async (req, res) => {
-    const { userId } = req.params;
+router.post('/:id/favorites', async (req, res) => {
+    const { id } = req.params;
     const { movieId } = req.body;
+    console.info(movieId)
 
     try {
-        await User.findByIdAndUpdate(userId, {
+        await User.findByIdAndUpdate(id, {
             $addToSet: { favorites: movieId } // 使用 $addToSet 添加电影，防止重复
-        });
+        }, {new: true});
 
         res.status(200).json({ message: 'Movie added to favorites' });
     } catch (error) {
@@ -86,13 +87,13 @@ router.post('/users/:userId/favorites', async (req, res) => {
 });
 
 // delete from favorite
-router.delete('/users/:userId/favorites/:movieId', async (req, res) => {
+router.delete('/:id/favorites/:movieId', async (req, res) => {
     const { userId, movieId } = req.params;
 
     try {
         await User.findByIdAndUpdate(userId, {
             $pull: { favorites: movieId } // 使用 $pull 删除指定的电影
-        });
+        }, {new: true});
 
         res.status(200).json({ message: 'Movie removed from favorites' });
     } catch (error) {
@@ -100,6 +101,94 @@ router.delete('/users/:userId/favorites/:movieId', async (req, res) => {
     }
 });
 
+// marked movie
+
+router.get('/:id/marked', async (req, res) => {
+    const { id } = req.params.id;
+
+    try {
+        const user = await User.findById(id).populate('marked');
+        if (!user) {
+            return res.status(404).json({ message: 'User not found' });
+        }
+
+        res.status(200).json(user.marked);
+    } catch (error) {
+        res.status(500).json({ message: 'Internal server error' });
+    }
+});
+
+router.post('/:id/marked', async (req, res) => {
+    const { userId } = req.params;
+    const { movieId } = req.body;
+
+    try {
+        await User.findByIdAndUpdate(userId, {
+            $addToSet: { markedMovies: movieId }
+        }, {new: true});
+        res.status(200).json({ message: 'Movie marked successfully' });
+    } catch (error) {
+        res.status(500).json({ message: 'Internal server error' });
+    }
+});
+
+router.delete('/:id/marked/:movieId', async (req, res) => {
+    const { userId, movieId } = req.params;
+
+    try {
+        await User.findByIdAndUpdate(userId, {
+            $pull: { markedMovies: movieId }
+        }, {new: true});
+        res.status(200).json({ message: 'Movie unmarked successfully' });
+    } catch (error) {
+        res.status(500).json({ message: 'Internal server error' });
+    }
+});
+
+
+// follow actor
+
+router.get('/:id/follow', async (req, res) => {
+    const { id } = req.params.id;
+
+    try {
+        const user = await User.findById(id).populate('follow');
+        if (!user) {
+            return res.status(404).json({ message: 'User not found' });
+        }
+
+        res.status(200).json(user.follow);
+    } catch (error) {
+        res.status(500).json({ message: 'Internal server error' });
+    }
+});
+
+router.post('/:id/follow', async (req, res) => {
+    const { userId } = req.params;
+    const { actorId } = req.body;
+    console.info(actorId)
+    try {
+        await User.findByIdAndUpdate(userId, {
+            $addToSet: { followedActors: actorId }
+        }, {new: true});
+        res.status(200).json({ message: 'Actor followed successfully' });
+    } catch (error) {
+        res.status(500).json({ message: 'Internal server error' });
+    }
+});
+
+router.delete('/:id/follow/:actorId', async (req, res) => {
+    const { userId, actorId } = req.params;
+
+    try {
+        await User.findByIdAndUpdate(userId, {
+            $pull: { followedActors: actorId }
+        }, {new: true});
+        res.status(200).json({ message: 'Actor unfollowed successfully' });
+    } catch (error) {
+        res.status(500).json({ message: 'Internal server error' });
+    }
+});
 
 
 

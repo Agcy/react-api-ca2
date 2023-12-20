@@ -25,6 +25,7 @@ const MongoAuthContextProvider = (props) => {
             setIsAuthenticated(true);
             setAccount(account);
             setUser(result.user);
+            localStorage.setItem('userId', result.user.id);
             return { success: true, status: result.status, message: result.message };
         } else {
             // 返回包含错误信息的对象

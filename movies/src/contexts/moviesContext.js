@@ -1,5 +1,5 @@
 import React, {useContext, useState} from "react";
-import {addFavorite, removeFavorite} from "../api/tmdb-api";
+import {addFavorite, addMarkedMovie, removeFavorite, removeMarkedMovie} from "../api/tmdb-api";
 import {AuthContext} from "./mongoAuthContext";
 
 export const MoviesContext = React.createContext(null);
@@ -51,22 +51,23 @@ const MoviesContextProvider = (props) => {
     }
   };
 
-  const addToPreviews = (movie) => {
-    let newMovies = [];
-    if (!previews.includes(movie.id)){
-      newMovies = [...previews, movie.id];
+  const addToPreviews = async (movie) => {
+    try {
+      const result = await addMarkedMovie(user.id, movie.id);
+      setPreviews([...previews, movie.id]);
+    } catch (error) {
+      console.error('Error adding movie to previews:', error);
     }
-    else{
-      newMovies = [...previews];
-    }
-    setPreviews(newMovies)
-  }
+  };
 
-  const removeFromPreviews = (movie) => {
-    setPreviews( previews.filter(
-      (mId) => mId !== movie.id
-    ))
-  }
+  const removeFromPreviews = async (movie) => {
+    try {
+      const result = await removeMarkedMovie(user.id, movie.id);
+      setPreviews(previews.filter((mId) => mId !== movie.id));
+    } catch (error) {
+      console.error('Error removing movie from previews:', error);
+    }
+  };
 
   return (
     <MoviesContext.Provider
