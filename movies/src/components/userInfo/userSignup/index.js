@@ -1,10 +1,12 @@
-import React, { useState, useContext } from 'react';
+import React, {useState, useContext} from 'react';
 import TextField from "@mui/material/TextField";
-import { useNavigate } from 'react-router-dom';
-import { AuthContext } from '../../../contexts/mongoAuthContext';
+import {useNavigate} from 'react-router-dom';
+import {AuthContext} from '../../../contexts/mongoAuthContext';
 import Button from "@mui/material/Button";
-import { purple } from '@mui/material/colors';
-import Alert from '@mui/material/Alert'; // 引入 Alert 组件显示错误消息
+import {purple} from '@mui/material/colors';
+import Alert from '@mui/material/Alert';
+import Stack from '@mui/material/Stack';
+import Box from "@mui/material/Box"; // 引入 Alert 组件显示错误消息
 
 // TODO: 保证注册完成后无需再另外登录一次即可达到登陆状态
 
@@ -14,27 +16,55 @@ const UserSignup = () => {
     const [confirmPassword, setConfirmPassword] = useState('');
     const [username, setUsername] = useState('');
     const [error, setError] = useState('');
+    const [errorType, setErrorType] = useState('');
     const navigate = useNavigate();
     const context = useContext(AuthContext)
 
     const handleSignup = async () => {
         if (password !== confirmPassword) {
             setError("Passwords do not match");
+            setErrorType('warning');
             return;
         }
 
         try {
-            await context.register(username, email, password); // 调用 AuthContext 中的 signup
-            navigate('/');
+            console.log(123)
+            const {success, status, message} = await context.register(username, email, password);
+            console.log(456)
+            if (success === true) {
+                setError('Account successfully created');
+                setErrorType('success');
+                navigate('/');
+            } else {
+                console.log("222"+success+message)
+                switch (status) {
+                    case 400:
+                        setError(status+" "+message || 'Invalid request');
+                        setErrorType('warning');
+                        break;
+                    case 500:
+                        setError(status+" "+message || 'Server error');
+                        setErrorType('error');
+                        break;
+                    default:
+                        setError('An unknown error occurred');
+                        setErrorType('info');
+                }
+            }
         } catch (error) {
-            setError("Failed to create an account: " + error.message);
+            setError(error.message || 'Failed to create an account');
+            setErrorType('error');
         }
     };
 
 
     return (
-        <>
-            {error && <Alert severity="error">{error}</Alert>}
+        <Box>
+            {error && (
+                <Stack sx={{width: '100%'}} spacing={2}>
+                    <Alert severity={errorType}>{error}</Alert>
+                </Stack>
+            )}
             <TextField
                 id="signup-username"
                 type="text"
@@ -44,11 +74,11 @@ const UserSignup = () => {
                 fullWidth
                 margin="normal"
                 sx={{
-                    input: { color: purple[700] }, // 输入文字颜色
-                    label: { color: purple[700] }, // 标签文字颜色
+                    input: {color: purple[700]}, // 输入文字颜色
+                    label: {color: purple[700]}, // 标签文字颜色
                     '& .MuiOutlinedInput-root': {
-                        '& fieldset': { borderColor: purple[500] }, // 边框颜色
-                        '&:hover fieldset': { borderColor: purple[700] }, // 悬停时边框颜色
+                        '& fieldset': {borderColor: purple[500]}, // 边框颜色
+                        '&:hover fieldset': {borderColor: purple[700]}, // 悬停时边框颜色
                     }
                 }}
             />
@@ -61,11 +91,11 @@ const UserSignup = () => {
                 fullWidth
                 margin="normal"
                 sx={{
-                    input: { color: purple[700] }, // 输入文字颜色
-                    label: { color: purple[700] }, // 标签文字颜色
+                    input: {color: purple[700]}, // 输入文字颜色
+                    label: {color: purple[700]}, // 标签文字颜色
                     '& .MuiOutlinedInput-root': {
-                        '& fieldset': { borderColor: purple[500] }, // 边框颜色
-                        '&:hover fieldset': { borderColor: purple[700] }, // 悬停时边框颜色
+                        '& fieldset': {borderColor: purple[500]}, // 边框颜色
+                        '&:hover fieldset': {borderColor: purple[700]}, // 悬停时边框颜色
                     }
                 }}
             />
@@ -78,11 +108,11 @@ const UserSignup = () => {
                 fullWidth
                 margin="normal"
                 sx={{
-                    input: { color: purple[700] }, // 输入文字颜色
-                    label: { color: purple[700] }, // 标签文字颜色
+                    input: {color: purple[700]}, // 输入文字颜色
+                    label: {color: purple[700]}, // 标签文字颜色
                     '& .MuiOutlinedInput-root': {
-                        '& fieldset': { borderColor: purple[500] }, // 边框颜色
-                        '&:hover fieldset': { borderColor: purple[700] }, // 悬停时边框颜色
+                        '& fieldset': {borderColor: purple[500]}, // 边框颜色
+                        '&:hover fieldset': {borderColor: purple[700]}, // 悬停时边框颜色
                     }
                 }}
             />
@@ -95,11 +125,11 @@ const UserSignup = () => {
                 fullWidth
                 margin="normal"
                 sx={{
-                    input: { color: purple[700] }, // 输入文字颜色
-                    label: { color: purple[700] }, // 标签文字颜色
+                    input: {color: purple[700]}, // 输入文字颜色
+                    label: {color: purple[700]}, // 标签文字颜色
                     '& .MuiOutlinedInput-root': {
-                        '& fieldset': { borderColor: purple[500] }, // 边框颜色
-                        '&:hover fieldset': { borderColor: purple[700] }, // 悬停时边框颜色
+                        '& fieldset': {borderColor: purple[500]}, // 边框颜色
+                        '&:hover fieldset': {borderColor: purple[700]}, // 悬停时边框颜色
                     }
                 }}
             />
@@ -118,7 +148,7 @@ const UserSignup = () => {
             >
                 Sign Up
             </Button>
-        </>
+        </Box>
     );
 };
 

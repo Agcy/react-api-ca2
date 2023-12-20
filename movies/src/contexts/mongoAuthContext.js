@@ -1,5 +1,5 @@
-import React, { useState, createContext } from "react";
-import { login, signup } from "../api/tmdb-api";
+import React, {useState, createContext} from "react";
+import {login, signup} from "../api/tmdb-api";
 
 export const AuthContext = createContext(null);
 
@@ -9,6 +9,7 @@ const MongoAuthContextProvider = (props) => {
     const [authToken, setAuthToken] = useState(existingToken);
     const [account, setAccount] = useState("");
     const [user, setUser] = useState(null)
+    const [msg, setMsg] = useState("")
 
     //Function to put JWT token in local storage.
     const setToken = (data) => {
@@ -27,9 +28,23 @@ const MongoAuthContextProvider = (props) => {
     };
 
     const register = async (username, email, password) => {
-        const result = await signup(username, email, password);
-        console.log(result.code);
-        return (result.code == 201) ? true : false;
+        try {
+            const result = await signup(username, email, password);
+            console.log("111"+result)
+            if (!result.error) {
+                setToken(result.token);
+                setIsAuthenticated(true);
+                setAccount(account);
+                setUser(result.user);
+                return { success: true, message: result.msg };
+            } else {
+                setMsg(result.message || 'Failed to register');
+                return { success: false,status: result.status, message: result.message };
+            }
+        } catch (error) {
+            setMsg(error.message || 'An unexpected error occurred');
+            return { success: false, message: error.message };
+        }
     };
 
     const signout = () => {
@@ -44,7 +59,8 @@ const MongoAuthContextProvider = (props) => {
                 register,
                 signout,
                 account,
-                user
+                user,
+                msg
             }}
         >
             {props.children}

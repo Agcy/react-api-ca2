@@ -14,15 +14,17 @@ router.get('/', async (req, res) => {
 // register(Create)/Authenticate User
 router.post('/', asyncHandler(async (req, res) => {
     try {
-        // TODO: 更改判断逻辑保证登录和注册情况不冲突
-        // if (!req.body.account || !req.body.password) {
-        //     console.info(req.body.account)
-        //     console.info(req.body.password)
-        //     return res.status(400).json({success: false, msg: 'Username and password are required.'});
-        // }
+        const { username, email, account, password } = req.body;
+
         if (req.query.action === 'register') {
+            if (!username || !email || !password) {
+                return res.status(400).json({ success: false, msg: 'Username, email and password are required for registration.' });
+            }
             await registerUser(req, res);
         } else {
+            if (!account || !password) {
+                return res.status(400).json({ success: false, msg: 'Account and password are required for login.' });
+            }
             await authenticateUser(req, res);
         }
     } catch (error) {
@@ -52,9 +54,54 @@ router.put('/:id', async (req, res) => {
 });
 
 async function registerUser(req, res) {
-    // Add input validation logic here
-    await User.create(req.body);
-    res.status(201).json({success: true, msg: 'User successfully created.'});
+    const { username, email, password } = req.body;
+
+    // 验证用户名
+    if (!username) {
+        return res.status(400).json({ success: false, msg: 'Username is required.' });
+    }
+
+    // 验证邮箱
+    if (!email) {
+        return res.status(400).json({ success: false, msg: 'Email is required.' });
+    }
+    // 验证邮箱格式
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!emailRegex.test(email)) {
+        return res.status(400).json({ success: false, msg: 'Invalid email format.' });
+    }
+
+    // 验证密码
+    if (!password) {
+        return res.status(400).json({ success: false, msg: 'Password is required.' });
+    }
+    // 验证密码格式（例如，长度和字符要求）
+    const passwordRegex = /^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$/; // 示例：至少8个字符，至少一个字母和一个数字
+    if (!passwordRegex.test(password)) {
+        return res.status(400).json({ success: false, msg: 'Password does not meet complexity requirements.' });
+    }
+
+    try {
+        // 创建用户
+        await User.create(req.body);
+
+        // 创建令牌
+        const token = jwt.sign({ username: username }, process.env.SECRET);
+
+        // 发送响应
+        res.status(201).json({
+            success: true,
+            msg: 'User successfully created.',
+            token: 'BEARER ' + token,
+            user: {
+                "username": username,
+                "email": email
+            }
+        });
+    } catch (error) {
+        // 错误处理逻辑，比如处理唯一性冲突等
+        res.status(500).json({ success: false, msg: 'Internal server error.' });
+    }
 }
 
 async function authenticateUser(req, res) {
