@@ -39,7 +39,6 @@ router.post('/', asyncHandler(async (req, res) => {
     }
 }));
 
-
 // Update a user
 router.put('/:id', async (req, res) => {
     if (req.body._id) delete req.body._id;
@@ -52,6 +51,59 @@ router.put('/:id', async (req, res) => {
         res.status(404).json({code: 404, msg: 'Unable to Update User'});
     }
 });
+
+// get all favorite movies
+router.get('/users/:userId/favorites', async (req, res) => {
+    const { userId } = req.params;
+
+    try {
+        const user = await User.findById(userId).populate('favorites');
+        if (!user) {
+            return res.status(404).json({ message: 'User not found' });
+        }
+
+        res.status(200).json(user.favorites);
+    } catch (error) {
+        res.status(500).json({ message: 'Internal server error' });
+    }
+});
+
+
+// add to favorite
+router.post('/users/:userId/favorites', async (req, res) => {
+    const { userId } = req.params;
+    const { movieId } = req.body;
+
+    try {
+        await User.findByIdAndUpdate(userId, {
+            $addToSet: { favorites: movieId } // 使用 $addToSet 添加电影，防止重复
+        });
+
+        res.status(200).json({ message: 'Movie added to favorites' });
+    } catch (error) {
+        res.status(500).json({ message: 'Internal server error' });
+    }
+});
+
+// delete from favorite
+router.delete('/users/:userId/favorites/:movieId', async (req, res) => {
+    const { userId, movieId } = req.params;
+
+    try {
+        await User.findByIdAndUpdate(userId, {
+            $pull: { favorites: movieId } // 使用 $pull 删除指定的电影
+        });
+
+        res.status(200).json({ message: 'Movie removed from favorites' });
+    } catch (error) {
+        res.status(500).json({ message: 'Internal server error', error: error.message });
+    }
+});
+
+
+
+
+
 
 async function registerUser(req, res) {
     const { username, email, password } = req.body;
@@ -83,10 +135,12 @@ async function registerUser(req, res) {
 
     try {
         // 创建用户
-        await User.create(req.body);
+        // 创建用户
+        const newUser = new User(req.body);
+        await newUser.save();
 
         // 创建令牌
-        const token = jwt.sign({ username: username }, process.env.SECRET);
+        const token = jwt.sign({ username: newUser.username }, process.env.SECRET);
 
         // 发送响应
         res.status(201).json({
@@ -94,8 +148,9 @@ async function registerUser(req, res) {
             msg: 'User successfully created.',
             token: 'BEARER ' + token,
             user: {
-                "username": username,
-                "email": email
+                id: newUser._id, // 返回用户 ID
+                username: newUser.username,
+                email: newUser.email
             }
         });
     } catch (error) {
@@ -108,9 +163,6 @@ async function authenticateUser(req, res) {
     let user;
     const {account, password} = req.body;
 
-    console.info(account)
-    console.info(password)
-
     // 判断输入的是邮箱还是用户名
     if (account.includes('@')) {
         user = await User.findByEmail(account);
@@ -119,24 +171,26 @@ async function authenticateUser(req, res) {
     }
 
     if (!user) {
-        return res.status(401).json({success: false, msg: 'Authentication failed. User not found.'});
+        return res.status(401).json({ success: false, msg: 'Authentication failed. User not found.' });
     }
 
     const isMatch = await user.comparePassword(password);
     if (isMatch) {
-        const token = jwt.sign({username: user.username}, process.env.SECRET);
+        const token = jwt.sign({ username: user.username }, process.env.SECRET);
         res.status(200).json({
             success: true,
-            msg: 'user login successfully',
+            msg: 'User login successfully',
             token: 'BEARER ' + token,
             user: {
-                "username": user.username,
-                "email": user.email
+                id: user._id, // 返回用户 ID
+                username: user.username,
+                email: user.email
             }
         });
     } else {
-        res.status(401).json({success: false, msg: 'Wrong password.'});
+        res.status(401).json({ success: false, msg: 'Wrong password.' });
     }
 }
+
 
 export default router;
