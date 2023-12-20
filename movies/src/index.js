@@ -17,7 +17,8 @@ import ActorDetailsPage from "./pages/actorDetailsPage";
 import ActorListPage from "./pages/actorListPage";
 import {ActorsProvider} from "./contexts/actorsContext";
 import FollowedActorsPage from "./pages/followedActorsPage";
-import {AuthProvider} from "./contexts/authContext";
+// import {AuthProvider} from "./contexts/authContext";
+import MongoAuthContextProvider from "./contexts/mongoAuthContext"
 import LoginPage from "./pages/loginPage";
 
 const queryClient = new QueryClient({
@@ -34,29 +35,31 @@ const App = () => {
     return (
         <QueryClientProvider client={queryClient}>
             <BrowserRouter>
-                <AuthProvider>
-                    <SiteHeader/>
-                    <MoviesContextProvider>
-                        <ActorsProvider>
-                            <Routes>
-                                <Route path="/user/login" element={<LoginPage/>}/>
-                                <Route path="/user/signup" element={<LoginPage type="signup"/>} />
-                                <Route path="/movies/favorites" element={<FavoriteMoviesPage/>}/>
-                                <Route path="/movies/marked" element={<MarkedMoviesPage/>}/>
-                                <Route path="/movies/upcoming" element={<UpcomingMoviePage/>}/>
-                                <Route path="/movies/trending" element={<TrendingMoviePage/>}/>
-                                <Route path="/actors" element={<ActorListPage/>}/>
-                                <Route path="/actors/followed" element={<FollowedActorsPage/>}/>
-                                <Route path="/actors/:id" element={<ActorDetailsPage/>}/>
-                                <Route path="/reviews/:id" element={<MovieReviewPage/>}/>
-                                <Route path="/reviews/form" element={<AddMovieReviewPage/>}/>
-                                <Route path="/movies/:id" element={<MoviePage/>}/>
-                                <Route path="/" element={<HomePage/>}/>
-                                <Route path="*" element={<Navigate to="/"/>}/>
-                            </Routes>
-                        </ActorsProvider>
-                    </MoviesContextProvider>
-                </AuthProvider>
+                {/*<AuthProvider>*/}
+                    <MongoAuthContextProvider>
+                        <SiteHeader/>
+                        <MoviesContextProvider>
+                            <ActorsProvider>
+                                <Routes>
+                                    <Route path="/user/login" element={<LoginPage/>}/>
+                                    <Route path="/user/signup" element={<LoginPage type="signup"/>}/>
+                                    <Route path="/movies/favorites" element={<FavoriteMoviesPage/>}/>
+                                    <Route path="/movies/marked" element={<MarkedMoviesPage/>}/>
+                                    <Route path="/movies/upcoming" element={<UpcomingMoviePage/>}/>
+                                    <Route path="/movies/trending" element={<TrendingMoviePage/>}/>
+                                    <Route path="/actors" element={<ActorListPage/>}/>
+                                    <Route path="/actors/followed" element={<FollowedActorsPage/>}/>
+                                    <Route path="/actors/:id" element={<ActorDetailsPage/>}/>
+                                    <Route path="/reviews/:id" element={<MovieReviewPage/>}/>
+                                    <Route path="/reviews/form" element={<AddMovieReviewPage/>}/>
+                                    <Route path="/movies/:id" element={<MoviePage/>}/>
+                                    <Route path="/" element={<HomePage/>}/>
+                                    <Route path="*" element={<Navigate to="/"/>}/>
+                                </Routes>
+                            </ActorsProvider>
+                        </MoviesContextProvider>
+                    </MongoAuthContextProvider>
+                {/*</AuthProvider>*/}
             </BrowserRouter>
             <ReactQueryDevtools initialIsOpen={false}/>
         </QueryClientProvider>

@@ -1,5 +1,5 @@
-import React, {useState} from 'react';
-import {useAuth} from '../../../contexts/authContext';
+import React, {useState, useContext} from 'react';
+import { AuthContext } from '../../../contexts/mongoAuthContext';
 import {useNavigate} from 'react-router-dom';
 import TextField from "@mui/material/TextField";
 import Paper from '@mui/material/Paper';
@@ -10,16 +10,18 @@ import {purple} from "@mui/material/colors";
 import {googleProvider} from "../../../firebase/firebase";
 
 const Login = () => {
-    const [email, setEmail] = useState('');
+    const [account, setAccount] = useState("");
     const [password, setPassword] = useState('');
     const [error, setError] = useState(''); // 新增错误状态
-    const {login, loginWithGoogle} = useAuth();
+    const context = useContext(AuthContext)
     const navigate = useNavigate();
 
     const handleLogin = async () => {
         try {
             setError(''); // 清除之前的错误消息
-            await login(email, password); // 使用 email 和 password 调用 login 函数
+            await context.authenticate(account, password); // 使用 email 和 password 调用 login 函数
+            console.log(account)
+            console.log(password)
             navigate('/'); // 导航到主页或其他页面
         } catch (error) {
             // 捕获并显示错误消息
@@ -28,24 +30,24 @@ const Login = () => {
         }
     };
 
-    const handleGoogleLogin = async () => {
-        try {
-            setError(''); // 清除之前的错误消息
-            await loginWithGoogle(googleProvider);
-            navigate('/'); // 导航到主页或其他页面
-        } catch (error) {
-            setError('Failed to log in');
-            console.error('Error during Google login:', error);
-        }
-    };
+    // const handleGoogleLogin = async () => {
+    //     try {
+    //         setError(''); // 清除之前的错误消息
+    //         await loginWithGoogle(googleProvider);
+    //         navigate('/'); // 导航到主页或其他页面
+    //     } catch (error) {
+    //         setError('Failed to log in');
+    //         console.error('Error during Google login:', error);
+    //     }
+    // };
     return (
         <>
             <TextField
-                id="outlined-email"
-                type="email"
-                value={email}
-                label="Email"
-                onChange={(e) => setEmail(e.target.value)}
+                id="account"
+                type="string"
+                value={account}
+                label="account"
+                onChange={(e) => setAccount(e.target.value)}
                 variant="outlined"
                 fullWidth
                 margin="normal"
@@ -59,7 +61,7 @@ const Login = () => {
                 }}
             />
             <TextField
-                id="outlined-password"
+                id="password"
                 type="password"
                 value={password}
                 label="Password"
@@ -76,12 +78,12 @@ const Login = () => {
                     }
                 }}
             />
-            <Button
-                onClick={handleGoogleLogin}
-            >
-                <MailIcon/>
-                login with google
-            </Button>
+            {/*<Button*/}
+            {/*    onClick={handleGoogleLogin}*/}
+            {/*>*/}
+            {/*    <MailIcon/>*/}
+            {/*    login with google*/}
+            {/*</Button>*/}
             <Button
                 onClick={handleLogin}
                 fullWidth

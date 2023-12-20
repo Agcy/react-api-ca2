@@ -1,23 +1,23 @@
 import React, {useEffect} from "react";
 
-export const login = async (username, password) => {
+export const login = async (account, password) => {
     const response = await fetch('http://localhost:8080/api/users', {
         headers: {
             'Content-Type': 'application/json'
         },
         method: 'post',
-        body: JSON.stringify({ username: username, password: password })
+        body: JSON.stringify({ account: account, password: password })
     });
     return response.json();
 };
 
-export const signup = async (username, password) => {
+export const signup = async (username, email, password) => {
     const response = await fetch('http://localhost:8080/api/users?action=register', {
         headers: {
             'Content-Type': 'application/json'
         },
         method: 'post',
-        body: JSON.stringify({ username: username, password: password })
+        body: JSON.stringify({ username: username, email: email, password: password })
     });
     return response.json();
 };

@@ -6,76 +6,83 @@ import {
     signInWithPopup,
     updateProfile
 } from "firebase/auth";
+import { login, signup } from "../api/tmdb-api";
 import { auth, googleProvider } from '../firebase/firebase'; // 确保路径正确
 
 export const AuthContext = createContext(null);
 
-export const AuthProvider = ({ children }) => {
-    const [isLoggedIn, setIsLoggedIn] = useState(false);
-    const [user, setUser] = useState(null);
+export const AuthProvider = ({ props }) => {
+    const existingToken = localStorage.getItem("token");
+    const [isAuthenticated, setIsAuthenticated] = useState(false);
+    const [authToken, setAuthToken] = useState(existingToken);
+    const [userName, setUserName] = useState("");
 
-    const signup = async (email, password, username) => {
-        try {
-            const userCredential = await createUserWithEmailAndPassword(auth, email, password);
-            await updateProfile(userCredential.user, {
-                displayName: username
-            });
-            // 更新用户信息
-            setUser({
-                uid: userCredential.user.uid,
-                email: userCredential.user.email,
-                displayName: userCredential.user.displayName,
-                // 其他需要的信息...
-            });
-            setIsLoggedIn(true);
-        } catch (error) {
-            // 处理注册错误
-            throw error;
+    //Function to put JWT token in local storage.
+    const setToken = (data) => {
+        localStorage.setItem("token", data);
+        setAuthToken(data);
+    }
+
+    const register = async (username, email, password) => {
+        const result = await signup(username, email, password);
+        console.log(result.code);
+        return (result.code == 201) ? true : false;
+    };
+
+    const authenticate = async (username, password) => {
+        const result = await login(username, password);
+        if (result.token) {
+            setToken(result.token)
+            setIsAuthenticated(true);
+            setUserName(username);
         }
     };
 
-    const login = async (email, password) => {
-        try {
-            const response = await signInWithEmailAndPassword(auth, email, password);
-            // 使用 Firebase 返回的用户信息
-            setUser({
-                uid: response.user.uid,
-                email: response.user.email,
-                displayName: response.user.displayName,
-                // 其他需要的信息...
-            });
-            setIsLoggedIn(true);
-        } catch (error) {
-            // 处理登录错误
-            console.error("Login error: ", error);
-        }
-    };
+    // const authenticateWithGoogle = async () => {
+    //     try {
+    //         // Verify the token with Firebase
+    //         const firebaseUser = await auth.verifyIdToken(token);
+    //
+    //         // Extract user data from the Firebase token
+    //         const userData = {
+    //             uid: firebaseUser.uid,
+    //             email: firebaseUser.email,
+    //             displayName: firebaseUser.displayName,
+    //             // Add other data as needed
+    //         };
+    //
+    //         // Check if the user already exists in MongoDB
+    //         let user = await UserModel.findOne({ uid: userData.uid });
+    //
+    //         if (!user) {
+    //             // If the user doesn't exist, create a new one
+    //             user = new UserModel(userData);
+    //             await user.save();
+    //         }
+    //
+    //         // Return some user data or token for the client
+    //         return { status: 'success', user };
+    //     } catch (error) {
+    //         // Handle errors
+    //         console.error('Error authenticating with Google:', error);
+    //         return { status: 'error', message: error.message };
+    //     }
+    // };
 
-    const loginWithGoogle = async () => {
-        try {
-            const result = await signInWithPopup(auth, googleProvider);
-            const user = result.user;
-            setUser({
-                uid: user.uid,
-                email: user.email,
-                displayName: user.displayName,
-                // 其他需要的信息...
-            });
-            setIsLoggedIn(true);
-        } catch (error) {
-            console.error("Google login error: ", error);
-        }
-    };
-
-    const logout = () => {
-        auth.signOut();
-        setIsLoggedIn(false);
-        setUser(null);
-    };
+    const signout = () => {
+        setTimeout(() => setIsAuthenticated(false), 100);
+    }
 
     return (
-        <AuthContext.Provider value={{ isLoggedIn, user, signup, login, loginWithGoogle, logout }}>
-            {children}
+        <AuthContext.Provider
+            value={{
+                isAuthenticated,
+                authenticate,
+                register,
+                signout,
+                userName
+        }}>
+            {props}
         </AuthContext.Provider>
     );
 };

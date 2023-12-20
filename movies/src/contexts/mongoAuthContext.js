@@ -1,13 +1,14 @@
 import React, { useState, createContext } from "react";
-import { login, signup } from "../api/movies-api";
+import { login, signup } from "../api/tmdb-api";
 
 export const AuthContext = createContext(null);
 
-const AuthContextProvider = (props) => {
+const MongoAuthContextProvider = (props) => {
     const existingToken = localStorage.getItem("token");
     const [isAuthenticated, setIsAuthenticated] = useState(false);
     const [authToken, setAuthToken] = useState(existingToken);
-    const [userName, setUserName] = useState("");
+    const [account, setAccount] = useState("");
+    const [user, setUser] = useState(null)
 
     //Function to put JWT token in local storage.
     const setToken = (data) => {
@@ -15,17 +16,18 @@ const AuthContextProvider = (props) => {
         setAuthToken(data);
     }
 
-    const authenticate = async (username, password) => {
-        const result = await login(username, password);
+    const authenticate = async (account, password) => {
+        const result = await login(account, password);
         if (result.token) {
             setToken(result.token)
             setIsAuthenticated(true);
-            setUserName(username);
+            setAccount(account);
+            setUser(result.user);
         }
     };
 
-    const register = async (username, password) => {
-        const result = await signup(username, password);
+    const register = async (username, email, password) => {
+        const result = await signup(username, email, password);
         console.log(result.code);
         return (result.code == 201) ? true : false;
     };
@@ -41,7 +43,8 @@ const AuthContextProvider = (props) => {
                 authenticate,
                 register,
                 signout,
-                userName
+                account,
+                user
             }}
         >
             {props.children}
@@ -49,4 +52,4 @@ const AuthContextProvider = (props) => {
     );
 };
 
-export default AuthContextProvider;
+export default MongoAuthContextProvider;
