@@ -1,5 +1,5 @@
 import React, {useContext, useState} from "react";
-import {addFavorite, addMarkedMovie, removeFavorite, removeMarkedMovie} from "../api/tmdb-api";
+import {addFavorite, addMarkedMovie, addToReview, removeFavorite, removeMarkedMovie} from "../api/tmdb-api";
 import {AuthContext} from "./mongoAuthContext";
 
 export const MoviesContext = React.createContext(null);
@@ -30,8 +30,13 @@ const MoviesContextProvider = (props) => {
     }
   };
 
-  const addReview = (movie, review) => {
-    setMyReviews( {...myReviews, [movie.id]: review } )
+  const addReview = async (movie, reviewData) => {
+    try {
+      const review = await addToReview(movie.id, user.id, reviewData);
+      setMyReviews({ ...myReviews, [movie.id]: [...(myReviews[movie.id] || []), review] });
+    } catch (error) {
+      console.error('Error posting review:', error);
+    }
   };
   //console.log(myReviews);
 

@@ -217,7 +217,7 @@ async function registerUser(req, res) {
         return res.status(400).json({ success: false, msg: 'Password is required.' });
     }
     // 验证密码格式（例如，长度和字符要求）
-    const passwordRegex = /^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$/; // 示例：至少8个字符，至少一个字母和一个数字
+    const passwordRegex = /^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*#?&])[A-Za-z\d@$!%*#?&]{8,}$/; // 示例：至少8个字符，至少一个字母和一个数字
     if (!passwordRegex.test(password)) {
         return res.status(400).json({ success: false, msg: 'Password does not meet complexity requirements.' });
     }

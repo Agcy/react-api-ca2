@@ -106,9 +106,9 @@ export const getMovieCredits = async (args) => {
     return response.json();
 };
 
-export const getMovieReviews = async (args) => {
-    const [, idPart] = args.queryKey;
-    const {id} = idPart;
+export const getMovieReviews = async (id) => {
+    // const [, idPart] = args.queryKey;
+    // const {id} = idPart;
     const response = await fetch(`http://localhost:8080/api/movies/tmdb/movie/${id}/review`, {
         headers: {
             'Content-Type': 'application/json'
@@ -336,4 +336,38 @@ export const unfollowActor = async (userId, actorId) => {
     }
     return response.json();
 };
+
+// reviews
+export const getAllMovieReviews = async (movieId) => {
+    const response = await fetch(`http://localhost:8080/api/tmdb/${movieId}`);
+    if (!response.ok) {
+        throw new Error('Failed to fetch reviews');
+    }
+    return response.json();
+};
+
+export const getUserMovieReviews = async (userId) => {
+    const response = await fetch(`http://localhost:8080/api/reviews/tmdb/user/${userId}`);
+    if (!response.ok) {
+        throw new Error(`Failed to fetch movie reviews for user ${userId}`);
+    }
+    return response.json();
+};
+
+
+export const addToReview = async (movieId, userId, review) => {
+    const response = await fetch(`http://localhost:8080/api/reviews/tmdb/${movieId}`, {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({ userId, ...review }) // reviewData 包含 author, content 和 rating
+    });
+
+    if (!response.ok) {
+        throw new Error('Failed to post review');
+    }
+    return response.json();
+};
+
 
