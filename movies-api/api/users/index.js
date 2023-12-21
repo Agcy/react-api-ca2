@@ -207,9 +207,19 @@ async function registerUser(req, res) {
         return res.status(400).json({ success: false, msg: 'Username is required.' });
     }
 
+    const user = await User.findOne({username: username})
+    if (user){
+        res.status(400).json({ success: false, msg: 'User name already existed!!'})
+    }
+
     // 验证邮箱
     if (!email) {
         return res.status(400).json({ success: false, msg: 'Email is required.' });
+    }
+
+    const user1 = await User.findOne({email: email})
+    if (user1){
+        res.status(400).json({ success: false, msg: 'Email already existed!!'})
     }
     // 验证邮箱格式
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
