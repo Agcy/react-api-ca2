@@ -6,6 +6,7 @@ import PageTemplate from "../components/movie/templateMoviePage";
 import { getMovie,getMovieCredits } from '../api/tmdb-api'
 import { useQuery } from "react-query";
 import Spinner from '../components/spinner'
+import RecordReviews from "../components/movie/reviewRecord";
 
 const MoviePage = (props) => {
   const { id } = useParams();

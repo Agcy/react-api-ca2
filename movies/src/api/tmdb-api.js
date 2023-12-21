@@ -339,7 +339,7 @@ export const unfollowActor = async (userId, actorId) => {
 
 // reviews
 export const getAllMovieReviews = async (movieId) => {
-    const response = await fetch(`http://localhost:8080/api/tmdb/${movieId}`);
+    const response = await fetch(`http://localhost:8080/api/reviews/tmdb/all`);
     if (!response.ok) {
         throw new Error('Failed to fetch reviews');
     }

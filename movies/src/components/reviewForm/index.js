@@ -9,6 +9,8 @@ import { useForm, Controller } from "react-hook-form";
 import Snackbar from "@mui/material/Snackbar";
 import MuiAlert from "@mui/material/Alert";
 import { useNavigate } from "react-router-dom";
+import {AuthContext} from "../../contexts/mongoAuthContext";
+import RecordReviews from "../movie/reviewRecord";
 
 
 
@@ -66,17 +68,18 @@ const styles = {
 
 const ReviewForm = ({ movie }) => {
   const context = useContext(MoviesContext);
+  const userContext = useContext(AuthContext)
   const [rating, setRating] = useState(3);
-  const [open, setOpen] = useState(false); 
+  const [open, setOpen] = useState(false);
   const navigate = useNavigate();
-  
+
   const defaultValues = {
     author: "",
     review: "",
     agree: false,
     rating: "3",
   };
-  
+
   const {
     control,
     formState: { errors },
@@ -84,15 +87,17 @@ const ReviewForm = ({ movie }) => {
     reset,
   } = useForm(defaultValues);
 
-  const handleRatingChange = (event) => {
-    setRating(event.target.value);
+  const handleRatingChange = async (event) => {
+    await setRating(event.target.value);
   };
 
-  const onSubmit = (review) => {
+  const onSubmit = async (review) => {
+    console.log(review)
+    review.userId = userContext.user.id
     review.movieId = movie.id;
     review.rating = rating;
     // console.log(review);
-    context.addReview(movie, review);
+    await context.addReview(movie, review);
     setOpen(true); // NEW
   };
   const handleSnackClose = (event) => {
