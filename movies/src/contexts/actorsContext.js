@@ -1,5 +1,5 @@
 import React, {useContext, useState} from "react";
-import { followActor, unfollowActor } from '../api/tmdb-api';
+import {followActor, getUserFollowedActors, unfollowActor} from '../api/tmdb-api';
 import {AuthContext} from "./mongoAuthContext"; // 确保正确导入这些函数
 
 export const ActorsContext = React.createContext(null);
@@ -10,16 +10,22 @@ export const ActorsProvider = ({ children }) => {
 
     const addToFollowing = async (actor) => {
         try {
-            const result = await followActor(user.id, actor.id);
+            await followActor(user.id, actor.id);
+            console.log(user.id)
             setFollowing([...following, actor.id]);
         } catch (error) {
             console.error('Error in following actor:', error);
         }
     };
 
+    const updateFollowedActors = async (userId) => {
+        const followedActors = await getUserFollowedActors(userId);
+        setFollowing(followedActors.map(actor => actor.id)); // 假设返回的是包含 id 的演员对象数组
+    };
+
     const removeFromFollowed = async (actor) => {
         try {
-            const result = await unfollowActor(user.id, actor.id);
+            await unfollowActor(user.id, actor.id);
             setFollowing(following.filter((aId) => aId !== actor.id));
         } catch (error) {
             console.error('Error in unfollowing actor:', error);

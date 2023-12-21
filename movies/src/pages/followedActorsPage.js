@@ -1,33 +1,36 @@
-import React, {useContext} from "react";
+import React, {useContext, useEffect, useState} from "react";
 import {ActorsContext} from "../contexts/actorsContext";
+import { AuthContext } from "../contexts/mongoAuthContext";
 import PageTemplate from "../components/actor/templeteActorListPage";
-import {useQueries} from "react-query";
-import {getActor} from "../api/tmdb-api";
+import {useQueries, useQuery} from "react-query";
+import {getActor, getUserFollowedActors} from "../api/tmdb-api";
 import Spinner from '../components/spinner';
 import RemoveFromFollowed from "../components/cardIcons/removeFromFollowed";
 import Header from "../components/movie/headerMovieList";
 import Grid from "@mui/material/Grid";
 
 const FollowedActorsPage = () => {
-    const {following: actorIds} = useContext(ActorsContext);
+    const { following: actorIds } = useContext(ActorsContext)
+    const { user } = useContext(AuthContext);
+    const { data: followedActors, isLoading: isLoadingFollowed } =
+        useQuery(['followedActors', user.id], () => getUserFollowedActors(user.id));
+
 
     // Create an array of queries and run in parallel.
-    const followActorQueries = useQueries(
-        actorIds.map((actorId) => {
-            return {
-                queryKey: ["actor", {id: actorId}],
-                queryFn: getActor,
-            };
-        })
+    const followedActorQueries = useQueries(
+        actorIds?.map((actorId) => ({
+            queryKey: ["actor", {id: actorId}],
+            queryFn: getActor,
+        })) || []
     );
     // Check if any of the parallel queries is still loading.
-    const isLoading = followActorQueries.find((m) => m.isLoading === true);
+    const isQueryLoading = followedActorQueries.some((query) => query.isLoading);
 
-    if (isLoading) {
-        return <Spinner/>;
+    if (isLoadingFollowed || isQueryLoading) {
+        return <Spinner />;
     }
 
-    const actors = followActorQueries
+    const actors = followedActorQueries
         .map((q) => q.data)
     console.log(actors)
     const toDo = () => true;

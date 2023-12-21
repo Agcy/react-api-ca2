@@ -56,6 +56,7 @@ router.put('/:id', async (req, res) => {
 router.get('/tmdb/:id/favorites', asyncHandler(async (req, res) => {
     const { id } = req.params;
     console.info(id)
+    console.info(typeof id)
     try {
         const user = await User.findById(id).populate('favorites');
         // if (!user) {
@@ -89,10 +90,10 @@ router.post('/tmdb/:id/favorites', asyncHandler(async (req, res) => {
 
 // delete from favorite
 router.delete('/tmdb/:id/favorites/:movieId', asyncHandler(async (req, res) => {
-    const { userId, movieId } = req.params;
+    const { id, movieId } = req.params;
 
     try {
-        await User.findByIdAndUpdate(userId, {
+        await User.findByIdAndUpdate(id, {
             $pull: { favorites: movieId } // 使用 $pull 删除指定的电影
         }, {new: true});
 
@@ -120,12 +121,12 @@ router.get('/tmdb/:id/marked', asyncHandler(async (req, res) => {
 }));
 
 router.post('/tmdb/:id/marked', asyncHandler(async (req, res) => {
-    const { userId } = req.params;
+    const { id } = req.params;
     const { movieId } = req.body;
 
     try {
-        await User.findByIdAndUpdate(userId, {
-            $addToSet: { markedMovies: movieId }
+        await User.findByIdAndUpdate(id, {
+            $addToSet: { marked: movieId }
         }, {new: true});
         res.status(200).json({ message: 'Movie marked successfully' });
     } catch (error) {
@@ -134,11 +135,11 @@ router.post('/tmdb/:id/marked', asyncHandler(async (req, res) => {
 }));
 
 router.delete('/tmdb/:id/marked/:movieId', asyncHandler(async (req, res) => {
-    const { userId, movieId } = req.params;
+    const { id, movieId } = req.params;
 
     try {
-        await User.findByIdAndUpdate(userId, {
-            $pull: { markedMovies: movieId }
+        await User.findByIdAndUpdate(id, {
+            $pull: { marked: movieId }
         }, {new: true});
         res.status(200).json({ message: 'Movie unmarked successfully' });
     } catch (error) {
@@ -151,27 +152,30 @@ router.delete('/tmdb/:id/marked/:movieId', asyncHandler(async (req, res) => {
 
 router.get('/tmdb/:id/follow', asyncHandler(async (req, res) => {
     const { id } = req.params;
-
+    console.info(id)
     try {
         const user = await User.findById(id).populate('follow');
         if (!user) {
             return res.status(404).json({ message: 'User not found' });
         }
+        console.info(user)
 
         res.status(200).json(user.follow);
     } catch (error) {
+        console.info(error.message)
         res.status(500).json({ message: 'Internal server error' });
     }
 }));
 
 router.post('/tmdb/:id/follow', asyncHandler(async (req, res) => {
-    const { userId } = req.params;
+    const { id } = req.params;
     const { actorId } = req.body;
-    console.info(actorId)
+    console.info(id, actorId)
     try {
-        await User.findByIdAndUpdate(userId, {
-            $addToSet: { followedActors: actorId }
+        await User.findByIdAndUpdate(id, {
+            $addToSet: { follow: actorId }
         }, {new: true});
+        console.info("add success")
         res.status(200).json({ message: 'Actor followed successfully' });
     } catch (error) {
         res.status(500).json({ message: 'Internal server error' });
@@ -179,11 +183,11 @@ router.post('/tmdb/:id/follow', asyncHandler(async (req, res) => {
 }));
 
 router.delete('/tmdb/:id/follow/:actorId', asyncHandler(async (req, res) => {
-    const { userId, actorId } = req.params;
+    const { id, actorId } = req.params;
 
     try {
-        await User.findByIdAndUpdate(userId, {
-            $pull: { followedActors: actorId }
+        await User.findByIdAndUpdate(id, {
+            $pull: { follow: actorId }
         }, {new: true});
         res.status(200).json({ message: 'Actor unfollowed successfully' });
     } catch (error) {
