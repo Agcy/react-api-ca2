@@ -6,14 +6,14 @@ import jwt from 'jsonwebtoken';
 const router = express.Router(); // eslint-disable-line
 
 router.get('/tmdb/user/:userId', asyncHandler(async (req, res) => {
-    const { userId } = req.params;
-    const reviews = await Review.find({ userId }).populate('movieId', 'title');
-    console.info(reviews)
-    console.info(userId)
+    try{
+        const { userId } = req.params;
+        const reviews = await Review.find({ userId }).populate('movieId', 'title');
+        console.info(reviews)
+        console.info(userId)
 
-    if (reviews.length > 0) {
         res.status(200).json({reviews});
-    } else {
+    }catch (error){
         res.status(404).json({ message: `No reviews found for user ${userId}` });
     }
 }));

@@ -146,6 +146,7 @@ const SiteHeader = () => {
                                         role="presentation"
                                         sx={{ width: 250 }}
                                     >
+                                        <p>user: {user.username}</p>
                                         <List>
                                             {myOptions.map((object, index) => (
                                                 <ListItem key={object.label} disablePadding>

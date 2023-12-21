@@ -1,9 +1,9 @@
-import React, {useContext, useState} from "react";
+import React, {useContext, useEffect, useState} from "react";
 import {
   addFavorite,
   addMarkedMovie,
   addToReview,
-  getUserFavorites,
+  getUserFavorites, getUserMarkedMovies, getUserMovieReviews,
   removeFavorite,
   removeMarkedMovie
 } from "../api/tmdb-api";
@@ -12,10 +12,25 @@ import {AuthContext} from "./mongoAuthContext";
 export const MoviesContext = React.createContext(null);
 
 const MoviesContextProvider = (props) => {
-  const [favorites, setFavorites] = useState( [] )
   const [myReviews, setMyReviews] = useState( {} )
   const [previews, setPreviews] = useState( [] )
-  const { user } = useContext(AuthContext);
+  const { user, isAuthenticated } = useContext(AuthContext);
+  const [favorites, setFavorites] = useState( [] )
+
+  useEffect(()=>{
+    if(!isAuthenticated){
+      setFavorites([])
+      setPreviews([])
+      setMyReviews([])
+  }else {
+      async function getRecord() {
+        setFavorites(await getUserFavorites(user.id))
+        setPreviews(await getUserMarkedMovies(user.id))
+        setMyReviews(await getUserMovieReviews(user.id))
+      }
+      getRecord()
+    }
+  }, [isAuthenticated])
 
   const updateFavorites = async (userId) => {
     const favorites = await getUserFavorites(userId);
