@@ -197,10 +197,10 @@ export const getActorMovieCredits = async (args) => {
 
 
 // 喜欢的电影
-export const getUserFavorites = async (args) => {
-    const [, idPart] = args.queryKey;
-    const {id} = idPart;
-    const response = await fetch(`http://localhost:8080/api/users/${id}/favorites`, {
+export const getUserFavorites = async (id) => {
+    // const [, idPart] = args.queryKey;
+    // const {id} = idPart;
+    const response = await fetch(`http://localhost:8080/api/users/tmdb/${id}/favorites`, {
         headers: {
             'Content-Type': 'application/json'
         },
@@ -215,7 +215,7 @@ export const getUserFavorites = async (args) => {
 // 添加
 export const addFavorite = async (userId, movieId) => {
     try {
-        const response = await fetch(`http://localhost:8080/api/users/${userId}/favorites`, {
+        const response = await fetch(`http://localhost:8080/api/users/tmdb/${userId}/favorites`, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
@@ -236,7 +236,7 @@ export const addFavorite = async (userId, movieId) => {
 //删除
 export const removeFavorite = async (userId, movieId) => {
     try {
-        const response = await fetch(`http://localhost:8080/api/users/${userId}/favorites/${movieId}`, {
+        const response = await fetch(`http://localhost:8080/api/users/tmdb/${userId}/favorites/${movieId}`, {
             method: 'DELETE',
             headers: {
                 'Content-Type': 'application/json'
@@ -254,7 +254,7 @@ export const removeFavorite = async (userId, movieId) => {
 };
 
 export const getUserMarkedMovies = async (userId) => {
-    const response = await fetch(`http://localhost:8080/api/users/${userId}/marked`, {
+    const response = await fetch(`http://localhost:8080/api/users/tmdb/${userId}/marked`, {
         headers: {
             'Content-Type': 'application/json'
         },
@@ -267,7 +267,7 @@ export const getUserMarkedMovies = async (userId) => {
 };
 
 export const addMarkedMovie = async (userId, movieId) => {
-    const response = await fetch(`http://localhost:8080/api/users/${userId}/marked`, {
+    const response = await fetch(`http://localhost:8080/api/users/tmdb/${userId}/marked`, {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json'
@@ -282,7 +282,7 @@ export const addMarkedMovie = async (userId, movieId) => {
 };
 
 export const removeMarkedMovie = async (userId, movieId) => {
-    const response = await fetch(`http://localhost:8080/api/users/${userId}/marked/${movieId}`, {
+    const response = await fetch(`http://localhost:8080/api/users/tmdb/${userId}/marked/${movieId}`, {
         method: 'DELETE',
         headers: {
             'Content-Type': 'application/json'
@@ -296,7 +296,7 @@ export const removeMarkedMovie = async (userId, movieId) => {
 };
 
 export const getUserFollowedActors = async (userId) => {
-    const response = await fetch(`http://localhost:8080/api/users/${userId}/follow`, {
+    const response = await fetch(`http://localhost:8080/api/users/tmdb/${userId}/follow`, {
         headers: {
             'Content-Type': 'application/json'
         },
@@ -309,7 +309,7 @@ export const getUserFollowedActors = async (userId) => {
 };
 
 export const followActor = async (userId, actorId) => {
-    const response = await fetch(`http://localhost:8080/api/users/${userId}/follow`, {
+    const response = await fetch(`http://localhost:8080/api/users/tmdb/${userId}/follow`, {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json'
@@ -324,7 +324,7 @@ export const followActor = async (userId, actorId) => {
 };
 
 export const unfollowActor = async (userId, actorId) => {
-    const response = await fetch(`http://localhost:8080/api/users/${userId}/follow/${actorId}`, {
+    const response = await fetch(`http://localhost:8080/api/users/tmdb/${userId}/follow/${actorId}`, {
         method: 'DELETE',
         headers: {
             'Content-Type': 'application/json'
@@ -366,6 +366,17 @@ export const addToReview = async (movieId, userId, review) => {
 
     if (!response.ok) {
         throw new Error('Failed to post review');
+    }
+    return response.json();
+};
+
+export const deleteReview = async (reviewId) => {
+    const response = await fetch(`http://localhost:8080/api/reviews/tmdb/${reviewId}`, {
+        method: 'DELETE'
+    });
+
+    if (!response.ok) {
+        throw new Error('Failed to delete review');
     }
     return response.json();
 };

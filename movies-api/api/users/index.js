@@ -53,27 +53,28 @@ router.put('/:id', async (req, res) => {
 });
 
 // get all favorite movies
-router.get('/:id/favorites', async (req, res) => {
-    const { id } = req.params.id;
-
+router.get('/tmdb/:id/favorites', asyncHandler(async (req, res) => {
+    const { id } = req.params;
+    console.info(id)
     try {
         const user = await User.findById(id).populate('favorites');
-        if (!user) {
-            return res.status(404).json({ message: 'User not found' });
-        }
+        // if (!user) {
+        //     return res.status(400).json({ message: 'User not found' });
+        // }
 
         res.status(200).json(user.favorites);
     } catch (error) {
         res.status(500).json({ message: 'Internal server error' });
     }
-});
+}));
 
 
 // add to favorite
-router.post('/:id/favorites', async (req, res) => {
+router.post('/tmdb/:id/favorites', asyncHandler(async (req, res) => {
     const { id } = req.params;
     const { movieId } = req.body;
     console.info(movieId)
+    console.info(id)
 
     try {
         await User.findByIdAndUpdate(id, {
@@ -84,10 +85,10 @@ router.post('/:id/favorites', async (req, res) => {
     } catch (error) {
         res.status(500).json({ message: 'Internal server error' });
     }
-});
+}));
 
 // delete from favorite
-router.delete('/:id/favorites/:movieId', async (req, res) => {
+router.delete('/tmdb/:id/favorites/:movieId', asyncHandler(async (req, res) => {
     const { userId, movieId } = req.params;
 
     try {
@@ -99,12 +100,12 @@ router.delete('/:id/favorites/:movieId', async (req, res) => {
     } catch (error) {
         res.status(500).json({ message: 'Internal server error', error: error.message });
     }
-});
+}));
 
 // marked movie
 
-router.get('/:id/marked', async (req, res) => {
-    const { id } = req.params.id;
+router.get('/tmdb/:id/marked', asyncHandler(async (req, res) => {
+    const { id } = req.params;
 
     try {
         const user = await User.findById(id).populate('marked');
@@ -116,9 +117,9 @@ router.get('/:id/marked', async (req, res) => {
     } catch (error) {
         res.status(500).json({ message: 'Internal server error' });
     }
-});
+}));
 
-router.post('/:id/marked', async (req, res) => {
+router.post('/tmdb/:id/marked', asyncHandler(async (req, res) => {
     const { userId } = req.params;
     const { movieId } = req.body;
 
@@ -130,9 +131,9 @@ router.post('/:id/marked', async (req, res) => {
     } catch (error) {
         res.status(500).json({ message: 'Internal server error' });
     }
-});
+}));
 
-router.delete('/:id/marked/:movieId', async (req, res) => {
+router.delete('/tmdb/:id/marked/:movieId', asyncHandler(async (req, res) => {
     const { userId, movieId } = req.params;
 
     try {
@@ -143,13 +144,13 @@ router.delete('/:id/marked/:movieId', async (req, res) => {
     } catch (error) {
         res.status(500).json({ message: 'Internal server error' });
     }
-});
+}));
 
 
 // follow actor
 
-router.get('/:id/follow', async (req, res) => {
-    const { id } = req.params.id;
+router.get('/tmdb/:id/follow', asyncHandler(async (req, res) => {
+    const { id } = req.params;
 
     try {
         const user = await User.findById(id).populate('follow');
@@ -161,9 +162,9 @@ router.get('/:id/follow', async (req, res) => {
     } catch (error) {
         res.status(500).json({ message: 'Internal server error' });
     }
-});
+}));
 
-router.post('/:id/follow', async (req, res) => {
+router.post('/tmdb/:id/follow', asyncHandler(async (req, res) => {
     const { userId } = req.params;
     const { actorId } = req.body;
     console.info(actorId)
@@ -175,9 +176,9 @@ router.post('/:id/follow', async (req, res) => {
     } catch (error) {
         res.status(500).json({ message: 'Internal server error' });
     }
-});
+}));
 
-router.delete('/:id/follow/:actorId', async (req, res) => {
+router.delete('/tmdb/:id/follow/:actorId', asyncHandler(async (req, res) => {
     const { userId, actorId } = req.params;
 
     try {
@@ -188,7 +189,7 @@ router.delete('/:id/follow/:actorId', async (req, res) => {
     } catch (error) {
         res.status(500).json({ message: 'Internal server error' });
     }
-});
+}));
 
 
 

@@ -21,6 +21,7 @@ import FollowedActorsPage from "./pages/followedActorsPage";
 import MongoAuthContextProvider from "./contexts/mongoAuthContext"
 import LoginPage from "./pages/loginPage";
 import ProtectedRoutes from "./protectRoute"
+import MyReviewsPage from "./pages/myReviewsPage";
 
 const queryClient = new QueryClient({
     defaultOptions: {
@@ -50,6 +51,7 @@ const App = () => {
                                         <Route path="/actors/followed" element={<FollowedActorsPage/>}/>
                                         <Route path="/reviews/:id" element={<MovieReviewPage/>}/>
                                         <Route path="/reviews/form" element={<AddMovieReviewPage/>}/>
+                                        <Route path="/reviews/my-reviews" element={<MyReviewsPage />} />
                                     </Route>
                                     <Route path="/movies/upcoming" element={<UpcomingMoviePage/>}/>
                                     <Route path="/movies/trending" element={<TrendingMoviePage/>}/>
