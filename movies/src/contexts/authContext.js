@@ -6,7 +6,7 @@ import {
     signInWithPopup,
     updateProfile
 } from "firebase/auth";
-import { login, signup } from "../api/tmdb-api";
+import {getUserMovieReviews, login, signup} from "../api/tmdb-api";
 import { auth, googleProvider } from '../firebase/firebase'; // 确保路径正确
 
 export const AuthContext = createContext(null);

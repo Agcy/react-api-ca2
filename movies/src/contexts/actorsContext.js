@@ -1,12 +1,30 @@
-import React, {useContext, useState} from "react";
-import {followActor, getUserFollowedActors, unfollowActor} from '../api/tmdb-api';
+import React, {useContext, useEffect, useState} from "react";
+import {
+    followActor,
+    getUserFavorites,
+    getUserFollowedActors,
+    getUserMarkedMovies, getUserMovieReviews,
+    unfollowActor
+} from '../api/tmdb-api';
 import {AuthContext} from "./mongoAuthContext"; // 确保正确导入这些函数
 
 export const ActorsContext = React.createContext(null);
 
 export const ActorsProvider = ({ children }) => {
     const [following, setFollowing] = useState([]);
-    const { user } = useContext(AuthContext);
+    const { user, isAuthenticated } = useContext(AuthContext);
+
+    useEffect(()=>{
+        if(!isAuthenticated){
+            setFollowing([])
+
+        }else {
+            async function getRecord() {
+                setFollowing(await getUserFollowedActors(user.id))
+            }
+            getRecord()
+        }
+    }, [isAuthenticated])
 
     const addToFollowing = async (actor) => {
         try {

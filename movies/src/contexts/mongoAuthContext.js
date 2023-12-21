@@ -1,5 +1,12 @@
 import React, {useState, createContext} from "react";
-import {login, signup} from "../api/tmdb-api";
+import {
+    getUserFavorites,
+    getUserFollowedActors,
+    getUserMarkedMovies,
+    getUserMovieReviews,
+    login,
+    signup
+} from "../api/tmdb-api";
 
 export const AuthContext = createContext(null);
 
