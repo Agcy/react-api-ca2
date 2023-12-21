@@ -1,5 +1,12 @@
 import React, {useContext, useState} from "react";
-import {addFavorite, addMarkedMovie, addToReview, removeFavorite, removeMarkedMovie} from "../api/tmdb-api";
+import {
+  addFavorite,
+  addMarkedMovie,
+  addToReview,
+  getUserFavorites,
+  removeFavorite,
+  removeMarkedMovie
+} from "../api/tmdb-api";
 import {AuthContext} from "./mongoAuthContext";
 
 export const MoviesContext = React.createContext(null);
@@ -10,16 +17,10 @@ const MoviesContextProvider = (props) => {
   const [previews, setPreviews] = useState( [] )
   const { user } = useContext(AuthContext);
 
-  // const addToFavorites = (movie) => {
-  //   let newFavorites = [];
-  //   if (!favorites.includes(movie.id)){
-  //     newFavorites = [...favorites, movie.id];
-  //   }
-  //   else{
-  //     newFavorites = [...favorites];
-  //   }
-  //   setFavorites(newFavorites)
-  // };
+  const updateFavorites = async (userId) => {
+    const favorites = await getUserFavorites(userId);
+    setFavorites(favorites.map(f => f.movieId)); // 假设返回的是包含 movieId 的对象数组
+  };
 
   const addToFavorites = async (movie) => {
     try {

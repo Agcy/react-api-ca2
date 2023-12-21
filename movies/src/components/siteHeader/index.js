@@ -44,7 +44,8 @@ const SiteHeader = () => {
     const myOptions = [
         { label: "Favorites", path: "/movies/favorites" },
         { label: "Marked", path: "/movies/marked" },
-        { label: "Followed", path: "/actors/followed" }
+        { label: "Followed", path: "/actors/followed" },
+        { label: "My Reviews", path: "/reviews/my-reviews" }
     ];
 
     const handleMyClick = () => {

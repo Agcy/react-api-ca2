@@ -8,9 +8,11 @@ const router = express.Router(); // eslint-disable-line
 router.get('/tmdb/user/:userId', asyncHandler(async (req, res) => {
     const { userId } = req.params;
     const reviews = await Review.find({ userId }).populate('movieId', 'title');
+    console.info(reviews)
+    console.info(userId)
 
     if (reviews.length > 0) {
-        res.status(200).json(reviews);
+        res.status(200).json({reviews});
     } else {
         res.status(404).json({ message: `No reviews found for user ${userId}` });
     }
@@ -40,6 +42,29 @@ router.post('/tmdb/:movieId', asyncHandler(async (req, res) => {
         res.status(500).json({ message: 'Internal server error' });
     }
 }));
+
+router.delete('/tmdb/:reviewId', async (req, res) => {
+    const { reviewId } = req.params;
+
+    const review = await Review.findById(reviewId).catch(err => null);
+
+    if (!review) {
+        return res.status(404).json({ message: 'Review not found' });
+    }
+
+    if (review.userId.toString() !== req.user.id) { // 假设 req.user.id 是当前登录用户的 ID
+        return res.status(403).json({ message: 'Unauthorized to delete this review' });
+    }
+
+    const result = await review.remove().catch(err => null);
+
+    if (result) {
+        res.status(200).json({ message: 'Review deleted successfully' });
+    } else {
+        res.status(500).json({ message: 'Internal server error' });
+    }
+});
+
 
 
 export default router;
