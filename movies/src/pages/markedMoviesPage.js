@@ -1,16 +1,20 @@
 import React, {useContext} from "react";
 import PageTemplate from "../components/movie/templateMovieListPage";
 import {MoviesContext} from "../contexts/moviesContext";
-import {useQueries} from "react-query";
-import {getMovie} from "../api/tmdb-api";
+import {useQueries, useQuery} from "react-query";
+import {getMovie, getUserFavorites, getUserMarkedMovies} from "../api/tmdb-api";
 import Spinner from '../components/spinner';
 import RemoveFromPreviews from "../components/cardIcons/removeFromPreviews";
 import Header from "../components/movie/headerMovieList";
 import Grid from "@mui/material/Grid";
+import {AuthContext} from "../contexts/mongoAuthContext";
 // import WriteReview from "../components/cardIcons/writeReview";
 
 const MarkedMoviesPage = () => {
     const {previews: movieIds} = useContext(MoviesContext);
+    const { user } = useContext(AuthContext); // 获取当前登录的用户
+    const { data: markedMovies, isLoading: isLoadingMarked } =
+        useQuery(['favorites', user.id], () => getUserMarkedMovies(user.id));
 
     // Create an array of queries and run in parallel.
     const previewMovieQueries = useQueries(
