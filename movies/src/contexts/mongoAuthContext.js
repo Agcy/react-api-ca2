@@ -1,4 +1,5 @@
 import React, {useState, createContext} from "react";
+import {useNavigate} from 'react-router-dom';
 import {
     getUserFavorites,
     getUserFollowedActors,
@@ -16,6 +17,8 @@ const MongoAuthContextProvider = (props) => {
     const [authToken, setAuthToken] = useState(existingToken);
     const [account, setAccount] = useState("");
     const [user, setUser] = useState(null)
+    const [redirectPath, setRedirectPath] = useState(null);
+    const navigate = useNavigate();
     const [msg, setMsg] = useState("")
 
     //Function to put JWT token in local storage.
@@ -33,6 +36,9 @@ const MongoAuthContextProvider = (props) => {
             setAccount(account);
             setUser(result.user);
             localStorage.setItem('userId', result.user.id);
+            const redirect = redirectPath || '/';
+            setRedirectPath(null);
+            navigate(redirect);
             return { success: true, status: result.status, message: result.message };
         } else {
             // 返回包含错误信息的对象
@@ -73,6 +79,8 @@ const MongoAuthContextProvider = (props) => {
                 register,
                 signout,
                 account,
+                redirectPath,
+                setRedirectPath,
                 user,
                 msg
             }}

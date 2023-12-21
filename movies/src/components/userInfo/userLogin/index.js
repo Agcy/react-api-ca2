@@ -26,7 +26,7 @@ const Login = () => {
             if(success === true){
                 setError("Account successfully login")
                 setErrorType('success')
-                navigate('/'); // 导航到主页或其他页面
+                // navigate('/'); // 导航到主页或其他页面
 
             }else{
                 switch (status) {
