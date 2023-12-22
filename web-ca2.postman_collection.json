@@ -1,0 +1,2259 @@
+{
+	"info": {
+		"_postman_id": "d0e965f8-2fe3-4525-8ba1-44881552a93e",
+		"name": "web-ca2",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "31109545",
+		"_collection_link": "https://grey-eclipse-14965.postman.co/workspace/WAD-2023~10be5c43-e0da-4fa4-ab53-43936ea5fd7e/collection/31109545-d0e965f8-2fe3-4525-8ba1-44881552a93e?action=share&source=collection_link&creator=31109545"
+	},
+	"item": [
+		{
+			"name": "actor",
+			"item": [
+				{
+					"name": "all actor",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/api/actors/tmdb/actors?page=1&language=us-EN",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"actors",
+								"tmdb",
+								"actors"
+							],
+							"query": [
+								{
+									"key": "page",
+									"value": "1"
+								},
+								{
+									"key": "language",
+									"value": "us-EN"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "single Actor",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/api/actors/tmdb/actor/:id",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"actors",
+								"tmdb",
+								"actor",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "12799"
+								}
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "New Request",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:8080/api/actors/tmdb/actor/12799",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"api",
+										"actors",
+										"tmdb",
+										"actor",
+										"12799"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "608"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"260-wH8hyyY7ivYdRkwMJ7hzlPxyPGc\""
+								},
+								{
+									"key": "Date",
+									"value": "Fri, 22 Dec 2023 01:40:13 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"adult\": false,\n    \"also_known_as\": [],\n    \"biography\": \"Jeremy Samuel Piven (born July 26, 1965) is an American film producer and actor best known for his role as Ari Gold in the television series Entourage for which he has won three Primetime Emmy Awards as well as several other nominations for Best Supporting Actor.\",\n    \"birthday\": \"1965-07-26\",\n    \"deathday\": null,\n    \"gender\": 2,\n    \"homepage\": \"https://jeremy-piven.com/\",\n    \"id\": 12799,\n    \"imdb_id\": \"nm0005315\",\n    \"known_for_department\": \"Acting\",\n    \"name\": \"Jeremy Piven\",\n    \"place_of_birth\": \"New York City, New York, USA\",\n    \"popularity\": 161.077,\n    \"profile_path\": \"/pqdR8zqAWF87chGYlbdYr0YfC7g.jpg\"\n}"
+						}
+					]
+				},
+				{
+					"name": "Actor Movie Credits",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/api/actors/tmdb/movie_credits/:id?language=us-EN",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"actors",
+								"tmdb",
+								"movie_credits",
+								":id"
+							],
+							"query": [
+								{
+									"key": "language",
+									"value": "us-EN"
+								}
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "12799"
+								}
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "New Request",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:8080/api/actors/tmdb/movie_credits/12799?language=us-EN",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"api",
+										"actors",
+										"tmdb",
+										"movie_credits",
+										"12799"
+									],
+									"query": [
+										{
+											"key": "language",
+											"value": "us-EN"
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "56518"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"dcc6-GLejXB4xaECMJqsKgGkPof3KwqI\""
+								},
+								{
+									"key": "Date",
+									"value": "Fri, 22 Dec 2023 01:41:44 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"cast\": [\n        {\n            \"adult\": false,\n            \"backdrop_path\": \"/4CxQXuitlZFNndvis2uv2YUzAQ7.jpg\",\n            \"genre_ids\": [\n                35\n            ],\n            \"id\": 14425,\n            \"original_language\": \"en\",\n            \"original_title\": \"PCU\",\n            \"overview\": \"Nervous high school senior Tom Lawrence visits Port Chester University, where he gets a taste of politically correct college life when he's guided by fraternity wild man Droz and his housemates at The Pit. But Droz and his pals have rivals in nasty preppy Rand McPherson and the school's steely president. With their house threatened with expulsion, Droz and company decide to throw a raging party where the various factions will collide.\",\n            \"popularity\": 20.291,\n            \"poster_path\": \"/hAaFdW1zjJgBH9VVP6h30S4i2a7.jpg\",\n            \"release_date\": \"1994-04-29\",\n            \"title\": \"PCU\",\n            \"video\": false,\n            \"vote_average\": 5.939,\n            \"vote_count\": 114,\n            \"character\": \"Droz\",\n            \"credit_id\": \"52fe45f29251416c75067e05\",\n            \"order\": 0\n        },\n        {\n            \"adult\": false,\n            \"backdrop_path\": \"/h52uu4gByJpMkyu99bjK6W3kLBU.jpg\",\n            \"genre_ids\": [\n                35\n            ],\n            \"id\": 19905,\n            \"original_language\": \"en\",\n            \"original_title\": \"The Goods: Live Hard, Sell Hard\",\n            \"overview\": \"Don Ready is many things, but he is best-known as an extraordinary salesman. When a car dealership in Temecula teeters on the brink of bankruptcy, he and his ragtag team dive in to save the day. But what Ready doesn't count on is falling in love and finding his soul.\",\n            \"popularity\": 17.248,\n            \"poster_path\": \"/mzabvX1N0fLlu5aFMiu6rQu878T.jpg\",\n            \"release_date\": \"2009-05-29\",\n            \"title\": \"The Goods: Live Hard, Sell Hard\",\n            \"video\": false,\n            \"vote_average\": 5.4,\n            \"vote_count\": 192,\n            \"character\": \"Don Ready\",\n            \"credit_id\": \"52fe47f89251416c750ab8cb\",\n            \"order\": 0\n        },\n        {\n            \"adult\": false,\n            \"backdrop_path\": null,\n            \"genre_ids\": [\n                10749,\n                35\n            ],\n            \"id\": 163869,\n            \"original_language\": \"en\",\n            \"original_title\": \"Just Write\",\n            \"overview\": \"A Hollywood tour bus driver poses as a screenwriter to romance an up-and-coming young actress.\",\n            \"popularity\": 6.677,\n            \"poster_path\": \"/hjv22AGIfmnEQ20pDb0oQr9eUkX.jpg\",\n            \"release_date\": \"1997-03-01\",\n            \"title\": \"Just Write\",\n            \"video\": false,\n            \"vote_average\": 4.8,\n            \"vote_count\": 10,\n            \"character\": \"Harold McMurphy\",\n            \"credit_id\": \"52fe4c6fc3a36847f822de53\",\n            \"order\": 0\n        },\n        {\n            \"adult\": false,\n            \"backdrop_path\": null,\n            \"genre_ids\": [],\n            \"id\": 215073,\n            \"original_language\": \"en\",\n            \"original_title\": \"E=mc2\",\n            \"overview\": \"A physicist struggling to prove one of Einstein's theories still finds time to dabble in an extra-curricular relationship with one of his lab assistants. Meanwhile at home his under-sexed wife struggles under the assumption that he is hard at work with his experiments. All of which explodes when she discovers otherwise. Written by John Sacksteder\",\n            \"popularity\": 4.589,\n            \"poster_path\": \"/vzvDQOxddpsj4KJ98Bnb4fND4xN.jpg\",\n            \"release_date\": \"1996-01-05\",\n            \"title\": \"E=mc2\",\n            \"video\": false,\n            \"vote_average\": 0,\n            \"vote_count\": 0,\n            \"character\": \"Dr. Paul Higgins\",\n            \"credit_id\": \"52fe4df2c3a368484e205fd1\",\n            \"order\": 0\n        },\n        {\n            \"adult\": false,\n            \"backdrop_path\": null,\n            \"genre_ids\": [],\n            \"id\": 340537,\n            \"original_language\": \"en\",\n            \"original_title\": \"Ari Gold is Back\",\n            \"overview\": \"The last time we saw Ari Gold, he had retired from Hollywood and moved to Italy. This is the story of how he came back.\",\n            \"popularity\": 2.957,\n            \"poster_path\": null,\n            \"release_date\": \"2015-05-14\",\n            \"title\": \"Ari Gold is Back\",\n            \"video\": false,\n            \"vote_average\": 8,\n            \"vote_count\": 4,\n            \"character\": \"Ari Gold\",\n            \"credit_id\": \"5557c0fcc3a368776c0063f2\",\n            \"order\": 0\n        },\n        {\n            \"adult\": false,\n            \"backdrop_path\": null,\n            \"genre_ids\": [\n                35\n            ],\n            \"id\": 338529,\n            \"original_language\": \"en\",\n            \"original_title\": \"Layin' Low\",\n            \"overview\": \"On the highway of life, Jerry's at a dead-end. Unemployed and still living at home with his parents, this thirty-three year old loser has no drive to better his life. That's all about to change. A fateful drug deal gone bad transforms Jerry overnight into the cop's number one murder suspect and the mob's number one target. With a sack full of drugs and a budding romance at stake, Jerry could get a life... or lose it. Either way, it will be the ride of his life.\",\n            \"popularity\": 4.754,\n            \"poster_path\": null,\n            \"release_date\": \"1996-10-18\",\n            \"title\": \"Layin' Low\",\n            \"video\": false,\n            \"vote_average\": 0,\n            \"vote_count\": 0,\n            \"character\": \"Jerry\",\n            \"credit_id\": \"5546646fc3a3680cd9006f1f\",\n            \"order\": 0\n        },\n        {\n            \"adult\": false,\n            \"backdrop_path\": \"/efiDNmExd9GweIqmQKcwIt09hi7.jpg\",\n            \"genre_ids\": [\n                99\n            ],\n            \"id\": 688335,\n            \"original_language\": \"en\",\n            \"original_title\": \"Close Encounters of the Fifth Kind\",\n            \"overview\": \"Dr. Steven Greer’s previous works, SIRIUS and UNACKNOWLEDGED, broke crowdfunding records and ignited a grassroots movement. CLOSE ENCOUNTERS OF THE FIFTH KIND features groundbreaking video and photographic evidence and supporting interviews from prominent figures such as Adam Curry of Princeton’s PEAR Lab; legendary civil rights attorney Daniel Sheehan, and Dr. Russell Targ, who headed the CIA’s top secret remote viewing program. Their message: For thousands of people, contact has begun. This is their story.\",\n            \"popularity\": 10.854,\n            \"poster_path\": \"/R0rmE1wDbxMb2W0MyDE3HKPhOR.jpg\",\n            \"release_date\": \"2020-04-07\",\n            \"title\": \"Close Encounters of the Fifth Kind\",\n            \"video\": false,\n            \"vote_average\": 7.2,\n            \"vote_count\": 82,\n            \"character\": \"Narrator\",\n            \"credit_id\": \"5e9b100dfd6fa1001d01f477\",\n            \"order\": 0\n        },\n        {\n            \"adult\": false,\n            \"backdrop_path\": \"/aAm4qRCzWB9l5XTuuCdrhNpiyyH.jpg\",\n            \"genre_ids\": [\n                10749,\n                35\n            ],\n            \"id\": 754053,\n            \"original_language\": \"en\",\n            \"original_title\": \"My Dad's Christmas Date\",\n            \"overview\": \"It’s Christmas and the charming city of York, home to Jules, 16 and her Dad, David is decked out ready for the festive season. In many ways, David and Jules’ relationship is no different from that of most fathers and their sixteen-year-old daughters. He struggles to understand her, she refuses to communicate with him. He wants to be involved in her life, she wants her own space. In one important respect, however, David and Jules share a profound bond: the death of Jules’ mum, and David’s wife, in a car crash two years before. With both struggling to cope with everyday life in the shadow of their loss, Jules, inspired by happy memories of her mum, decides to take matters into her own hands.\",\n            \"popularity\": 16.745,\n            \"poster_path\": \"/mAfeEGYIwEG4YmVk77pv8fk0Dpr.jpg\",\n            \"release_date\": \"2020-12-03\",\n            \"title\": \"My Dad's Christmas Date\",\n            \"video\": false,\n            \"vote_average\": 6.2,\n            \"vote_count\": 43,\n            \"character\": \"David\",\n            \"credit_id\": \"5f8a246fa13533003613b2a3\",\n            \"order\": 0\n        },\n        {\n            \"adult\": false,\n            \"backdrop_path\": \"/sPuANGEwysJe3ey3BmrX1vdvz7G.jpg\",\n            \"genre_ids\": [\n                35\n            ],\n            \"id\": 675480,\n            \"original_language\": \"en\",\n            \"original_title\": \"Last Call\",\n            \"overview\": \"A real estate developer returns to his old Philly neighborhood and must decide to raze or resurrect the family bar.\",\n            \"popularity\": 7.208,\n            \"poster_path\": \"/bySCgLjkmPFuUd0ExwruObY9VHn.jpg\",\n            \"release_date\": \"2021-03-19\",\n            \"title\": \"Last Call\",\n            \"video\": false,\n            \"vote_average\": 5.1,\n            \"vote_count\": 11,\n            \"character\": \"Mick\",\n            \"credit_id\": \"5fa979f29ac5350041b958e3\",\n            \"order\": 0\n        },\n        {\n            \"adult\": false,\n            \"backdrop_path\": null,\n            \"genre_ids\": [\n                18\n            ],\n            \"id\": 1193017,\n            \"original_language\": \"en\",\n            \"original_title\": \"The Performance\",\n            \"overview\": \"Harold May, an excellent Jewish-American tap dancer, on tour in Europe with his company, receives an offer from a German that is difficult to pass up: a large sum to put on a show in Berlin. The German does not know that Harold is of Jewish origins; the year is 1937 and, once they arrive in Germany, the company discovers that he will have to perform in the presence of Adolf Hitler.\",\n            \"popularity\": 3.596,\n            \"poster_path\": \"/3deClfdEwvl9tMGpydcWT0LcpGP.jpg\",\n            \"release_date\": \"\",\n            \"title\": \"The Performance\",\n            \"video\": false,\n            \"vote_average\": 0,\n            \"vote_count\": 0,\n            \"character\": \"\",\n            \"credit_id\": \"653d1e0d519bbb013832209f\",\n            \"order\": 0\n        },\n        {\n            \"adult\": false,\n            \"backdrop_path\": \"/jqXCrMZDta1qT3pXTeYArAfolAn.jpg\",\n            \"genre_ids\": [\n                18,\n                53\n            ],\n            \"id\": 75345,\n            \"original_language\": \"en\",\n            \"original_title\": \"I Melt with You\",\n            \"overview\": \"Former college friends meet up for a reunion that leads them to face the apparent disillusionment that defines their lives. After a week of excessive drug and alcohol abuse, events lead them to contemplate fulfilling a self destructive pact they made when they were young.\",\n            \"popularity\": 14.906,\n            \"poster_path\": \"/6Xq0cwrXOgmyKCTtH3KlOJFS8uu.jpg\",\n            \"release_date\": \"2011-12-09\",\n            \"title\": \"I Melt with You\",\n            \"video\": false,\n            \"vote_average\": 5.3,\n            \"vote_count\": 71,\n            \"character\": \"Ron\",\n            \"credit_id\": \"52fe48fcc3a368484e114e8f\",\n            \"order\": 1\n        },\n        {\n            \"adult\": false,\n            \"backdrop_path\": \"/6bNQuKFJIamipvYclG4MEbDSLM5.jpg\",\n            \"genre_ids\": [\n                28,\n                35\n            ],\n            \"id\": 93837,\n            \"original_language\": \"en\",\n            \"original_title\": \"So Undercover\",\n            \"overview\": \"When the FBI hires her to go undercover at a college sorority, Molly Morris (Miley Cyrus) must transform herself from a tough, streetwise private investigator to a refined, sophisticated university girl to help protect the daughter of a one-time Mobster. With several suspects on her list, Molly unexpectedly discovers that not everyone is who they appear to be, including herself.\",\n            \"popularity\": 15.219,\n            \"poster_path\": \"/abR6e0FaWwwcEJEM4PY5VvjwBr1.jpg\",\n            \"release_date\": \"2012-12-06\",\n            \"title\": \"So Undercover\",\n            \"video\": false,\n            \"vote_average\": 6.158,\n            \"vote_count\": 1083,\n            \"character\": \"Armon\",\n            \"credit_id\": \"52fe49419251416c750c21d5\",\n            \"order\": 1\n        },\n        {\n            \"adult\": false,\n            \"backdrop_path\": \"/pjno1d3ZftUY4Cym29iN2cHTHfu.jpg\",\n            \"genre_ids\": [\n                35\n            ],\n            \"id\": 34170,\n            \"original_language\": \"en\",\n            \"original_title\": \"Larger Than Life\",\n            \"overview\": \"Motivational Speaker Jack Corcoran is determined to get his career off the ground, but the biggest gigs he can get are the ones nobody wants. Then one day, he receives a telegram that his circus clown father has passed away, and has left a \\\"huge\\\" inheritance. When he gets there, he finds that his inheritance has come in the form of an elephant that was his father's pride and joy in circus acts. His main intention is to sell the pachyderm off. Jack must choose between loud and rude zookeeper Mo or attractive animal show owner Terry. As the two treks through the country Jack and the elephant develop a bond, and it changes his approach on life for the better.\",\n            \"popularity\": 11.333,\n            \"poster_path\": \"/jdpEVxE5IUQv1qEBxWcQM49qDF9.jpg\",\n            \"release_date\": \"1996-10-31\",\n            \"title\": \"Larger Than Life\",\n            \"video\": false,\n            \"vote_average\": 5.4,\n            \"vote_count\": 120,\n            \"character\": \"Walter\",\n            \"credit_id\": \"5324b16f9251410d95000bc8\",\n            \"order\": 1\n        },\n        {\n            \"adult\": false,\n            \"backdrop_path\": null,\n            \"genre_ids\": [\n                80,\n                28\n            ],\n            \"id\": 272357,\n            \"original_language\": \"en\",\n            \"original_title\": \"The Real Thing\",\n            \"overview\": \"Their plan was simple...Get the Cash. As Rupert, an ex-con, tries to go straight, his younger brother James pursues a life of delinquency. Days after being released from jail, James is gunned down and lies waiting in a hospital for a liver transplant. In a desperate attempt to save his brother's life, Rupert decides to execute a heist at a downtown club on New Year's Eve that will give him the money he needs. Rupert assembles an eclectic crew of ex-cons, including his best friend and his ex-girlfriend. Rupert and his gang converge on the nightclub for a climax that spins out of control. New Year's Eve has never been so explosive!\",\n            \"popularity\": 4.252,\n            \"poster_path\": \"/egplRCwozRRicTMxBLr761DKrB7.jpg\",\n            \"release_date\": \"1996-01-01\",\n            \"title\": \"The Real Thing\",\n            \"video\": false,\n            \"vote_average\": 10,\n            \"vote_count\": 1,\n            \"character\": \"John\",\n            \"credit_id\": \"546cc6229251413053001a6f\",\n            \"order\": 1\n        },\n        {\n            \"adult\": false,\n            \"backdrop_path\": \"/4pTKjspho5UBQ23zegs5MG6epbB.jpg\",\n            \"genre_ids\": [\n                35\n            ],\n            \"id\": 21014,\n            \"original_language\": \"en\",\n            \"original_title\": \"Keeping Up with the Steins\",\n            \"overview\": \"All hilarity breaks loose in this heartwarming coming-of-age comedy when three generations of Fiedlers collide in a crazy family reunion. As they prepare for the biggest Bar Mitzvah on the block, they begin to see that they're much more alike than they'd originally thought.\",\n            \"popularity\": 8.49,\n            \"poster_path\": \"/bYp81rOQZEoFfDMX6xqRU1x3R7M.jpg\",\n            \"release_date\": \"2006-05-12\",\n            \"title\": \"Keeping Up with the Steins\",\n            \"video\": false,\n            \"vote_average\": 5.3,\n            \"vote_count\": 39,\n            \"character\": \"Adam Fiedler\",\n            \"credit_id\": \"52fe4408c3a368484e00b897\",\n            \"order\": 2\n        },\n        {\n            \"adult\": false,\n            \"backdrop_path\": null,\n            \"genre_ids\": [\n                18,\n                10770\n            ],\n            \"id\": 31907,\n            \"original_language\": \"en\",\n            \"original_title\": \"Don King: Only in America\",\n            \"overview\": \"A cinematic portrait of the famous fight promoter and boxing manager.\",\n            \"popularity\": 5.635,\n            \"poster_path\": \"/eJmNeaGivcXKd8Gzzbi3YRIqHtF.jpg\",\n            \"release_date\": \"1997-11-15\",\n            \"title\": \"Don King: Only in America\",\n            \"video\": false,\n            \"vote_average\": 6.4,\n            \"vote_count\": 9,\n            \"character\": \"Hank Schwartz\",\n            \"credit_id\": \"52fe44a69251416c91018277\",\n            \"order\": 2\n        },\n        {\n            \"adult\": false,\n            \"backdrop_path\": \"/gU7EMTMV3d2ykb9630PAwLSvtSz.jpg\",\n            \"genre_ids\": [\n                35,\n                10749,\n                18\n            ],\n            \"id\": 9778,\n            \"original_language\": \"en\",\n            \"original_title\": \"Serendipity\",\n            \"overview\": \"Although strangers Sara and Jonathan are both already in relationships, they realize they have genuine chemistry after a chance encounter – but part company soon after. Years later, they each yearn to reunite, despite being destined for the altar. But to give true love a chance, they have to find one another again.\",\n            \"popularity\": 23.604,\n            \"poster_path\": \"/srCE5lEIjVEG5eqWg9JcjZCK1aQ.jpg\",\n            \"release_date\": \"2001-10-05\",\n            \"title\": \"Serendipity\",\n            \"video\": false,\n            \"vote_average\": 6.91,\n            \"vote_count\": 1775,\n            \"character\": \"Dean Kansky\",\n            \"credit_id\": \"52fe452bc3a36847f80c03bd\",\n            \"order\": 2\n        },\n        {\n            \"adult\": false,\n            \"backdrop_path\": \"/n9i25NtIXHqO7ehgvc25U4YY9Fn.jpg\",\n            \"genre_ids\": [\n                10749,\n                35,\n                18\n            ],\n            \"id\": 291554,\n            \"original_language\": \"en\",\n            \"original_title\": \"Twogether\",\n            \"overview\": \"An artist and an environmentalist go through an up and down relationship over the years. They get married in an early fling, she gets pregnant as they celebrate their divorce together, they deal with his nude artwork and her tempermental situation as they learn about her strict upbringing and her fear of commitment based on her father's unflinching attitudes.\",\n            \"popularity\": 7.851,\n            \"poster_path\": \"/uB7yOfer74TpLtSTyYBkWe5BBeF.jpg\",\n            \"release_date\": \"1992-09-17\",\n            \"title\": \"Twogether\",\n            \"video\": false,\n            \"vote_average\": 2.4,\n            \"vote_count\": 5,\n            \"character\": \"Arnie\",\n            \"credit_id\": \"582bded9c3a36872c3003254\",\n            \"order\": 2\n        },\n        {\n            \"adult\": false,\n            \"backdrop_path\": null,\n            \"genre_ids\": [\n                35\n            ],\n            \"id\": 472331,\n            \"original_language\": \"en\",\n            \"original_title\": \"Elvis Stories\",\n            \"overview\": \"Elvis Stories is a short movie directed by Ben Stiller and starring John Cusack and Ben Stiller\",\n            \"popularity\": 3.561,\n            \"poster_path\": \"/b7Ywaq6TEBQKGktxhln2f7KSsZo.jpg\",\n            \"release_date\": \"1989-01-01\",\n            \"title\": \"Elvis Stories\",\n            \"video\": false,\n            \"vote_average\": 4,\n            \"vote_count\": 1,\n            \"character\": \"Lenny\",\n            \"credit_id\": \"599ea474925141100e00d662\",\n            \"order\": 2\n        },\n        {\n            \"adult\": false,\n            \"backdrop_path\": null,\n            \"genre_ids\": [\n                35\n            ],\n            \"id\": 489593,\n            \"original_language\": \"en\",\n            \"original_title\": \"All-Star Weekend\",\n            \"overview\": \"Two buddies form a rivalry over their favorite American basketball player.\",\n            \"popularity\": 11.619,\n            \"poster_path\": \"/z6RSjFZqCB1IwmlUSzToq7roHxX.jpg\",\n            \"release_date\": \"\",\n            \"title\": \"All-Star Weekend\",\n            \"video\": false,\n            \"vote_average\": 0,\n            \"vote_count\": 0,\n            \"character\": \"Danny\",\n            \"credit_id\": \"5a1d1a20c3a3680b8d061e2c\",\n            \"order\": 2\n        },\n        {\n            \"adult\": false,\n            \"backdrop_path\": \"/rFrUfqkn7xFAyBbmiTh1EPOjIbZ.jpg\",\n            \"genre_ids\": [\n                18,\n                36\n            ],\n            \"id\": 987257,\n            \"original_language\": \"en\",\n            \"original_title\": \"Sweetwater\",\n            \"overview\": \"In 1990 Chicago, a taxi driver recounts to his passenger, a sportswriter, his life story. He reveals himself to be Nat \\\"Sweetwater\\\" Clifton, one of the first African Americans to play in the NBA.\",\n            \"popularity\": 21.794,\n            \"poster_path\": \"/18Jz0oJto5lwsZrQ11w3GKI6rtt.jpg\",\n            \"release_date\": \"2023-04-14\",\n            \"title\": \"Sweetwater\",\n            \"video\": false,\n            \"vote_average\": 7.444,\n            \"vote_count\": 18,\n            \"character\": \"Joe Lapchick\",\n            \"credit_id\": \"62a76c13a8b2ca0068d26c36\",\n            \"order\": 2\n        },\n        {\n            \"adult\": false,\n            \"backdrop_path\": \"/iVytJHJmbAQ5wnPCbYYAt4xZqR6.jpg\",\n            \"genre_ids\": [\n                28,\n                80,\n                53\n            ],\n            \"id\": 1024627,\n            \"original_language\": \"en\",\n            \"original_title\": \"The System\",\n            \"overview\": \"When a young soldier, newly returned from war, gets caught up in a drug bust, he is recruited by the authorities to go undercover in a notoriously dangerous prison in order to figure out what is really going on.\",\n            \"popularity\": 13.91,\n            \"poster_path\": \"/5v3grtPk3QSdjDP8ggpylA3hgIy.jpg\",\n            \"release_date\": \"2022-10-28\",\n            \"title\": \"The System\",\n            \"video\": false,\n            \"vote_average\": 7.284,\n            \"vote_count\": 74,\n            \"character\": \"Warden Lucas\",\n            \"credit_id\": \"632294dbfd4a96007f618478\",\n            \"order\": 2\n        },\n        {\n            \"adult\": false,\n            \"backdrop_path\": \"/1EKPfRFMl9rV55gcXP8wWfOC5YP.jpg\",\n            \"genre_ids\": [\n                35,\n                18,\n                10749,\n                14\n            ],\n            \"id\": 5994,\n            \"original_language\": \"en\",\n            \"original_title\": \"The Family Man\",\n            \"overview\": \"Jack's lavish, fast-paced lifestyle changes one Christmas night when he stumbles into a grocery store holdup and disarms the gunman. The next morning he wakes up in bed lying next to Kate, his college sweetheart he left in order to pursue his career, and to the horrifying discovery that his former life no longer exists. As he stumbles through this alternate suburban universe, Jack finds himself at a crossroad where he must choose between his high-power career and the woman he loves.\",\n            \"popularity\": 32.525,\n            \"poster_path\": \"/zsedbiD7i2SepxIxb0F3U95mqyH.jpg\",\n            \"release_date\": \"2000-12-12\",\n            \"title\": \"The Family Man\",\n            \"video\": false,\n            \"vote_average\": 6.772,\n            \"vote_count\": 1775,\n            \"character\": \"Arnie\",\n            \"credit_id\": \"52fe4434c3a36847f80885dd\",\n            \"order\": 3\n        },\n        {\n            \"adult\": false,\n            \"backdrop_path\": \"/mgOxWQtPq8F0ljSzQ8CFvgyJ7ac.jpg\",\n            \"genre_ids\": [\n                35\n            ],\n            \"id\": 11635,\n            \"original_language\": \"en\",\n            \"original_title\": \"Old School\",\n            \"overview\": \"Three friends attempt to recapture their glory days by opening up a fraternity near their alma mater.\",\n            \"popularity\": 32.601,\n            \"poster_path\": \"/nYtuwNHpEoIbTgS3aFPSEwZNN6l.jpg\",\n            \"release_date\": \"2003-02-21\",\n            \"title\": \"Old School\",\n            \"video\": false,\n            \"vote_average\": 6.592,\n            \"vote_count\": 1673,\n            \"character\": \"Pritchard\",\n            \"credit_id\": \"52fe446d9251416c7503459b\",\n            \"order\": 3\n        },\n        {\n            \"adult\": false,\n            \"backdrop_path\": null,\n            \"genre_ids\": [\n                80,\n                18\n            ],\n            \"id\": 73838,\n            \"original_language\": \"en\",\n            \"original_title\": \"Red Letters\",\n            \"overview\": \"A college professor reluctantly hides an escaped female convict who tries to get him to help prove her innocent of a murder.\",\n            \"popularity\": 7.627,\n            \"poster_path\": \"/uaqGHQrbA8UxOe1jbXzZRM7i9t4.jpg\",\n            \"release_date\": \"2000-06-09\",\n            \"title\": \"Red Letters\",\n            \"video\": false,\n            \"vote_average\": 5.8,\n            \"vote_count\": 5,\n            \"character\": \"Thurston Clarque\",\n            \"credit_id\": \"542d2b720e0a2607b300193c\",\n            \"order\": 3\n        },\n        {\n            \"adult\": false,\n            \"backdrop_path\": \"/aPkFhoCT4AJpF9bSDF5yuO7QHk3.jpg\",\n            \"genre_ids\": [\n                18\n            ],\n            \"id\": 77957,\n            \"original_language\": \"en\",\n            \"original_title\": \"Angels Crest\",\n            \"overview\": \"The small working-class town of Angels Crest is a tight-knit community resting quietly in one of the vast and stunningly beautiful valleys of the Rocky Mountains. Ethan, one of the town's residents, is a young father but not much more than a kid himself. He has no choice but to look after his three-year-old son Nate, since mom Cindy is an alcoholic. But one snowy day, Ethan's good intentions are thwarted by a moment of thoughtlessness, resulting in tragedy. A local prosecutor haunted by his past goes after Ethan, and the ensuing confusion and casting of blame begins to tear the town apart.\",\n            \"popularity\": 11.739,\n            \"poster_path\": \"/kdaQU15SoGDw48bdcKsDHNIu3Eq.jpg\",\n            \"release_date\": \"2011-12-30\",\n            \"title\": \"Angels Crest\",\n            \"video\": false,\n            \"vote_average\": 5.8,\n            \"vote_count\": 39,\n            \"character\": \"Jack\",\n            \"credit_id\": \"5471320b92514164d10009b0\",\n            \"order\": 3\n        },\n        {\n            \"adult\": false,\n            \"backdrop_path\": null,\n            \"genre_ids\": [\n                878\n            ],\n            \"id\": 860001,\n            \"original_language\": \"en\",\n            \"original_title\": \"Occupation Rainfall: Chapter 2\",\n            \"overview\": \"Continuing on from Occupation Rainfall, Earth's survivors must face the final onslaught of the Alien invaders and band together to save the planet from impending destruction.\",\n            \"popularity\": 4.418,\n            \"poster_path\": null,\n            \"release_date\": \"\",\n            \"title\": \"Occupation Rainfall: Chapter 2\",\n            \"video\": false,\n            \"vote_average\": 0,\n            \"vote_count\": 0,\n            \"character\": \"\",\n            \"credit_id\": \"629a09a47e12f02c8158aa94\",\n            \"order\": 3\n        },\n        {\n            \"adult\": false,\n            \"backdrop_path\": \"/bGMqHn0H2UY6SPZ5Vch4YJM2jDO.jpg\",\n            \"genre_ids\": [\n                28,\n                80,\n                53\n            ],\n            \"id\": 6,\n            \"original_language\": \"en\",\n            \"original_title\": \"Judgment Night\",\n            \"overview\": \"While racing to a boxing match, Frank, Mike, John and Rey get more than they bargained for. A wrong turn lands them directly in the path of Fallon, a vicious, wise-cracking drug lord. After accidentally witnessing Fallon murder a disloyal henchman, the four become his unwilling prey in a savage game of cat and mouse as they are mercilessly stalked through the urban jungle in this taut suspense drama.\",\n            \"popularity\": 11.581,\n            \"poster_path\": \"/3rvvpS9YPM5HB2f4HYiNiJVtdam.jpg\",\n            \"release_date\": \"1993-10-15\",\n            \"title\": \"Judgment Night\",\n            \"video\": false,\n            \"vote_average\": 6.531,\n            \"vote_count\": 311,\n            \"character\": \"Ray Cochran\",\n            \"credit_id\": \"52fe420dc3a36847f8000265\",\n            \"order\": 4\n        },\n        {\n            \"adult\": false,\n            \"backdrop_path\": \"/cUNjTGyyc9xsBkS6kVUWsTDrYBF.jpg\",\n            \"genre_ids\": [\n                35,\n                80,\n                53\n            ],\n            \"id\": 10029,\n            \"original_language\": \"en\",\n            \"original_title\": \"Very Bad Things\",\n            \"overview\": \"Kyle Fisher has one last night to celebrate life as a single man before marrying Laura, so he sets out to Vegas with four of his best buddies. But a drug and alcohol filled night on the town with a stripper who goes all the way, turns into a cold night in the desert with shovels when the stripper goes all the way into a body bag after dying in their bathroom. And that's just the first of the bodies to pile up before Kyle can walk down the aisle...\",\n            \"popularity\": 12.614,\n            \"poster_path\": \"/rYmyRxF5e9fBdgcQScKu0CUtMy5.jpg\",\n            \"release_date\": \"1998-09-11\",\n            \"title\": \"Very Bad Things\",\n            \"video\": false,\n            \"vote_average\": 6.285,\n            \"vote_count\": 564,\n            \"character\": \"Michael Berkow\",\n            \"credit_id\": \"52fe430c9251416c75001781\",\n            \"order\": 4\n        },\n        {\n            \"adult\": false,\n            \"backdrop_path\": \"/bXYUq1h2GyEQhPkHSkaecCyJTBz.jpg\",\n            \"genre_ids\": [\n                35,\n                80,\n                18,\n                53\n            ],\n            \"id\": 9910,\n            \"original_language\": \"en\",\n            \"original_title\": \"Two for the Money\",\n            \"overview\": \"A former college athlete joins forces with a sports consultant to handicap football games for high-rolling gamblers.\",\n            \"popularity\": 9.117,\n            \"poster_path\": \"/5SedPYdGLrp6LX9C2cWXLx38w1D.jpg\",\n            \"release_date\": \"2005-10-07\",\n            \"title\": \"Two for the Money\",\n            \"video\": false,\n            \"vote_average\": 6.063,\n            \"vote_count\": 575,\n            \"character\": \"Jerry\",\n            \"credit_id\": \"52fe4546c3a36847f80c4f73\",\n            \"order\": 4\n        },\n        {\n            \"adult\": false,\n            \"backdrop_path\": \"/h0pxtAQCGWcArbPxqudW5NbmUNc.jpg\",\n            \"genre_ids\": [\n                18,\n                53,\n                80,\n                10749\n            ],\n            \"id\": 28047,\n            \"original_language\": \"en\",\n            \"original_title\": \"Phoenix\",\n            \"overview\": \"Gambling fever -- along with a brutal bookie -- leads three crooked cops into a double-dealing scheme that lands them in hot water way over their heads.\",\n            \"popularity\": 15.08,\n            \"poster_path\": \"/tkppRmx4iBvAeKlopfNTO8hnKxK.jpg\",\n            \"release_date\": \"1998-09-04\",\n            \"title\": \"Phoenix\",\n            \"video\": false,\n            \"vote_average\": 5.3,\n            \"vote_count\": 55,\n            \"character\": \"Fred Shuster\",\n            \"credit_id\": \"52fe4575c3a368484e05c533\",\n            \"order\": 4\n        },\n        {\n            \"adult\": false,\n            \"backdrop_path\": \"/831cuXWhhB1yILRvHoevIB20dWi.jpg\",\n            \"genre_ids\": [\n                35,\n                27,\n                878\n            ],\n            \"id\": 37019,\n            \"original_language\": \"en\",\n            \"original_title\": \"Dr. Jekyll and Ms. Hyde\",\n            \"overview\": \"A scientist creating perfumes inherits his great grandfather Dr. Jekyll's formula and decides to use modern technology to improve it. He ends up as an ambitious, ruthless woman. She tries to prevent returning into the spineless man.\",\n            \"popularity\": 9.077,\n            \"poster_path\": \"/jSfC0KyRdP2BypWydrEcXOskfvH.jpg\",\n            \"release_date\": \"1995-08-25\",\n            \"title\": \"Dr. Jekyll and Ms. Hyde\",\n            \"video\": false,\n            \"vote_average\": 4.674,\n            \"vote_count\": 46,\n            \"character\": \"Pete Walston\",\n            \"credit_id\": \"52fe46209251416c9104a1a3\",\n            \"order\": 4\n        },\n        {\n            \"adult\": false,\n            \"backdrop_path\": \"/9UZnCIeUVHzZQLDXN7lht2T4ndB.jpg\",\n            \"genre_ids\": [\n                16,\n                12,\n                10751,\n                35\n            ],\n            \"id\": 72197,\n            \"original_language\": \"en\",\n            \"original_title\": \"The Pirates! In an Adventure with Scientists!\",\n            \"overview\": \"The luxuriantly bearded Pirate Captain is a boundlessly enthusiastic, if somewhat less-than-successful, terror of the High Seas. With a rag-tag crew at his side, and seemingly blind to the impossible odds stacked against him, the Captain has one dream: to beat his bitter rivals Black Bellamy and Cutlass Liz to the much coveted Pirate of the Year Award. It’s a quest that takes our heroes from the shores of exotic Blood Island to the foggy streets of Victorian London. Along the way they battle a diabolical queen and team up with a haplessly smitten young scientist, but never lose sight of what a pirate loves best: adventure!\",\n            \"popularity\": 18.388,\n            \"poster_path\": \"/bkLeXPDP6sramrTiF5W7TzUl4t0.jpg\",\n            \"release_date\": \"2012-03-12\",\n            \"title\": \"The Pirates! In an Adventure with Scientists!\",\n            \"video\": false,\n            \"vote_average\": 6.4,\n            \"vote_count\": 996,\n            \"character\": \"Black Bellamy (voice)\",\n            \"credit_id\": \"52fe485dc3a368484e0f51cf\",\n            \"order\": 4\n        },\n        {\n            \"adult\": false,\n            \"backdrop_path\": \"/3COCz2DMRNefY4a3lfUHrNj4tl0.jpg\",\n            \"genre_ids\": [\n                10751,\n                35,\n                28\n            ],\n            \"id\": 56288,\n            \"original_language\": \"en\",\n            \"original_title\": \"Spy Kids: All the Time in the World\",\n            \"overview\": \"Eight years after the third film, the OSS has become the world's top spy agency, while the Spy Kids department has since become defunct. A retired spy Marissa is thrown back into the action along with her stepchildren when a maniacal Timekeeper attempts to take over the world. In order to save the world, Rebecca and Cecil must team up with their hated stepmother. Carmen and Juni have since also grown up and will provide gadgets to them.\",\n            \"popularity\": 33.515,\n            \"poster_path\": \"/9pUVarhiXfCu8amjmyadzJJJITi.jpg\",\n            \"release_date\": \"2011-08-18\",\n            \"title\": \"Spy Kids: All the Time in the World\",\n            \"video\": false,\n            \"vote_average\": 4.7,\n            \"vote_count\": 916,\n            \"character\": \"Danger D'Amo / Tick Tock / Time Keeper\",\n            \"credit_id\": \"52fe48f7c3a36847f81828a5\",\n            \"order\": 4\n        },\n        {\n            \"adult\": false,\n            \"backdrop_path\": \"/uzobkEgGCfVzmXyXKH6Nbrby4Rm.jpg\",\n            \"genre_ids\": [\n                35,\n                18\n            ],\n            \"id\": 188222,\n            \"original_language\": \"en\",\n            \"original_title\": \"Entourage\",\n            \"overview\": \"Movie star Vincent Chase, together with his boys, Eric, Turtle and Johnny, are back…and back in business with super agent-turned-studio head Ari Gold. Some of their ambitions have changed, but the bond between them remains strong as they navigate the capricious and often cutthroat world of Hollywood.\",\n            \"popularity\": 30.058,\n            \"poster_path\": \"/6Vl5t0d6g37Se20VjQ8EFdbb7dG.jpg\",\n            \"release_date\": \"2015-06-03\",\n            \"title\": \"Entourage\",\n            \"video\": false,\n            \"vote_average\": 6.213,\n            \"vote_count\": 942,\n            \"character\": \"Ari Gold\",\n            \"credit_id\": \"52fe4d339251416c751334e1\",\n            \"order\": 4\n        },\n        {\n            \"adult\": false,\n            \"backdrop_path\": \"/8cwxKDaTK0i4XC3UAm3h284bsIT.jpg\",\n            \"genre_ids\": [\n                28,\n                12,\n                18\n            ],\n            \"id\": 18808,\n            \"original_language\": \"en\",\n            \"original_title\": \"Highway\",\n            \"overview\": \"Jack is caught with the wife of his employer, a Vegas thug. The thug sends goons after Jack, who convinces his best friend, Pilot, to flee with him. Pilot insists that they head for Seattle, but doesn't tell Jack why. The goons learn from Pilot's drug source where the youths are headed, and they follow, hell bent on breaking Jack's feet. On the road, Jack and Pilot give a ride to Cassie, a distressed young woman. She and Jack hit it off. They pick up an aging stoner headed to Seattle for Kurt Cobain's memorial, and they help a circus sideshow family. Why is Pilot so set on Seattle, will the goons catch Jack, and is there any way the friends' competing needs can be resolved?\",\n            \"popularity\": 15.683,\n            \"poster_path\": \"/uMVGdlfGDMDc48cukwASXfcMdx.jpg\",\n            \"release_date\": \"2002-03-26\",\n            \"title\": \"Highway\",\n            \"video\": false,\n            \"vote_average\": 5.6,\n            \"vote_count\": 115,\n            \"character\": \"Scawldy\",\n            \"credit_id\": \"5949a72ac3a36861b50004b5\",\n            \"order\": 4\n        },\n        {\n            \"adult\": false,\n            \"backdrop_path\": \"/gVjiwn600GPSbL36I7wO62gH6Uw.jpg\",\n            \"genre_ids\": [\n                28,\n                53,\n                80\n            ],\n            \"id\": 695080,\n            \"original_language\": \"en\",\n            \"original_title\": \"American Night\",\n            \"overview\": \"A neo-noir set in the New York City's corrupt contemporary art world where the art dealer John Kaplan and the ruthless head of New York's mafia, Michael Rubino, fight for money, art, power and love.\",\n            \"popularity\": 18.864,\n            \"poster_path\": \"/isN2CPsxUNyU8z5ig1xxoXfHOF5.jpg\",\n            \"release_date\": \"2021-10-01\",\n            \"title\": \"American Night\",\n            \"video\": false,\n            \"vote_average\": 4.3,\n            \"vote_count\": 35,\n            \"character\": \"Vincent\",\n            \"credit_id\": \"5e9cbe9fe22d28001d61ab9e\",\n            \"order\": 4\n        },\n        {\n            \"adult\": false,\n            \"backdrop_path\": \"/kH2QdZqvt0oHNm8iS2mGGhV5iB2.jpg\",\n            \"genre_ids\": [\n                35,\n                10749\n            ],\n            \"id\": 14844,\n            \"original_language\": \"en\",\n            \"original_title\": \"Chasing Liberty\",\n            \"overview\": \"The President's daughter, unable to experience life like a normal 18 year-old, escapes from her entourage of Secret Service agents while traveling in Europe. She falls in love with a handsome British stranger, who also happens to be working undercover for her father.\",\n            \"popularity\": 28.079,\n            \"poster_path\": \"/7qzvS9QKkiDcz1K8EY9Y6ZXkUeD.jpg\",\n            \"release_date\": \"2004-01-09\",\n            \"title\": \"Chasing Liberty\",\n            \"video\": false,\n            \"vote_average\": 6.222,\n            \"vote_count\": 579,\n            \"character\": \"Alan Weiss\",\n            \"credit_id\": \"60ea01afce5d82002c10065f\",\n            \"order\": 4\n        },\n        {\n            \"adult\": false,\n            \"backdrop_path\": \"/sAj6pHDKXl4uQz9X9gDDApFM2po.jpg\",\n            \"genre_ids\": [\n                53,\n                28,\n                18\n            ],\n            \"id\": 4349,\n            \"original_language\": \"en\",\n            \"original_title\": \"The Kingdom\",\n            \"overview\": \"A team of U.S. government agents is sent to investigate the bombing of an American facility in the Middle East.\",\n            \"popularity\": 15.467,\n            \"poster_path\": \"/1RkL0PGod3b75MSrc1nVJxZsoRT.jpg\",\n            \"release_date\": \"2007-08-22\",\n            \"title\": \"The Kingdom\",\n            \"video\": false,\n            \"vote_average\": 6.702,\n            \"vote_count\": 1518,\n            \"character\": \"Damon Schmidt\",\n            \"credit_id\": \"52fe43bbc3a36847f806b755\",\n            \"order\": 5\n        },\n        {\n            \"adult\": false,\n            \"backdrop_path\": \"/nWdEBsHiQaMk62zsFwOJeMMS5XW.jpg\",\n            \"genre_ids\": [\n                99\n            ],\n            \"id\": 121831,\n            \"original_language\": \"en\",\n            \"original_title\": \"Love, Marilyn\",\n            \"overview\": \"Using the book 'Fragments', which collects Marilyn Monroe's poems, notes and letters, and with participation from the Arthur Miller and Truman Capote estates who have contributed more material, each of the actresses will embody the legend at various stages in her life.\",\n            \"popularity\": 17.073,\n            \"poster_path\": \"/1YPp03izMP73O8AVqAk2acS0z1C.jpg\",\n            \"release_date\": \"2013-05-30\",\n            \"title\": \"Love, Marilyn\",\n            \"video\": false,\n            \"vote_average\": 6.5,\n            \"vote_count\": 57,\n            \"character\": \"Self\",\n            \"credit_id\": \"52fe4a6ec3a368484e152eb1\",\n            \"order\": 5\n        },\n        {\n            \"adult\": false,\n            \"backdrop_path\": \"/lJjuN6YOHIKfXdQE3WOPz4lWA4c.jpg\",\n            \"genre_ids\": [\n                99,\n                18\n            ],\n            \"id\": 253295,\n            \"original_language\": \"en\",\n            \"original_title\": \"Manny\",\n            \"overview\": \"From abject poverty to becoming a ten-time boxing world champion, congressman, and international icon, Manny Pacquiao is the true definition of a Cinderella story. In the Philippines, he first entered the ring as a sixteen-year-old weighing ninety-eight pounds with the goal of earning money to feed his family. Now, almost twenty years later, when he fights, the country of 100 million people comes to a complete standstill to watch. Regarded for his ability to bring people together, Pacquiao entered the political arena in 2010. As history’s first boxing congressman, Pacquiao now fights for his people both inside and outside of the ring. Now at the height of his career, he is faced with maneuvering an unscrupulous sport while maintaining his political duties. The question now is, what bridge is too far for Manny Pacquiao to cross?\",\n            \"popularity\": 18.931,\n            \"poster_path\": \"/mYnQXI0Dm4Tp9prSa6ZqX1NpXAk.jpg\",\n            \"release_date\": \"2014-12-31\",\n            \"title\": \"Manny\",\n            \"video\": false,\n            \"vote_average\": 6.3,\n            \"vote_count\": 62,\n            \"character\": \"Self\",\n            \"credit_id\": \"5370b2d90e0a2647ce0142dc\",\n            \"order\": 5\n        },\n        {\n            \"adult\": false,\n            \"backdrop_path\": \"/jZBJfWHHGw9kbRQs2hnY1n1bQpm.jpg\",\n            \"genre_ids\": [\n                878,\n                53,\n                10770\n            ],\n            \"id\": 17803,\n            \"original_language\": \"en\",\n            \"original_title\": \"12:01\",\n            \"overview\": \"Office employee Barry Thomas is caught in a \\\"time bounce\\\" caused by a glitch in the company's secret project. Now the same day occurs again and again - and Barry's the only one who can do anything about it, including saving the life of beautiful research assistant Lisa Fredericks.\",\n            \"popularity\": 6.469,\n            \"poster_path\": \"/xK3d7mT6D7v2y8jp5Kv7c9FXzen.jpg\",\n            \"release_date\": \"1993-07-05\",\n            \"title\": \"12:01\",\n            \"video\": false,\n            \"vote_average\": 6.3,\n            \"vote_count\": 125,\n            \"character\": \"Howard Richter\",\n            \"credit_id\": \"583eaedb92514115270087b0\",\n            \"order\": 5\n        },\n        {\n            \"adult\": false,\n            \"backdrop_path\": \"/4HPdnP4F8dcKwLh3WZuQ8uFdEmp.jpg\",\n            \"genre_ids\": [\n                35\n            ],\n            \"id\": 21231,\n            \"original_language\": \"en\",\n            \"original_title\": \"Katt Williams: American Hustle\",\n            \"overview\": \"Stand-up comedian Katt Williams stars in this feature-length comedy. The film follows Katt as he takes a trip to Hollywood, where he hopes to break into the movie industry. But Katt's dreams lie in tatters when he is cast in increasingly ridiculous and stereotyped roles, so he remembers where his real loyalties lie, and sets off on a stand-up comedy road trip.\",\n            \"popularity\": 5.222,\n            \"poster_path\": \"/mNRkf4nSvg8Hn6eZXAHKZzm1YJW.jpg\",\n            \"release_date\": \"2007-01-01\",\n            \"title\": \"Katt Williams: American Hustle\",\n            \"video\": false,\n            \"vote_average\": 6.9,\n            \"vote_count\": 12,\n            \"character\": \"Jeremy Piven\",\n            \"credit_id\": \"622957ac12c6040046137860\",\n            \"order\": 5\n        },\n        {\n            \"adult\": false,\n            \"backdrop_path\": \"/mcDv4dHM9AWHm2AZgFx8jM1mCMG.jpg\",\n            \"genre_ids\": [\n                18\n            ],\n            \"id\": 962279,\n            \"original_language\": \"en\",\n            \"original_title\": \"The Walk\",\n            \"overview\": \"In 1974, a Boston Irish cop confronts fierce social pressure after being assigned to protect black high school students as they are bused into all-white South Boston High.\",\n            \"popularity\": 14.035,\n            \"poster_path\": \"/tg1dJHA60iuLxAHtUYD01LL7P10.jpg\",\n            \"release_date\": \"2022-06-10\",\n            \"title\": \"The Walk\",\n            \"video\": false,\n            \"vote_average\": 5.5,\n            \"vote_count\": 11,\n            \"character\": \"Johnny Bunkley\",\n            \"credit_id\": \"62a0b4de1e922521e68401a9\",\n            \"order\": 5\n        },\n        {\n            \"adult\": false,\n            \"backdrop_path\": \"/dymsqRll89InKJV3h7fN6Gjn0QG.jpg\",\n            \"genre_ids\": [\n                35,\n                10749\n            ],\n            \"id\": 41578,\n            \"original_language\": \"en\",\n            \"original_title\": \"Floundering\",\n            \"overview\": \"A disaffected and increasingly disturbed young man journeys through post-riot Los Angeles.\",\n            \"popularity\": 9.57,\n            \"poster_path\": \"/sTW4JE8SOn5x50bhzYd47SOhWtQ.jpg\",\n            \"release_date\": \"1994-11-04\",\n            \"title\": \"Floundering\",\n            \"video\": false,\n            \"vote_average\": 4.8,\n            \"vote_count\": 17,\n            \"character\": \"Guy\",\n            \"credit_id\": \"62dffc095aba32005d1cf3f0\",\n            \"order\": 5\n        },\n        {\n            \"adult\": false,\n            \"backdrop_path\": null,\n            \"genre_ids\": [\n                99\n            ],\n            \"id\": 1082707,\n            \"original_language\": \"en\",\n            \"original_title\": \"The Magic Touch of Harry Potter\",\n            \"overview\": \"A 2004 documentary on the first three “Harry Potter” films detailing the behind-the-scenes journey of making them.\",\n            \"popularity\": 9.118,\n            \"poster_path\": \"/gwFARNYf1Odv3E8ESVHyikXmMIY.jpg\",\n            \"release_date\": \"2004-06-11\",\n            \"title\": \"The Magic Touch of Harry Potter\",\n            \"video\": false,\n            \"vote_average\": 7.545,\n            \"vote_count\": 11,\n            \"character\": \"Narrator\",\n            \"credit_id\": \"63defdfbce5d8200aa7a48ad\",\n            \"order\": 5\n        },\n        {\n            \"adult\": false,\n            \"backdrop_path\": \"/zIckqbwhqxiMQKcpfdPuOCXfp5c.jpg\",\n            \"genre_ids\": [\n                18,\n                53\n            ],\n            \"id\": 11329,\n            \"original_language\": \"en\",\n            \"original_title\": \"Runaway Jury\",\n            \"overview\": \"A juror on the inside and a woman on the outside manipulate a court trial involving a major gun manufacturer.\",\n            \"popularity\": 18.148,\n            \"poster_path\": \"/hpBot7sqaskTdZS264c7hOhGiQ0.jpg\",\n            \"release_date\": \"2003-01-16\",\n            \"title\": \"Runaway Jury\",\n            \"video\": false,\n            \"vote_average\": 6.9,\n            \"vote_count\": 1161,\n            \"character\": \"Lawrence Green\",\n            \"credit_id\": \"52fe44279251416c7502ab47\",\n            \"order\": 6\n        },\n        {\n            \"adult\": false,\n            \"backdrop_path\": \"/gOIcpFDfCPsEV5wcmtbjrDZm2Av.jpg\",\n            \"genre_ids\": [\n                28,\n                35,\n                53,\n                10749\n            ],\n            \"id\": 9434,\n            \"original_language\": \"en\",\n            \"original_title\": \"Grosse Pointe Blank\",\n            \"overview\": \"Martin Blank is a hitman for hire. When he starts to develop a conscience, he botches a couple of routine jobs. On the advice of his secretary and his psychiatrist, he decides to attend his ten-year high school reunion in Grosse Pointe, Michigan.\",\n            \"popularity\": 16.422,\n            \"poster_path\": \"/ylBUjN0B0Le0rYwCR0WrTH4DVID.jpg\",\n            \"release_date\": \"1997-04-11\",\n            \"title\": \"Grosse Pointe Blank\",\n            \"video\": false,\n            \"vote_average\": 6.9,\n            \"vote_count\": 816,\n            \"character\": \"Paul Spericki\",\n            \"credit_id\": \"52fe44f7c3a36847f80b494d\",\n            \"order\": 6\n        },\n        {\n            \"adult\": false,\n            \"backdrop_path\": \"/tDFCGTkLT40Q6ySAzXPxjCwpgyX.jpg\",\n            \"genre_ids\": [\n                35,\n                18,\n                10749\n            ],\n            \"id\": 39424,\n            \"original_language\": \"en\",\n            \"original_title\": \"Music from Another Room\",\n            \"overview\": \"Music From Another Room is a romantic comedy that follows the exploits of Danny, a young man who grew up believing he was destined to marry the girl he helped deliver as a five year old boy when his neighbor went into emergency labor. Twenty-five years later, Danny returns to his hometown and finds the irresistible Anna Swann but she finds it easy to resist him since she is already engaged to dreamboat Eric, a very practical match. In pursuit of Anna, Danny finds himself entangled with each of the eccentric Swanns including blind, sheltered Nina, cynical sister Karen, big brother Bill and dramatic mother Grace as he fights to prove that fate should never be messed with and passion should never be practical.\",\n            \"popularity\": 9.175,\n            \"poster_path\": \"/zamhRB4bKVeRUW568lVSFeEbqVg.jpg\",\n            \"release_date\": \"1998-04-24\",\n            \"title\": \"Music from Another Room\",\n            \"video\": false,\n            \"vote_average\": 5.6,\n            \"vote_count\": 53,\n            \"character\": \"Billy\",\n            \"credit_id\": \"52fe47189251416c91069d89\",\n            \"order\": 6\n        },\n        {\n            \"adult\": false,\n            \"backdrop_path\": \"/1itzckOrvl0jeWZf96xSQMX10ew.jpg\",\n            \"genre_ids\": [\n                28,\n                35\n            ],\n            \"id\": 31395,\n            \"original_language\": \"en\",\n            \"original_title\": \"Car 54, Where Are You?\",\n            \"overview\": \"Brash NYC policeman Officer Gunther Toody is partnered with stiff, by-the-book Officer Francis Muldoon to protect an important mafia witness prior to testifying against orgainzed crime in Brooklyn, all the while dealing with their personal lives, overbearing spouses, common criminals, arms dealers, and their officious boss Captain Anderson.\",\n            \"popularity\": 11.689,\n            \"poster_path\": \"/1wD1ez4d3wSd79eTdFbH5nvc5p5.jpg\",\n            \"release_date\": \"1994-01-28\",\n            \"title\": \"Car 54, Where Are You?\",\n            \"video\": false,\n            \"vote_average\": 3.7,\n            \"vote_count\": 21,\n            \"character\": \"Herbert Hortz\",\n            \"credit_id\": \"52fe447a9251416c91012159\",\n            \"order\": 6\n        },\n        {\n            \"adult\": false,\n            \"backdrop_path\": \"/9od4opX0dYU5k287qYZ9ingiwVL.jpg\",\n            \"genre_ids\": [\n                53,\n                18\n            ],\n            \"id\": 93058,\n            \"original_language\": \"en\",\n            \"original_title\": \"Body Chemistry II: Voice of a Stranger\",\n            \"overview\": \"A man is torn between two women and his own violent self, borne of child abuse.\",\n            \"popularity\": 4.793,\n            \"poster_path\": \"/kynbsvaNIqa832p4RDB8NqtmEIz.jpg\",\n            \"release_date\": \"1992-08-05\",\n            \"title\": \"Body Chemistry II: Voice of a Stranger\",\n            \"video\": false,\n            \"vote_average\": 4.5,\n            \"vote_count\": 8,\n            \"character\": \"Patrolman\",\n            \"credit_id\": \"562cf874c3a3681b4d008e96\",\n            \"order\": 6\n        },\n        {\n            \"adult\": false,\n            \"backdrop_path\": \"/nF74HKjNe7X54XMcIc7ulK5InxR.jpg\",\n            \"genre_ids\": [\n                35\n            ],\n            \"id\": 4256,\n            \"original_language\": \"en\",\n            \"original_title\": \"Scary Movie 3\",\n            \"overview\": \"In the third installment of the Scary Movie franchise, news anchorwoman Cindy Campbell has to investigate mysterious crop circles and killing video tapes, and help the President stop an alien invasion in the process.\",\n            \"popularity\": 41.57,\n            \"poster_path\": \"/eagJEILa8SqWZV1mhm4HToVy8e.jpg\",\n            \"release_date\": \"2003-10-24\",\n            \"title\": \"Scary Movie 3\",\n            \"video\": false,\n            \"vote_average\": 5.978,\n            \"vote_count\": 3820,\n            \"character\": \"Ross Giggins\",\n            \"credit_id\": \"52fe43b6c3a36847f8069dd5\",\n            \"order\": 7\n        },\n        {\n            \"adult\": false,\n            \"backdrop_path\": \"/kfvKmP666jRLN6tziA4y0g9AIil.jpg\",\n            \"genre_ids\": [\n                35,\n                18,\n                10749\n            ],\n            \"id\": 13346,\n            \"original_language\": \"en\",\n            \"original_title\": \"Lucas\",\n            \"overview\": \"A socially inept fourteen year old experiences heartbreak for the first time when his two best friends -- Cappie, an older-brother figure, and Maggie, the new girl with whom he is in love -- fall for each other.\",\n            \"popularity\": 11.904,\n            \"poster_path\": \"/7qq4sxYj59Aq6wmnnIlot5iXaux.jpg\",\n            \"release_date\": \"1986-03-28\",\n            \"title\": \"Lucas\",\n            \"video\": false,\n            \"vote_average\": 6.656,\n            \"vote_count\": 202,\n            \"character\": \"Spike\",\n            \"credit_id\": \"52fe455d9251416c75053ff1\",\n            \"order\": 7\n        },\n        {\n            \"adult\": false,\n            \"backdrop_path\": \"/6zd1XPWdZ29JzjuW5tMQPv5uG58.jpg\",\n            \"genre_ids\": [\n                99,\n                36,\n                10770\n            ],\n            \"id\": 430364,\n            \"original_language\": \"en\",\n            \"original_title\": \"'85: The Greatest Team in Pro Football History\",\n            \"overview\": \"Through never-been-seen-before footage and fascinating interviews with key members of the 1985 Chicago Bears -- Mike Ditka, Jim McMahon, Mike Singletary, and others -- you will hear the inside story of their historic season.\",\n            \"popularity\": 17.769,\n            \"poster_path\": \"/kfzipijhxEetiWvlT4wN0uEwiV2.jpg\",\n            \"release_date\": \"2016-10-01\",\n            \"title\": \"'85: The Greatest Team in Pro Football History\",\n            \"video\": false,\n            \"vote_average\": 8.1,\n            \"vote_count\": 7,\n            \"character\": \"Self\",\n            \"credit_id\": \"5853757a92514146c901a018\",\n            \"order\": 7\n        },\n        {\n            \"adult\": false,\n            \"backdrop_path\": \"/85z4NC6FzMQJBGlFqq8qQ2QByD4.jpg\",\n            \"genre_ids\": [\n                9648,\n                16,\n                10751,\n                12,\n                35,\n                14\n            ],\n            \"id\": 20558,\n            \"original_language\": \"en\",\n            \"original_title\": \"Scooby-Doo! in Where's My Mummy?\",\n            \"overview\": \"Scooby-Doo and the Mystery Inc. gang become involved in a supernatural mystery in Egypt.\",\n            \"popularity\": 20.724,\n            \"poster_path\": \"/svtAzhRb4ueCLXZX8r3whHrE5x3.jpg\",\n            \"release_date\": \"2005-05-13\",\n            \"title\": \"Scooby-Doo! in Where's My Mummy?\",\n            \"video\": false,\n            \"vote_average\": 7.457,\n            \"vote_count\": 364,\n            \"character\": \"Rock Rivers (voice)\",\n            \"credit_id\": \"5a7c01e50e0a2632f300aee1\",\n            \"order\": 7\n        },\n        {\n            \"adult\": false,\n            \"backdrop_path\": \"/oxXAYmbVGGMo7GDUGP87j5bVlfo.jpg\",\n            \"genre_ids\": [\n                28,\n                80,\n                53\n            ],\n            \"id\": 13809,\n            \"original_language\": \"en\",\n            \"original_title\": \"RocknRolla\",\n            \"overview\": \"When a Russian mobster sets up a real estate scam that generates millions of pounds, various members of London's criminal underworld pursue their share of the fortune. Various shady characters, including Mr One-Two, Stella the accountant, and Johnny Quid, a druggie rock-star, try to claim their slice.\",\n            \"popularity\": 21.377,\n            \"poster_path\": \"/i7eyngqjdvKB7NvrWtCjjTNNq8N.jpg\",\n            \"release_date\": \"2008-09-04\",\n            \"title\": \"RocknRolla\",\n            \"video\": false,\n            \"vote_average\": 6.96,\n            \"vote_count\": 2746,\n            \"character\": \"Roman\",\n            \"credit_id\": \"52fe45a49251416c7505d673\",\n            \"order\": 8\n        },\n        {\n            \"adult\": false,\n            \"backdrop_path\": \"/ph3uliuNcg51KXouSTlc1tg2d7c.jpg\",\n            \"genre_ids\": [\n                28,\n                35\n            ],\n            \"id\": 19150,\n            \"original_language\": \"en\",\n            \"original_title\": \"The Crew\",\n            \"overview\": \"Four retired mobsters plan one last crime to save their retirement home.\",\n            \"popularity\": 15.3,\n            \"poster_path\": \"/fO55WSbVK0CAVvNIMZjFH4h2xOd.jpg\",\n            \"release_date\": \"2000-08-21\",\n            \"title\": \"The Crew\",\n            \"video\": false,\n            \"vote_average\": 5.7,\n            \"vote_count\": 32,\n            \"character\": \"Det. Steve Menteer\",\n            \"credit_id\": \"52fe47be9251416c750a41bf\",\n            \"order\": 8\n        },\n        {\n            \"adult\": false,\n            \"backdrop_path\": \"/1NSe46x6Nfa9CFQC3oTCiUK78PL.jpg\",\n            \"genre_ids\": [\n                27\n            ],\n            \"id\": 1175873,\n            \"original_language\": \"en\",\n            \"original_title\": \"Vindicta\",\n            \"overview\": \"When a city is terrorized by a sadistic serial killer, a seasoned detective and a newly recruited paramedic discover the key to stopping the bloodshed lies in unlocking the truth of their own haunted pasts.\",\n            \"popularity\": 10.191,\n            \"poster_path\": \"/1QCS6rflg3XBe4YLZNTlsu5MByo.jpg\",\n            \"release_date\": \"2023-10-06\",\n            \"title\": \"Vindicta\",\n            \"video\": false,\n            \"vote_average\": 4.313,\n            \"vote_count\": 8,\n            \"character\": \"Patrick\",\n            \"credit_id\": \"64fc2307ffc9de0ee174ef05\",\n            \"order\": 8\n        },\n        {\n            \"adult\": false,\n            \"backdrop_path\": \"/1ACyqkf9JzPQ2f4bdb6m9lm93ua.jpg\",\n            \"genre_ids\": [\n                10749,\n                35,\n                18\n            ],\n            \"id\": 2028,\n            \"original_language\": \"en\",\n            \"original_title\": \"Say Anything...\",\n            \"overview\": \"Lloyd, an eternal optimist, seeks to capture the heart of Diane, an unattainable high school beauty and straight-A student. He surprises just about everyone-including himself-when she returns the sentiment. But Diane's over-possessive, divorced Dad disapproves and it's going to take more than just the power of love to conquer all.\",\n            \"popularity\": 25.066,\n            \"poster_path\": \"/4J4s2FzBQ5WeeVCKNoaXC7fZDL7.jpg\",\n            \"release_date\": \"1989-04-14\",\n            \"title\": \"Say Anything...\",\n            \"video\": false,\n            \"vote_average\": 7.053,\n            \"vote_count\": 908,\n            \"character\": \"Mark\",\n            \"credit_id\": \"52fe432ec3a36847f80406af\",\n            \"order\": 9\n        },\n        {\n            \"adult\": false,\n            \"backdrop_path\": \"/iUS8yMKkJGl0RUabaYKZoxYxClo.jpg\",\n            \"genre_ids\": [\n                28,\n                35,\n                80,\n                53\n            ],\n            \"id\": 7516,\n            \"original_language\": \"en\",\n            \"original_title\": \"Smokin' Aces\",\n            \"overview\": \"When a Las Vegas performer-turned-snitch named Buddy Israel decides to turn state's evidence and testify against the mob, it seems that a whole lot of people would like to make sure he's no longer breathing.\",\n            \"popularity\": 24.891,\n            \"poster_path\": \"/nrdnN8WqvyOt8Bnl3hgWcZD6ZyM.jpg\",\n            \"release_date\": \"2006-12-09\",\n            \"title\": \"Smokin' Aces\",\n            \"video\": false,\n            \"vote_average\": 6.475,\n            \"vote_count\": 1516,\n            \"character\": \"Buddy Israel\",\n            \"credit_id\": \"52fe4482c3a36847f809a3bb\",\n            \"order\": 9\n        },\n        {\n            \"adult\": false,\n            \"backdrop_path\": null,\n            \"genre_ids\": [\n                35,\n                80,\n                10749\n            ],\n            \"id\": 163228,\n            \"original_language\": \"en\",\n            \"original_title\": \"There Goes the Neighborhood\",\n            \"overview\": \"There Goes the Neighborhood, released as Paydirt in most foreign countries, is a 1992 comedy film. The film tells a story of a dying prisoner who whispers the location of his loot to the facility's psychologist Willis Embry (Jeff Daniels) who heads to the New Jersey suburbs to find it.\",\n            \"popularity\": 5.084,\n            \"poster_path\": \"/ryqGwpssiS4cd7DH1q5uHi3PTMf.jpg\",\n            \"release_date\": \"1992-10-30\",\n            \"title\": \"There Goes the Neighborhood\",\n            \"video\": false,\n            \"vote_average\": 5.5,\n            \"vote_count\": 17,\n            \"character\": \"Albert Lodge\",\n            \"credit_id\": \"544be356c3a36872c70004a6\",\n            \"order\": 9\n        },\n        {\n            \"adult\": false,\n            \"backdrop_path\": \"/7WdT5QF2HPPPeiNHcm6o4DfCsgI.jpg\",\n            \"genre_ids\": [\n                35,\n                10749\n            ],\n            \"id\": 17402,\n            \"original_language\": \"en\",\n            \"original_title\": \"Miami Rhapsody\",\n            \"overview\": \"Gwyn Marcus has always wanted a marriage like her parents. She has just accepted the proposal of her boyfriend Matt, but she has misgivings about their future together. Her fear of commitment grows as she learns of the various affairs that her family is having. With her sister getting married and her brother already married, her mother is growing concerned about Gwyn's being the last single person in the family. But the more she thinks about marriage, the more she must search for the balance between career, marriage and family.\",\n            \"popularity\": 16.076,\n            \"poster_path\": \"/h7I2DgoxdkVMiPx4usFNkfvSoBs.jpg\",\n            \"release_date\": \"1995-01-27\",\n            \"title\": \"Miami Rhapsody\",\n            \"video\": false,\n            \"vote_average\": 5.442,\n            \"vote_count\": 43,\n            \"character\": \"Mitchell\",\n            \"credit_id\": \"5c7dd5ae0e0a2643055945c4\",\n            \"order\": 9\n        },\n        {\n            \"adult\": false,\n            \"backdrop_path\": \"/n6z8b0qN9Sk3lNElgeJY6qfDU2L.jpg\",\n            \"genre_ids\": [\n                35,\n                18,\n                10749\n            ],\n            \"id\": 11068,\n            \"original_language\": \"en\",\n            \"original_title\": \"Singles\",\n            \"overview\": \"A group of young adults in their twenties, who share an apartment in the city of Seattle, ponder on love and face all the challenges of adulthood.\",\n            \"popularity\": 15.773,\n            \"poster_path\": \"/cNM5YW9DgMv5vmLPE1uos1VCI2I.jpg\",\n            \"release_date\": \"1992-09-18\",\n            \"title\": \"Singles\",\n            \"video\": false,\n            \"vote_average\": 6.4,\n            \"vote_count\": 341,\n            \"character\": \"Doug Hughley\",\n            \"credit_id\": \"52fe43f09251416c75023a13\",\n            \"order\": 10\n        },\n        {\n            \"adult\": false,\n            \"backdrop_path\": \"/y319VH0gIFie6KEO5L4nHhxxQUw.jpg\",\n            \"genre_ids\": [\n                53,\n                80,\n                9648,\n                18\n            ],\n            \"id\": 9437,\n            \"original_language\": \"en\",\n            \"original_title\": \"Kiss the Girls\",\n            \"overview\": \"Forensic psychologist Alex Cross travels to North Carolina and teams with escaped kidnap victim Kate McTiernan to hunt down \\\"Casanova,\\\" a serial killer who abducts strong-willed women and forces them to submit to his demands. The trail leads to Los Angeles, where the duo discovers that the psychopath may not be working alone.\",\n            \"popularity\": 24.28,\n            \"poster_path\": \"/25h5I3E3ydhazsPDnscWHivq5pn.jpg\",\n            \"release_date\": \"1997-09-29\",\n            \"title\": \"Kiss the Girls\",\n            \"video\": false,\n            \"vote_average\": 6.499,\n            \"vote_count\": 1386,\n            \"character\": \"Henry Castillo, LAPD\",\n            \"credit_id\": \"52fe44f7c3a36847f80b49f3\",\n            \"order\": 10\n        },\n        {\n            \"adult\": false,\n            \"backdrop_path\": \"/leTX30PymtQ39XFAf4nU2MvMyhM.jpg\",\n            \"genre_ids\": [\n                10751\n            ],\n            \"id\": 73236,\n            \"original_language\": \"en\",\n            \"original_title\": \"A Cat's Tale\",\n            \"overview\": \"A young domestic \\\"indoor\\\" cat named Marcello escapes from his home one day into the big outdoors to visit \\\"Jujube\\\", a pretty out-door female kitty. Alone for the first time in his short life, Marcello learns to grow up and finds true love.\",\n            \"popularity\": 6.303,\n            \"poster_path\": \"/aEJ6QBHrcLwr2FLRQbqB6BZTU6X.jpg\",\n            \"release_date\": \"2008-09-09\",\n            \"title\": \"Cats: The Movie!\",\n            \"video\": false,\n            \"vote_average\": 10,\n            \"vote_count\": 1,\n            \"character\": \"Blackie (voice)\",\n            \"credit_id\": \"5d70bcbbc5ada5001190ef57\",\n            \"order\": 11\n        },\n        {\n            \"adult\": false,\n            \"backdrop_path\": \"/HcBNKl4PL2h2M25UKGGTF0kYOp.jpg\",\n            \"genre_ids\": [\n                99\n            ],\n            \"id\": 86843,\n            \"original_language\": \"en\",\n            \"original_title\": \"With Great Power: The Stan Lee Story\",\n            \"overview\": \"At 89 years old, Stan Lee's name appears on more than one BILLION comics in 75 countries in 25 languages. Arguably the most recognized name in comics, Stan Lee has co-created over 500 legendary pop culture characters including Spider-Man, Fantastic Four, X-Men, Iron Man, Thor and The Hulk. Stan continues to create new material and entertain fans of all ages with fantastic stories and characters in all areas of entertainment.  With Great Power: the Stan Lee Story, explores the vivid life and imagination of Stan Lee, from the early days of his Depression-era upbringing through the Marvel Age of Comics and beyond! The film uncovers original transcripts, illustrations, photographs and stories of Lee's fascinating journey from his early years at Timely Comics and World War Two, the comic book industry's censorship battle of the 1950's led by Dr. Fredric Wertham, the dawn of Marvel Comics and the legendary characters Stan co-created, to his current company POW! Entertainment.\",\n            \"popularity\": 8.518,\n            \"poster_path\": \"/paSNMYfpSrf3sOWbH4C3bHSSapB.jpg\",\n            \"release_date\": \"2010-07-24\",\n            \"title\": \"With Great Power: The Stan Lee Story\",\n            \"video\": false,\n            \"vote_average\": 6.8,\n            \"vote_count\": 27,\n            \"character\": \"Self\",\n            \"credit_id\": \"52fe49a59251416c910b3f25\",\n            \"order\": 14\n        },\n        {\n            \"adult\": false,\n            \"backdrop_path\": \"/f4KiaxSD5B8bcg5VLsvrDhaZlFu.jpg\",\n            \"genre_ids\": [\n                80,\n                28,\n                53\n            ],\n            \"id\": 189,\n            \"original_language\": \"en\",\n            \"original_title\": \"Sin City: A Dame to Kill For\",\n            \"overview\": \"Some of Sin City's most hard-boiled citizens cross paths with a few of its more reviled inhabitants.\",\n            \"popularity\": 41.729,\n            \"poster_path\": \"/90LRjhJ5N4zavCB81L5d4TYstRP.jpg\",\n            \"release_date\": \"2014-08-20\",\n            \"title\": \"Sin City: A Dame to Kill For\",\n            \"video\": false,\n            \"vote_average\": 6.366,\n            \"vote_count\": 3591,\n            \"character\": \"Bob\",\n            \"credit_id\": \"53fc02300e0a267a78009402\",\n            \"order\": 14\n        },\n        {\n            \"adult\": false,\n            \"backdrop_path\": \"/zzFTSEAZcLGSbGipQVflSNUqpij.jpg\",\n            \"genre_ids\": [\n                28,\n                35,\n                80\n            ],\n            \"id\": 5175,\n            \"original_language\": \"en\",\n            \"original_title\": \"Rush Hour 2\",\n            \"overview\": \"It's vacation time for Carter as he finds himself alongside Lee in Hong Kong wishing for more excitement. While Carter wants to party and meet the ladies, Lee is out to track down a Triad gang lord who may be responsible for killing two men at the American Embassy. Things get complicated as the pair stumble onto a counterfeiting plot. The boys are soon up to their necks in fist fights and life-threatening situations. A trip back to the U.S. may provide the answers about the bombing, the counterfeiting, and the true allegiance of sexy customs agent Isabella.\",\n            \"popularity\": 41.153,\n            \"poster_path\": \"/aBQf2vMiCINeVC9v6BGVYKXurTh.jpg\",\n            \"release_date\": \"2001-08-03\",\n            \"title\": \"Rush Hour 2\",\n            \"video\": false,\n            \"vote_average\": 6.718,\n            \"vote_count\": 3752,\n            \"character\": \"Versace Salesman\",\n            \"credit_id\": \"52fe43fac3a36847f807b6af\",\n            \"order\": 15\n        },\n        {\n            \"adult\": false,\n            \"backdrop_path\": \"/yme0UvacQuWaZK9QiywD6lvx0Oz.jpg\",\n            \"genre_ids\": [\n                18,\n                10749\n            ],\n            \"id\": 41003,\n            \"original_language\": \"en\",\n            \"original_title\": \"White Palace\",\n            \"overview\": \"Max Baron is a Jewish advertising executive in his 20s who's still getting over the death of his wife. Nora Baker is a 40-something diner waitress who enjoys the wilder side of life. Mismatched or not, their attraction is instant and smoldering. With time, however, their class and age differences become an obstacle in their relationship, especially since Max can't keep Nora a secret from his Jewish friends and upper-crust associates forever.\",\n            \"popularity\": 28.313,\n            \"poster_path\": \"/8H63Gjhfa5f2zkXgEuFA2ThdDJ6.jpg\",\n            \"release_date\": \"1990-10-19\",\n            \"title\": \"White Palace\",\n            \"video\": false,\n            \"vote_average\": 6.1,\n            \"vote_count\": 121,\n            \"character\": \"Kahn\",\n            \"credit_id\": \"5acc913e9251410c39009775\",\n            \"order\": 15\n        },\n        {\n            \"adult\": false,\n            \"backdrop_path\": \"/iqVTYYKbmfKJLtOnR77dTWG0WkH.jpg\",\n            \"genre_ids\": [\n                35,\n                10749,\n                10751\n            ],\n            \"id\": 18282,\n            \"original_language\": \"en\",\n            \"original_title\": \"One Crazy Summer\",\n            \"overview\": \"An aspiring teenage cartoonist and his friends come to the aid of a singer trying to save her family property from developers.\",\n            \"popularity\": 23.869,\n            \"poster_path\": \"/hwrMVPwGFB3fouqD5PhhmbafB7G.jpg\",\n            \"release_date\": \"1986-08-08\",\n            \"title\": \"One Crazy Summer\",\n            \"video\": false,\n            \"vote_average\": 6.1,\n            \"vote_count\": 171,\n            \"character\": \"Ty\",\n            \"credit_id\": \"52fe47709251416c75099643\",\n            \"order\": 16\n        },\n        {\n            \"adult\": false,\n            \"backdrop_path\": \"/sd4xN5xi8tKRPrJOWwNiZEile7f.jpg\",\n            \"genre_ids\": [\n                16,\n                12,\n                35,\n                10751\n            ],\n            \"id\": 920,\n            \"original_language\": \"en\",\n            \"original_title\": \"Cars\",\n            \"overview\": \"Lightning McQueen, a hotshot rookie race car driven to succeed, discovers that life is about the journey, not the finish line, when he finds himself unexpectedly detoured in the sleepy Route 66 town of Radiator Springs. On route across the country to the big Piston Cup Championship in California to compete against two seasoned pros, McQueen gets to know the town's offbeat characters.\",\n            \"popularity\": 52.871,\n            \"poster_path\": \"/abW5AzHDaIK1n9C36VdAeOwORRA.jpg\",\n            \"release_date\": \"2006-06-08\",\n            \"title\": \"Cars\",\n            \"video\": false,\n            \"vote_average\": 6.946,\n            \"vote_count\": 13088,\n            \"character\": \"Harv (voice)\",\n            \"credit_id\": \"550ba07a9251414695002bcb\",\n            \"order\": 16\n        },\n        {\n            \"adult\": false,\n            \"backdrop_path\": \"/tKyxF6ZyxF65CcJKBKId1VavpGP.jpg\",\n            \"genre_ids\": [\n                9648,\n                18,\n                35,\n                80\n            ],\n            \"id\": 10403,\n            \"original_language\": \"en\",\n            \"original_title\": \"The Player\",\n            \"overview\": \"A Hollywood studio executive is being sent death threats by a writer whose script he rejected - but which one?\",\n            \"popularity\": 15.356,\n            \"poster_path\": \"/pOOTEr4c5Rk7s4YSQ6Uii2T6rr6.jpg\",\n            \"release_date\": \"1992-04-03\",\n            \"title\": \"The Player\",\n            \"video\": false,\n            \"vote_average\": 7.191,\n            \"vote_count\": 722,\n            \"character\": \"Steve Reeves\",\n            \"credit_id\": \"52fe43689251416c7500f223\",\n            \"order\": 17\n        },\n        {\n            \"adult\": false,\n            \"backdrop_path\": \"/fRMggmOJ9LadLlWXK5aZrIhpUGw.jpg\",\n            \"genre_ids\": [\n                80,\n                18\n            ],\n            \"id\": 18129,\n            \"original_language\": \"en\",\n            \"original_title\": \"The Grifters\",\n            \"overview\": \"A young short-con grifter suffers both injury and the displeasure of reuniting with his criminal mother, all the while dating an unpredictable young lady.\",\n            \"popularity\": 15.293,\n            \"poster_path\": \"/zMpGfkiDIdg5bB7WGcAT3Fdrfpt.jpg\",\n            \"release_date\": \"1990-08-08\",\n            \"title\": \"The Grifters\",\n            \"video\": false,\n            \"vote_average\": 6.501,\n            \"vote_count\": 356,\n            \"character\": \"Sailor - Freshman\",\n            \"credit_id\": \"52fe47619251416c7509762f\",\n            \"order\": 18\n        },\n        {\n            \"adult\": false,\n            \"backdrop_path\": \"/dd11uT1rtjQfEwEAvWiNfXgzXtD.jpg\",\n            \"genre_ids\": [\n                28,\n                36,\n                10752\n            ],\n            \"id\": 855,\n            \"original_language\": \"en\",\n            \"original_title\": \"Black Hawk Down\",\n            \"overview\": \"When U.S. Rangers and an elite Delta Force team attempt to kidnap two underlings of a Somali warlord, their Black Hawk helicopters are shot down, and the Americans suffer heavy casualties, facing intense fighting from the militia on the ground.\",\n            \"popularity\": 47.374,\n            \"poster_path\": \"/7fU5dSqKRL4XHeEUz62rCKBfYok.jpg\",\n            \"release_date\": \"2001-12-28\",\n            \"title\": \"Black Hawk Down\",\n            \"video\": false,\n            \"vote_average\": 7.373,\n            \"vote_count\": 5315,\n            \"character\": \"CWO Cliff 'Elvis' Wolcott\",\n            \"credit_id\": \"52fe4282c3a36847f802492b\",\n            \"order\": 22\n        },\n        {\n            \"adult\": false,\n            \"backdrop_path\": \"/6X9XblP5yfF2YCoPm2DmZubxDdb.jpg\",\n            \"genre_ids\": [\n                18\n            ],\n            \"id\": 50536,\n            \"original_language\": \"en\",\n            \"original_title\": \"Twenty Bucks\",\n            \"overview\": \"A story about the life of a twenty dollar bill as it weaves in and out of the various lives of several people.\",\n            \"popularity\": 16.766,\n            \"poster_path\": \"/pAZxoG13a8nGTQ5jrs7xzz0t59b.jpg\",\n            \"release_date\": \"1993-10-21\",\n            \"title\": \"Twenty Bucks\",\n            \"video\": false,\n            \"vote_average\": 5.8,\n            \"vote_count\": 53,\n            \"character\": \"Nervous Quick-Mart Clerk\",\n            \"credit_id\": \"52fe47cac3a36847f81486c1\",\n            \"order\": 25\n        },\n        {\n            \"adult\": false,\n            \"backdrop_path\": \"/6N1uy1r66mXHefU3gG9ePZgijCW.jpg\",\n            \"genre_ids\": [\n                28,\n                80,\n                18\n            ],\n            \"id\": 949,\n            \"original_language\": \"en\",\n            \"original_title\": \"Heat\",\n            \"overview\": \"Obsessive master thief Neil McCauley leads a top-notch crew on various daring heists throughout Los Angeles while determined detective Vincent Hanna pursues him without rest. Each man recognizes and respects the ability and the dedication of the other even though they are aware their cat-and-mouse game may end in violence.\",\n            \"popularity\": 53.065,\n            \"poster_path\": \"/umSVjVdbVwtx5ryCA2QXL44Durm.jpg\",\n            \"release_date\": \"1995-12-15\",\n            \"title\": \"Heat\",\n            \"video\": false,\n            \"vote_average\": 7.91,\n            \"vote_count\": 6698,\n            \"character\": \"Dr. Bob\",\n            \"credit_id\": \"52fe4292c3a36847f802926b\",\n            \"order\": 28\n        },\n        {\n            \"adult\": false,\n            \"backdrop_path\": \"/lyTh10IP4bNVYp3G7cWBac76OYb.jpg\",\n            \"genre_ids\": [\n                35,\n                18\n            ],\n            \"id\": 10608,\n            \"original_language\": \"en\",\n            \"original_title\": \"Bob Roberts\",\n            \"overview\": \"Mock documentary about an upstart candidate for the U.S. Senate written and directed by actor Tim Robbins. Bob Roberts is a folksinger with a difference: He offers tunes that protest welfare chiselers, liberal whining, and the like. As the filmmakers follow his campaign, Robbins gives needle-sharp insight into the way candidates manipulate the media.\",\n            \"popularity\": 18.618,\n            \"poster_path\": \"/j4PokuSIrmbN5oCR54D8kiI0U6a.jpg\",\n            \"release_date\": \"1992-09-04\",\n            \"title\": \"Bob Roberts\",\n            \"video\": false,\n            \"vote_average\": 6.524,\n            \"vote_count\": 145,\n            \"character\": \"Candle Seller\",\n            \"credit_id\": \"63f79b05d1ca2a00f0099bd0\",\n            \"order\": 62\n        }\n    ],\n    \"crew\": [\n        {\n            \"adult\": false,\n            \"backdrop_path\": \"/sPuANGEwysJe3ey3BmrX1vdvz7G.jpg\",\n            \"genre_ids\": [\n                35\n            ],\n            \"id\": 675480,\n            \"original_language\": \"en\",\n            \"original_title\": \"Last Call\",\n            \"overview\": \"A real estate developer returns to his old Philly neighborhood and must decide to raze or resurrect the family bar.\",\n            \"popularity\": 7.208,\n            \"poster_path\": \"/bySCgLjkmPFuUd0ExwruObY9VHn.jpg\",\n            \"release_date\": \"2021-03-19\",\n            \"title\": \"Last Call\",\n            \"video\": false,\n            \"vote_average\": 5.1,\n            \"vote_count\": 11,\n            \"credit_id\": \"600a32dc2d531a0057635070\",\n            \"department\": \"Production\",\n            \"job\": \"Co-Producer\"\n        },\n        {\n            \"adult\": false,\n            \"backdrop_path\": null,\n            \"genre_ids\": [\n                35\n            ],\n            \"id\": 155294,\n            \"original_language\": \"en\",\n            \"original_title\": \"Fully Loaded\",\n            \"overview\": \"On a rare evening out, two feisty single moms discover that it's not so easy to hook up with a total stranger anymore.\",\n            \"popularity\": 3.368,\n            \"poster_path\": \"/7JFE3hwuxfHaEbTvyKH5Ng7RJGt.jpg\",\n            \"release_date\": \"2011-06-27\",\n            \"title\": \"Fully Loaded\",\n            \"video\": false,\n            \"vote_average\": 1,\n            \"vote_count\": 1,\n            \"credit_id\": \"62fefb02eee18600909995e6\",\n            \"department\": \"Production\",\n            \"job\": \"Executive Producer\"\n        }\n    ],\n    \"id\": 12799\n}"
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "user",
+			"item": [
+				{
+					"name": "favorites",
+					"item": [
+						{
+							"name": "User Favorites",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:8080/api/users/tmdb/:id/favorites",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"api",
+										"users",
+										"tmdb",
+										":id",
+										"favorites"
+									],
+									"query": [
+										{
+											"key": "",
+											"value": "",
+											"disabled": true
+										}
+									],
+									"variable": [
+										{
+											"key": "id",
+											"value": "6584bc8c54dd0c01c7144b37"
+										}
+									]
+								}
+							},
+							"response": [
+								{
+									"name": "New Request",
+									"originalRequest": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "http://localhost:8080/api/users/tmdb/6584bc8c54dd0c01c7144b37/favorites",
+											"protocol": "http",
+											"host": [
+												"localhost"
+											],
+											"port": "8080",
+											"path": [
+												"api",
+												"users",
+												"tmdb",
+												"6584bc8c54dd0c01c7144b37",
+												"favorites"
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "X-Powered-By",
+											"value": "Express"
+										},
+										{
+											"key": "Access-Control-Allow-Origin",
+											"value": "*"
+										},
+										{
+											"key": "Content-Type",
+											"value": "application/json; charset=utf-8"
+										},
+										{
+											"key": "Content-Length",
+											"value": "8"
+										},
+										{
+											"key": "ETag",
+											"value": "W/\"8-aOjNm3A1lmLv6Ehit12l6Vido2E\""
+										},
+										{
+											"key": "Date",
+											"value": "Fri, 22 Dec 2023 01:43:23 GMT"
+										},
+										{
+											"key": "Connection",
+											"value": "keep-alive"
+										},
+										{
+											"key": "Keep-Alive",
+											"value": "timeout=5"
+										}
+									],
+									"cookie": [],
+									"body": "[\n    572802\n]"
+								}
+							]
+						},
+						{
+							"name": "add Favorite",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"movieId\": 901362\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:8080/api/users/tmdb/:id/favorites",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"api",
+										"users",
+										"tmdb",
+										":id",
+										"favorites"
+									],
+									"variable": [
+										{
+											"key": "id",
+											"value": "6584bc8c54dd0c01c7144b37"
+										}
+									]
+								}
+							},
+							"response": [
+								{
+									"name": "New Request",
+									"originalRequest": {
+										"method": "POST",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\r\n    \"movieId\": 901362\r\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "http://localhost:8080/api/users/tmdb/6584bc8c54dd0c01c7144b37/favorites",
+											"protocol": "http",
+											"host": [
+												"localhost"
+											],
+											"port": "8080",
+											"path": [
+												"api",
+												"users",
+												"tmdb",
+												"6584bc8c54dd0c01c7144b37",
+												"favorites"
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "X-Powered-By",
+											"value": "Express"
+										},
+										{
+											"key": "Access-Control-Allow-Origin",
+											"value": "*"
+										},
+										{
+											"key": "Content-Type",
+											"value": "application/json; charset=utf-8"
+										},
+										{
+											"key": "Content-Length",
+											"value": "38"
+										},
+										{
+											"key": "ETag",
+											"value": "W/\"26-NTUYDUMcfX0GAK3NqCnITzJBIo8\""
+										},
+										{
+											"key": "Date",
+											"value": "Fri, 22 Dec 2023 01:46:02 GMT"
+										},
+										{
+											"key": "Connection",
+											"value": "keep-alive"
+										},
+										{
+											"key": "Keep-Alive",
+											"value": "timeout=5"
+										}
+									],
+									"cookie": [],
+									"body": "{\n    \"message\": \"Movie added to favorites\"\n}"
+								}
+							]
+						},
+						{
+							"name": "remove Favorite",
+							"request": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:8080/api/users/tmdb/:id/favorites/:movieId",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"api",
+										"users",
+										"tmdb",
+										":id",
+										"favorites",
+										":movieId"
+									],
+									"variable": [
+										{
+											"key": "id",
+											"value": "6584bc8c54dd0c01c7144b37"
+										},
+										{
+											"key": "movieId",
+											"value": "901362"
+										}
+									]
+								}
+							},
+							"response": [
+								{
+									"name": "New Request",
+									"originalRequest": {
+										"method": "DELETE",
+										"header": [],
+										"url": {
+											"raw": "http://localhost:8080/api/users/tmdb/6584bc8c54dd0c01c7144b37/favorites/901362",
+											"protocol": "http",
+											"host": [
+												"localhost"
+											],
+											"port": "8080",
+											"path": [
+												"api",
+												"users",
+												"tmdb",
+												"6584bc8c54dd0c01c7144b37",
+												"favorites",
+												"901362"
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "X-Powered-By",
+											"value": "Express"
+										},
+										{
+											"key": "Access-Control-Allow-Origin",
+											"value": "*"
+										},
+										{
+											"key": "Content-Type",
+											"value": "application/json; charset=utf-8"
+										},
+										{
+											"key": "Content-Length",
+											"value": "42"
+										},
+										{
+											"key": "ETag",
+											"value": "W/\"2a-HuOfZHmr6YUHgrqSjWmgBV/WGmA\""
+										},
+										{
+											"key": "Date",
+											"value": "Fri, 22 Dec 2023 01:47:09 GMT"
+										},
+										{
+											"key": "Connection",
+											"value": "keep-alive"
+										},
+										{
+											"key": "Keep-Alive",
+											"value": "timeout=5"
+										}
+									],
+									"cookie": [],
+									"body": "{\n    \"message\": \"Movie removed from favorites\"\n}"
+								}
+							]
+						}
+					]
+				},
+				{
+					"name": "marked",
+					"item": [
+						{
+							"name": "User Marked Movies",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:8080/api/users/tmdb/:id/marked",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"api",
+										"users",
+										"tmdb",
+										":id",
+										"marked"
+									],
+									"variable": [
+										{
+											"key": "id",
+											"value": "6584bc8c54dd0c01c7144b37"
+										}
+									]
+								}
+							},
+							"response": [
+								{
+									"name": "New Request",
+									"originalRequest": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "http://localhost:8080/api/users/tmdb/6584bc8c54dd0c01c7144b37/marked",
+											"protocol": "http",
+											"host": [
+												"localhost"
+											],
+											"port": "8080",
+											"path": [
+												"api",
+												"users",
+												"tmdb",
+												"6584bc8c54dd0c01c7144b37",
+												"marked"
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "X-Powered-By",
+											"value": "Express"
+										},
+										{
+											"key": "Access-Control-Allow-Origin",
+											"value": "*"
+										},
+										{
+											"key": "Content-Type",
+											"value": "application/json; charset=utf-8"
+										},
+										{
+											"key": "Content-Length",
+											"value": "2"
+										},
+										{
+											"key": "ETag",
+											"value": "W/\"2-l9Fw4VUO7kr8CvBlt4zaMCqXZ0w\""
+										},
+										{
+											"key": "Date",
+											"value": "Fri, 22 Dec 2023 01:48:16 GMT"
+										},
+										{
+											"key": "Connection",
+											"value": "keep-alive"
+										},
+										{
+											"key": "Keep-Alive",
+											"value": "timeout=5"
+										}
+									],
+									"cookie": [],
+									"body": "[]"
+								}
+							]
+						},
+						{
+							"name": "add Marked Movie",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"movieId\": 901362\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:8080/api/users/tmdb/:id/marked",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"api",
+										"users",
+										"tmdb",
+										":id",
+										"marked"
+									],
+									"variable": [
+										{
+											"key": "id",
+											"value": "6584bc8c54dd0c01c7144b37"
+										}
+									]
+								}
+							},
+							"response": [
+								{
+									"name": "New Request",
+									"originalRequest": {
+										"method": "POST",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\r\n    \"movieId\": 901362\r\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "http://localhost:8080/api/users/tmdb/6584bc8c54dd0c01c7144b37/marked",
+											"protocol": "http",
+											"host": [
+												"localhost"
+											],
+											"port": "8080",
+											"path": [
+												"api",
+												"users",
+												"tmdb",
+												"6584bc8c54dd0c01c7144b37",
+												"marked"
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "X-Powered-By",
+											"value": "Express"
+										},
+										{
+											"key": "Access-Control-Allow-Origin",
+											"value": "*"
+										},
+										{
+											"key": "Content-Type",
+											"value": "application/json; charset=utf-8"
+										},
+										{
+											"key": "Content-Length",
+											"value": "39"
+										},
+										{
+											"key": "ETag",
+											"value": "W/\"27-4Fqnvog2jDne5/BzI3ZkjA7q8y0\""
+										},
+										{
+											"key": "Date",
+											"value": "Fri, 22 Dec 2023 01:49:30 GMT"
+										},
+										{
+											"key": "Connection",
+											"value": "keep-alive"
+										},
+										{
+											"key": "Keep-Alive",
+											"value": "timeout=5"
+										}
+									],
+									"cookie": [],
+									"body": "{\n    \"message\": \"Movie marked successfully\"\n}"
+								}
+							]
+						},
+						{
+							"name": "remove Marked Movie",
+							"request": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:8080/api/users/tmdb/:id/marked/:movieId",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"api",
+										"users",
+										"tmdb",
+										":id",
+										"marked",
+										":movieId"
+									],
+									"variable": [
+										{
+											"key": "id",
+											"value": "6584bc8c54dd0c01c7144b37"
+										},
+										{
+											"key": "movieId",
+											"value": "901362"
+										}
+									]
+								}
+							},
+							"response": [
+								{
+									"name": "New Request",
+									"originalRequest": {
+										"method": "DELETE",
+										"header": [],
+										"url": {
+											"raw": "http://localhost:8080/api/users/tmdb/6584bc8c54dd0c01c7144b37/marked/901362",
+											"protocol": "http",
+											"host": [
+												"localhost"
+											],
+											"port": "8080",
+											"path": [
+												"api",
+												"users",
+												"tmdb",
+												"6584bc8c54dd0c01c7144b37",
+												"marked",
+												"901362"
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "X-Powered-By",
+											"value": "Express"
+										},
+										{
+											"key": "Access-Control-Allow-Origin",
+											"value": "*"
+										},
+										{
+											"key": "Content-Type",
+											"value": "application/json; charset=utf-8"
+										},
+										{
+											"key": "Content-Length",
+											"value": "41"
+										},
+										{
+											"key": "ETag",
+											"value": "W/\"29-fVeAIuz+VBwyhmDMoBI4pvspyrg\""
+										},
+										{
+											"key": "Date",
+											"value": "Fri, 22 Dec 2023 01:50:27 GMT"
+										},
+										{
+											"key": "Connection",
+											"value": "keep-alive"
+										},
+										{
+											"key": "Keep-Alive",
+											"value": "timeout=5"
+										}
+									],
+									"cookie": [],
+									"body": "{\n    \"message\": \"Movie unmarked successfully\"\n}"
+								}
+							]
+						}
+					]
+				},
+				{
+					"name": "follow",
+					"item": [
+						{
+							"name": "User Followed Actors",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:8080/api/users/tmdb/:id/follow",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"api",
+										"users",
+										"tmdb",
+										":id",
+										"follow"
+									],
+									"variable": [
+										{
+											"key": "id",
+											"value": "6584bc8c54dd0c01c7144b37"
+										}
+									]
+								}
+							},
+							"response": [
+								{
+									"name": "New Request",
+									"originalRequest": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "http://localhost:8080/api/users/tmdb/6584bc8c54dd0c01c7144b37/follow",
+											"protocol": "http",
+											"host": [
+												"localhost"
+											],
+											"port": "8080",
+											"path": [
+												"api",
+												"users",
+												"tmdb",
+												"6584bc8c54dd0c01c7144b37",
+												"follow"
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "X-Powered-By",
+											"value": "Express"
+										},
+										{
+											"key": "Access-Control-Allow-Origin",
+											"value": "*"
+										},
+										{
+											"key": "Content-Type",
+											"value": "application/json; charset=utf-8"
+										},
+										{
+											"key": "Content-Length",
+											"value": "7"
+										},
+										{
+											"key": "ETag",
+											"value": "W/\"7-JjKsTTsQAUUr7RHiZ9FxWgQ5/i8\""
+										},
+										{
+											"key": "Date",
+											"value": "Fri, 22 Dec 2023 01:51:25 GMT"
+										},
+										{
+											"key": "Connection",
+											"value": "keep-alive"
+										},
+										{
+											"key": "Keep-Alive",
+											"value": "timeout=5"
+										}
+									],
+									"cookie": [],
+									"body": "[\n    12799\n]"
+								}
+							]
+						},
+						{
+							"name": "follow Actor",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"actorId\": 64295\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:8080/api/users/tmdb/:id/follow",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"api",
+										"users",
+										"tmdb",
+										":id",
+										"follow"
+									],
+									"variable": [
+										{
+											"key": "id",
+											"value": "6584bc8c54dd0c01c7144b37"
+										}
+									]
+								}
+							},
+							"response": [
+								{
+									"name": "New Request",
+									"originalRequest": {
+										"method": "POST",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\r\n    \"actorId\": 64295\r\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "http://localhost:8080/api/users/tmdb/6584bc8c54dd0c01c7144b37/follow",
+											"protocol": "http",
+											"host": [
+												"localhost"
+											],
+											"port": "8080",
+											"path": [
+												"api",
+												"users",
+												"tmdb",
+												"6584bc8c54dd0c01c7144b37",
+												"follow"
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "X-Powered-By",
+											"value": "Express"
+										},
+										{
+											"key": "Access-Control-Allow-Origin",
+											"value": "*"
+										},
+										{
+											"key": "Content-Type",
+											"value": "application/json; charset=utf-8"
+										},
+										{
+											"key": "Content-Length",
+											"value": "41"
+										},
+										{
+											"key": "ETag",
+											"value": "W/\"29-ER9rKQSO6/SXqQHo8lTdMfDPCBc\""
+										},
+										{
+											"key": "Date",
+											"value": "Fri, 22 Dec 2023 01:53:00 GMT"
+										},
+										{
+											"key": "Connection",
+											"value": "keep-alive"
+										},
+										{
+											"key": "Keep-Alive",
+											"value": "timeout=5"
+										}
+									],
+									"cookie": [],
+									"body": "{\n    \"message\": \"Actor followed successfully\"\n}"
+								}
+							]
+						},
+						{
+							"name": "unfollow Actor",
+							"request": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:8080/api/users/tmdb/:id/follow/:actorId",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"api",
+										"users",
+										"tmdb",
+										":id",
+										"follow",
+										":actorId"
+									],
+									"variable": [
+										{
+											"key": "id",
+											"value": "6584bc8c54dd0c01c7144b37"
+										},
+										{
+											"key": "actorId",
+											"value": "12799"
+										}
+									]
+								}
+							},
+							"response": [
+								{
+									"name": "New Request",
+									"originalRequest": {
+										"method": "DELETE",
+										"header": [],
+										"url": {
+											"raw": "http://localhost:8080/api/users/tmdb/6584bc8c54dd0c01c7144b37/follow/12799",
+											"protocol": "http",
+											"host": [
+												"localhost"
+											],
+											"port": "8080",
+											"path": [
+												"api",
+												"users",
+												"tmdb",
+												"6584bc8c54dd0c01c7144b37",
+												"follow",
+												"12799"
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "X-Powered-By",
+											"value": "Express"
+										},
+										{
+											"key": "Access-Control-Allow-Origin",
+											"value": "*"
+										},
+										{
+											"key": "Content-Type",
+											"value": "application/json; charset=utf-8"
+										},
+										{
+											"key": "Content-Length",
+											"value": "43"
+										},
+										{
+											"key": "ETag",
+											"value": "W/\"2b-huvv3APRMhbi3J2Acdyr5Gn3U4U\""
+										},
+										{
+											"key": "Date",
+											"value": "Fri, 22 Dec 2023 01:54:01 GMT"
+										},
+										{
+											"key": "Connection",
+											"value": "keep-alive"
+										},
+										{
+											"key": "Keep-Alive",
+											"value": "timeout=5"
+										}
+									],
+									"cookie": [],
+									"body": "{\n    \"message\": \"Actor unfollowed successfully\"\n}"
+								}
+							]
+						}
+					]
+				},
+				{
+					"name": "reviews",
+					"item": [
+						{
+							"name": "All Movie Reviews",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:8080/api/reviews/tmdb/all",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"api",
+										"reviews",
+										"tmdb",
+										"all"
+									]
+								}
+							},
+							"response": [
+								{
+									"name": "New Request",
+									"originalRequest": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "http://localhost:8080/api/reviews/tmdb/all",
+											"protocol": "http",
+											"host": [
+												"localhost"
+											],
+											"port": "8080",
+											"path": [
+												"api",
+												"reviews",
+												"tmdb",
+												"all"
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "X-Powered-By",
+											"value": "Express"
+										},
+										{
+											"key": "Access-Control-Allow-Origin",
+											"value": "*"
+										},
+										{
+											"key": "Content-Type",
+											"value": "application/json; charset=utf-8"
+										},
+										{
+											"key": "Content-Length",
+											"value": "1082"
+										},
+										{
+											"key": "ETag",
+											"value": "W/\"43a-sLOYcKXLJFp4+SrLXwWpD6pqVgI\""
+										},
+										{
+											"key": "Date",
+											"value": "Fri, 22 Dec 2023 01:54:44 GMT"
+										},
+										{
+											"key": "Connection",
+											"value": "keep-alive"
+										},
+										{
+											"key": "Keep-Alive",
+											"value": "timeout=5"
+										}
+									],
+									"cookie": [],
+									"body": "[\n    {\n        \"_id\": \"65844cef30ad0fbe23c6cf06\",\n        \"movieId\": 466420,\n        \"userId\": \"65843b1d6ed1e8bdcf1f61ea\",\n        \"author\": \"Haopeng\",\n        \"review\": \"All you ever wanted to know about Movies!\",\n        \"rating\": 3,\n        \"createdAt\": \"2023-12-21T14:34:23.122Z\",\n        \"__v\": 0\n    },\n    {\n        \"_id\": \"658450226973108d594482cf\",\n        \"movieId\": 466420,\n        \"userId\": \"65843b1d6ed1e8bdcf1f61ea\",\n        \"author\": \"Haopeng\",\n        \"review\": \"Killers of the Flower Moon\",\n        \"rating\": 3,\n        \"createdAt\": \"2023-12-21T14:48:02.618Z\",\n        \"__v\": 0\n    },\n    {\n        \"_id\": \"658457ea38ebd9465bc50c5a\",\n        \"movieId\": 572802,\n        \"userId\": \"65843b1d6ed1e8bdcf1f61ea\",\n        \"author\": \"Haopeng\",\n        \"review\": \"\\nAll you ever wanted to know about Movies!\",\n        \"rating\": 3,\n        \"createdAt\": \"2023-12-21T15:21:14.043Z\",\n        \"__v\": 0\n    },\n    {\n        \"_id\": \"658466d2526f904a970fccf6\",\n        \"movieId\": 572802,\n        \"userId\": \"65843b1d6ed1e8bdcf1f61ea\",\n        \"author\": \"Haopeng\",\n        \"review\": \"All you ever wanted to know about Movies!\",\n        \"rating\": 5,\n        \"createdAt\": \"2023-12-21T16:24:50.011Z\",\n        \"__v\": 0\n    },\n    {\n        \"_id\": \"6584cf097237f2869edb0ded\",\n        \"movieId\": 572802,\n        \"userId\": \"6584bc8c54dd0c01c7144b37\",\n        \"author\": \"qfqf\",\n        \"review\": \"my all time favorite movie, family, who know !!!\",\n        \"rating\": 5,\n        \"createdAt\": \"2023-12-21T23:49:29.398Z\",\n        \"__v\": 0\n    }\n]"
+								}
+							]
+						},
+						{
+							"name": "User Movie Reviews",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:8080/api/reviews/tmdb/user/:id",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"api",
+										"reviews",
+										"tmdb",
+										"user",
+										":id"
+									],
+									"variable": [
+										{
+											"key": "id",
+											"value": "6584bc8c54dd0c01c7144b37"
+										}
+									]
+								}
+							},
+							"response": [
+								{
+									"name": "New Request",
+									"originalRequest": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "http://localhost:8080/api/reviews/tmdb/user/6584bc8c54dd0c01c7144b37",
+											"protocol": "http",
+											"host": [
+												"localhost"
+											],
+											"port": "8080",
+											"path": [
+												"api",
+												"reviews",
+												"tmdb",
+												"user",
+												"6584bc8c54dd0c01c7144b37"
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "X-Powered-By",
+											"value": "Express"
+										},
+										{
+											"key": "Access-Control-Allow-Origin",
+											"value": "*"
+										},
+										{
+											"key": "Content-Type",
+											"value": "application/json; charset=utf-8"
+										},
+										{
+											"key": "Content-Length",
+											"value": "235"
+										},
+										{
+											"key": "ETag",
+											"value": "W/\"eb-557vjGsaolEw1seAfAo90QVKHjo\""
+										},
+										{
+											"key": "Date",
+											"value": "Fri, 22 Dec 2023 01:55:24 GMT"
+										},
+										{
+											"key": "Connection",
+											"value": "keep-alive"
+										},
+										{
+											"key": "Keep-Alive",
+											"value": "timeout=5"
+										}
+									],
+									"cookie": [],
+									"body": "{\n    \"reviews\": [\n        {\n            \"_id\": \"6584cf097237f2869edb0ded\",\n            \"movieId\": 572802,\n            \"userId\": \"6584bc8c54dd0c01c7144b37\",\n            \"author\": \"qfqf\",\n            \"review\": \"my all time favorite movie, family, who know !!!\",\n            \"rating\": 5,\n            \"createdAt\": \"2023-12-21T23:49:29.398Z\",\n            \"__v\": 0\n        }\n    ]\n}"
+								}
+							]
+						},
+						{
+							"name": "add To Review",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"userId\": \"6584bc8c54dd0c01c7144b37\",\r\n    \"author\": \"hpl\",\r\n    \"review\": \"hahahah hahahah hahah tooooo funnnyyyy\",\r\n    \"rating\": 5\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:8080/api/reviews/tmdb/:movieId",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"api",
+										"reviews",
+										"tmdb",
+										":movieId"
+									],
+									"variable": [
+										{
+											"key": "movieId",
+											"value": "572802"
+										}
+									]
+								}
+							},
+							"response": [
+								{
+									"name": "New Request",
+									"originalRequest": {
+										"method": "POST",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\r\n    \"userId\": \"6584bc8c54dd0c01c7144b37\",\r\n    \"author\": \"hpl\",\r\n    \"review\": \"hahahah hahahah hahah tooooo funnnyyyy\",\r\n    \"rating\": 5\r\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "http://localhost:8080/api/reviews/tmdb/572802",
+											"protocol": "http",
+											"host": [
+												"localhost"
+											],
+											"port": "8080",
+											"path": [
+												"api",
+												"reviews",
+												"tmdb",
+												"572802"
+											]
+										}
+									},
+									"status": "Created",
+									"code": 201,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "X-Powered-By",
+											"value": "Express"
+										},
+										{
+											"key": "Access-Control-Allow-Origin",
+											"value": "*"
+										},
+										{
+											"key": "Content-Type",
+											"value": "application/json; charset=utf-8"
+										},
+										{
+											"key": "Content-Length",
+											"value": "210"
+										},
+										{
+											"key": "ETag",
+											"value": "W/\"d2-gVW3NJDTd7PEMzchfq0ZF9mI8EE\""
+										},
+										{
+											"key": "Date",
+											"value": "Fri, 22 Dec 2023 01:58:19 GMT"
+										},
+										{
+											"key": "Connection",
+											"value": "keep-alive"
+										},
+										{
+											"key": "Keep-Alive",
+											"value": "timeout=5"
+										}
+									],
+									"cookie": [],
+									"body": "{\n    \"movieId\": 572802,\n    \"userId\": \"6584bc8c54dd0c01c7144b37\",\n    \"author\": \"hpl\",\n    \"review\": \"hahahah hahahah hahah tooooo funnnyyyy\",\n    \"rating\": 5,\n    \"_id\": \"6584ed3b7237f2869edb0e11\",\n    \"createdAt\": \"2023-12-22T01:58:19.366Z\",\n    \"__v\": 0\n}"
+								}
+							]
+						},
+						{
+							"name": "delete Review",
+							"request": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:8080/api/reviews/tmdb/:reviewId",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"api",
+										"reviews",
+										"tmdb",
+										":reviewId"
+									],
+									"variable": [
+										{
+											"key": "reviewId",
+											"value": "6584ed3b7237f2869edb0e11"
+										}
+									]
+								}
+							},
+							"response": [
+								{
+									"name": "New Request",
+									"originalRequest": {
+										"method": "DELETE",
+										"header": [],
+										"url": {
+											"raw": "http://localhost:8080/api/reviews/tmdb/6584ed3b7237f2869edb0e11",
+											"protocol": "http",
+											"host": [
+												"localhost"
+											],
+											"port": "8080",
+											"path": [
+												"api",
+												"reviews",
+												"tmdb",
+												"6584ed3b7237f2869edb0e11"
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "X-Powered-By",
+											"value": "Express"
+										},
+										{
+											"key": "Access-Control-Allow-Origin",
+											"value": "*"
+										},
+										{
+											"key": "Content-Type",
+											"value": "application/json; charset=utf-8"
+										},
+										{
+											"key": "Content-Length",
+											"value": "41"
+										},
+										{
+											"key": "ETag",
+											"value": "W/\"29-eJZH9QbGPKzQCQgLPX3JFUdcheo\""
+										},
+										{
+											"key": "Date",
+											"value": "Fri, 22 Dec 2023 02:07:28 GMT"
+										},
+										{
+											"key": "Connection",
+											"value": "keep-alive"
+										},
+										{
+											"key": "Keep-Alive",
+											"value": "timeout=5"
+										}
+									],
+									"cookie": [],
+									"body": "{\n    \"message\": \"Review deleted successfully\"\n}"
+								}
+							]
+						}
+					]
+				},
+				{
+					"name": "userlogin",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"account\": \"user1\",\r\n    \"password\": \"test123@\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/api/users",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"users"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "New Request",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"account\": \"user1\",\r\n    \"password\": \"test123@\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:8080/api/users",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"api",
+										"users"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "279"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"117-hsCheFobR9o1j/FklEyzOFlxIhE\""
+								},
+								{
+									"key": "Date",
+									"value": "Fri, 22 Dec 2023 01:25:29 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"success\": true,\n    \"msg\": \"User login successfully\",\n    \"token\": \"BEARER eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6InVzZXIxIiwiaWF0IjoxNzAzMjA4MzI5fQ.7BV1AnkQt_iZSip5jY1nsrmC4zoM2rYnkiPzG14h6a8\",\n    \"user\": {\n        \"id\": \"6584bc8c54dd0c01c7144b37\",\n        \"username\": \"user1\",\n        \"email\": \"123@163.com\"\n    }\n}"
+						}
+					]
+				},
+				{
+					"name": "all user",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/api/users",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"users"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "New Request",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:8080/api/users",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"api",
+										"users"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "599"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"257-reqhV7N0x/d1caiUpTXCRhhuikw\""
+								},
+								{
+									"key": "Date",
+									"value": "Fri, 22 Dec 2023 01:20:07 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "[\n    {\n        \"_id\": \"6584bc8c54dd0c01c7144b38\",\n        \"username\": \"user2\",\n        \"email\": \"test@qq.com\",\n        \"password\": \"$2b$10$wCordlF048U3VaviwjsVY.aHbEtDR/zB6FTqGAx.mWj3sTpEfRMCu\",\n        \"favorites\": [],\n        \"marked\": [],\n        \"follow\": [],\n        \"__v\": 0\n    },\n    {\n        \"_id\": \"6584bc8c54dd0c01c7144b37\",\n        \"username\": \"user1\",\n        \"email\": \"123@163.com\",\n        \"password\": \"$2b$10$QH6lzsHAMDf2Kg3g/dQZO.P0wNSq6BEvxuc4CBD70X56A5goRQymS\",\n        \"favorites\": [\n            572802\n        ],\n        \"marked\": [],\n        \"follow\": [],\n        \"__v\": 0\n    },\n    {\n        \"_id\": \"6584ce3b7237f2869edb0dd9\",\n        \"username\": \"123qq\",\n        \"email\": \"hpl@gmail.co\",\n        \"password\": \"$2b$10$qU1Wrtt4is69OHh7i8bSP.Lqm5sGi61kteJnyVDGcp/E7xH7buBY.\",\n        \"favorites\": [],\n        \"marked\": [],\n        \"follow\": [],\n        \"__v\": 0\n    }\n]"
+						}
+					]
+				},
+				{
+					"name": "user register",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"username\": \"user7654\",\r\n    \"email\": \"user7654@qq.com\",\r\n    \"password\": \"leng@**haha852\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/api/users?action=register",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"users"
+							],
+							"query": [
+								{
+									"key": "action",
+									"value": "register"
+								}
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "New Request",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"username\": \"user7654\",\r\n    \"email\": \"user7654@qq.com\",\r\n    \"password\": \"leng@**haha852\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:8080/api/users?action=register",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"api",
+										"users"
+									],
+									"query": [
+										{
+											"key": "action",
+											"value": "register"
+										}
+									]
+								}
+							},
+							"status": "Created",
+							"code": 201,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "293"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"125-ajumLXtcNj7VQHzrMKJ7Rbh1jhc\""
+								},
+								{
+									"key": "Date",
+									"value": "Fri, 22 Dec 2023 01:32:20 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"success\": true,\n    \"msg\": \"User successfully created.\",\n    \"token\": \"BEARER eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6InVzZXI3NjU0IiwiaWF0IjoxNzAzMjA4NzQwfQ.KFDWovQkf5HgD-a8dImKfpcJjubkOpRK0H0b4sNXNdw\",\n    \"user\": {\n        \"id\": \"6584e7247237f2869edb0e00\",\n        \"username\": \"user7654\",\n        \"email\": \"user7654@qq.com\"\n    }\n}"
+						}
+					]
+				},
+				{
+					"name": "http://localhost:8080/api/users/",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\"account\": \"123@163.com\",\r\n\"password\": \"test123@\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/api/users/",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"users",
+								""
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "movies",
+			"item": [
+				{
+					"name": "all movies",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/api/movies/tmdb/home?page=1&language=us-EN",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"movies",
+								"tmdb",
+								"home"
+							],
+							"query": [
+								{
+									"key": "page",
+									"value": "1"
+								},
+								{
+									"key": "language",
+									"value": "us-EN"
+								}
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "New Request",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:8080/api/movies/tmdb/home?page=1&language=us-EN",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"api",
+										"movies",
+										"tmdb",
+										"home"
+									],
+									"query": [
+										{
+											"key": "page",
+											"value": "1"
+										},
+										{
+											"key": "language",
+											"value": "us-EN"
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "7137"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"1be1-+zzHhiJoHyGMHjn20jqTdobs0tg\""
+								},
+								{
+									"key": "Date",
+									"value": "Fri, 22 Dec 2023 01:21:01 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"page\": 1,\n    \"results\": [\n        {\n            \"adult\": false,\n            \"backdrop_path\": \"/bmlkLCjrIWnnZzdAQ4uNPG9JFdj.jpg\",\n            \"genre_ids\": [\n                35,\n                10751,\n                14\n            ],\n            \"id\": 787699,\n            \"original_language\": \"en\",\n            \"original_title\": \"Wonka\",\n            \"overview\": \"\",\n            \"popularity\": 1035.485,\n            \"poster_path\": \"/qhb1qOilapbapxWQn9jtRCMwXJF.jpg\",\n            \"release_date\": \"2023-12-06\",\n            \"title\": \"Wonka\",\n            \"video\": false,\n            \"vote_average\": 7.2,\n            \"vote_count\": 410\n        },\n        {\n            \"adult\": false,\n            \"backdrop_path\": \"/jXJxMcVoEuXzym3vFnjqDW4ifo6.jpg\",\n            \"genre_ids\": [\n                28,\n                12,\n                14\n            ],\n            \"id\": 572802,\n            \"original_language\": \"en\",\n            \"original_title\": \"Aquaman and the Lost Kingdom\",\n            \"overview\": \"\",\n            \"popularity\": 1350.815,\n            \"poster_path\": \"/8xV47NDrjdZDpkVcCFqkdHa3T0C.jpg\",\n            \"release_date\": \"2023-12-20\",\n            \"title\": \"Aquaman and the Lost Kingdom\",\n            \"video\": false,\n            \"vote_average\": 7.2,\n            \"vote_count\": 57\n        },\n        {\n            \"adult\": false,\n            \"backdrop_path\": \"/1X7vow16X7CnCoexXh4H4F2yDJv.jpg\",\n            \"genre_ids\": [\n                80,\n                18,\n                36\n            ],\n            \"id\": 466420,\n            \"original_language\": \"en\",\n            \"original_title\": \"Killers of the Flower Moon\",\n            \"overview\": \"\",\n            \"popularity\": 753.442,\n            \"poster_path\": \"/pi0kmFJAEcHpTjqITHPFUic9omf.jpg\",\n            \"release_date\": \"2023-10-18\",\n            \"title\": \"Killers of the Flower Moon\",\n            \"video\": false,\n            \"vote_average\": 7.6,\n            \"vote_count\": 1531\n        },\n        {\n            \"adult\": false,\n            \"backdrop_path\": \"/8GnWDLn2AhnmkQ7hlQ9NJUYobSS.jpg\",\n            \"genre_ids\": [\n                18,\n                878,\n                28\n            ],\n            \"id\": 695721,\n            \"original_language\": \"en\",\n            \"original_title\": \"The Hunger Games: The Ballad of Songbirds & Snakes\",\n            \"overview\": \"\",\n            \"popularity\": 1134.139,\n            \"poster_path\": \"/mBaXZ95R2OxueZhvQbcEWy2DqyO.jpg\",\n            \"release_date\": \"2023-11-15\",\n            \"title\": \"The Hunger Games: The Ballad of Songbirds & Snakes\",\n            \"video\": false,\n            \"vote_average\": 7.3,\n            \"vote_count\": 853\n        },\n        {\n            \"adult\": false,\n            \"backdrop_path\": \"/k1KrbaCMACQiq7EA0Yhw3bdzMv7.jpg\",\n            \"genre_ids\": [\n                16,\n                10751,\n                10402,\n                14,\n                35\n            ],\n            \"id\": 901362,\n            \"original_language\": \"en\",\n            \"original_title\": \"Trolls Band Together\",\n            \"overview\": \"\",\n            \"popularity\": 675.752,\n            \"poster_path\": \"/bkpPTZUdq31UGDovmszsg2CchiI.jpg\",\n            \"release_date\": \"2023-10-12\",\n            \"title\": \"Trolls Band Together\",\n            \"video\": false,\n            \"vote_average\": 7.2,\n            \"vote_count\": 394\n        },\n        {\n            \"adult\": false,\n            \"backdrop_path\": \"/9jPoyxjiEYPylUIMI3Ntixf8z3M.jpg\",\n            \"genre_ids\": [\n                16,\n                12,\n                35,\n                10751\n            ],\n            \"id\": 520758,\n            \"original_language\": \"en\",\n            \"original_title\": \"Chicken Run: Dawn of the Nugget\",\n            \"overview\": \"\",\n            \"popularity\": 913.414,\n            \"poster_path\": \"/exNtEY8QUuQh9e23wSQjkPxKIU3.jpg\",\n            \"release_date\": \"2023-12-08\",\n            \"title\": \"Chicken Run: Dawn of the Nugget\",\n            \"video\": false,\n            \"vote_average\": 7.6,\n            \"vote_count\": 177\n        },\n        {\n            \"adult\": false,\n            \"backdrop_path\": \"/zIYROrkHJPYB3VTiW1L9QVgaQO.jpg\",\n            \"genre_ids\": [\n                28,\n                35\n            ],\n            \"id\": 897087,\n            \"original_language\": \"en\",\n            \"original_title\": \"Freelance\",\n            \"overview\": \"\",\n            \"popularity\": 704.958,\n            \"poster_path\": \"/7Bd4EUOqQDKZXA6Od5gkfzRNb0.jpg\",\n            \"release_date\": \"2023-01-05\",\n            \"title\": \"Freelance\",\n            \"video\": false,\n            \"vote_average\": 6.5,\n            \"vote_count\": 345\n        },\n        {\n            \"adult\": false,\n            \"backdrop_path\": \"/tLsc8SCFO0rMVgVyNm9XtfnyX84.jpg\",\n            \"genre_ids\": [\n                18,\n                9648,\n                53,\n                878\n            ],\n            \"id\": 726209,\n            \"original_language\": \"en\",\n            \"original_title\": \"Leave the World Behind\",\n            \"overview\": \"\",\n            \"popularity\": 615.517,\n            \"poster_path\": \"/29rhl1xopxA7JlGVVsf1UHfYPvN.jpg\",\n            \"release_date\": \"2023-11-22\",\n            \"title\": \"Leave the World Behind\",\n            \"video\": false,\n            \"vote_average\": 6.6,\n            \"vote_count\": 970\n        },\n        {\n            \"adult\": false,\n            \"backdrop_path\": \"/15Fe18IglCCP1jJoj5F529on0IA.jpg\",\n            \"genre_ids\": [\n                28,\n                35\n            ],\n            \"id\": 1029575,\n            \"original_language\": \"en\",\n            \"original_title\": \"The Family Plan\",\n            \"overview\": \"\",\n            \"popularity\": 882.342,\n            \"poster_path\": \"/jLLtx3nTRSLGPAKl4RoIv1FbEBr.jpg\",\n            \"release_date\": \"2023-12-14\",\n            \"title\": \"The Family Plan\",\n            \"video\": false,\n            \"vote_average\": 7.6,\n            \"vote_count\": 246\n        },\n        {\n            \"adult\": false,\n            \"backdrop_path\": \"/9PqD3wSIjntyJDBzMNuxuKHwpUD.jpg\",\n            \"genre_ids\": [\n                16,\n                35,\n                10751\n            ],\n            \"id\": 1075794,\n            \"original_language\": \"en\",\n            \"original_title\": \"Leo\",\n            \"overview\": \"\",\n            \"popularity\": 540.5,\n            \"poster_path\": \"/pD6sL4vntUOXHmuvJPPZAgvyfd9.jpg\",\n            \"release_date\": \"2023-11-17\",\n            \"title\": \"Leo\",\n            \"video\": false,\n            \"vote_average\": 7.6,\n            \"vote_count\": 622\n        },\n        {\n            \"adult\": false,\n            \"backdrop_path\": \"/fm6KqXpk3M2HVveHwCrBSSBaO0V.jpg\",\n            \"genre_ids\": [\n                18,\n                36\n            ],\n            \"id\": 872585,\n            \"original_language\": \"en\",\n            \"original_title\": \"Oppenheimer\",\n            \"overview\": \"\",\n            \"popularity\": 685.028,\n            \"poster_path\": \"/ptpr0kGAckfQkJeJIt8st5dglvd.jpg\",\n            \"release_date\": \"2023-07-19\",\n            \"title\": \"Oppenheimer\",\n            \"video\": false,\n            \"vote_average\": 8.1,\n            \"vote_count\": 5520\n        },\n        {\n            \"adult\": false,\n            \"backdrop_path\": \"/t5zCBSB5xMDKcDqe91qahCOUYVV.jpg\",\n            \"genre_ids\": [\n                27,\n                9648\n            ],\n            \"id\": 507089,\n            \"original_language\": \"en\",\n            \"original_title\": \"Five Nights at Freddy's\",\n            \"overview\": \"\",\n            \"popularity\": 533.387,\n            \"poster_path\": \"/7BpNtNfxuocYEVREzVMO75hso1l.jpg\",\n            \"release_date\": \"2023-10-25\",\n            \"title\": \"Five Nights at Freddy's\",\n            \"video\": false,\n            \"vote_average\": 7.8,\n            \"vote_count\": 2902\n        },\n        {\n            \"adult\": false,\n            \"backdrop_path\": \"/kjQBrc00fB2RjHZB3PGR4w9ibpz.jpg\",\n            \"genre_ids\": [\n                28,\n                12,\n                18\n            ],\n            \"id\": 670292,\n            \"original_language\": \"en\",\n            \"original_title\": \"The Creator\",\n            \"overview\": \"\",\n            \"popularity\": 476.847,\n            \"poster_path\": \"/vBZ0qvaRxqEhZwl6LWmruJqWE8Z.jpg\",\n            \"release_date\": \"2023-09-27\",\n            \"title\": \"The Creator\",\n            \"video\": false,\n            \"vote_average\": 7.1,\n            \"vote_count\": 1520\n        },\n        {\n            \"adult\": false,\n            \"backdrop_path\": \"/4XM8DUTQb3lhLemJC51Jx4a2EuA.jpg\",\n            \"genre_ids\": [\n                28,\n                80,\n                53\n            ],\n            \"id\": 385687,\n            \"original_language\": \"en\",\n            \"original_title\": \"Fast X\",\n            \"overview\": \"\",\n            \"popularity\": 498.088,\n            \"poster_path\": \"/fiVW06jE7z9YnO4trhaMEdclSiC.jpg\",\n            \"release_date\": \"2023-05-17\",\n            \"title\": \"Fast X\",\n            \"video\": false,\n            \"vote_average\": 7.2,\n            \"vote_count\": 4500\n        },\n        {\n            \"adult\": false,\n            \"backdrop_path\": \"/gvNmnvu13TPAewP54hvCyuHwNwR.jpg\",\n            \"genre_ids\": [\n                28,\n                27,\n                878\n            ],\n            \"id\": 920081,\n            \"original_language\": \"en\",\n            \"original_title\": \"Megaboa\",\n            \"overview\": \"\",\n            \"popularity\": 574.885,\n            \"poster_path\": \"/sAnAMv3eyQiGI1z2k8NsvH0Y6r5.jpg\",\n            \"release_date\": \"2021-11-26\",\n            \"title\": \"Megaboa\",\n            \"video\": false,\n            \"vote_average\": 6.5,\n            \"vote_count\": 438\n        },\n        {\n            \"adult\": false,\n            \"backdrop_path\": \"/3d39m2S3WynknLVGpsOxhiSKbgQ.jpg\",\n            \"genre_ids\": [\n                53,\n                28\n            ],\n            \"id\": 1146225,\n            \"original_language\": \"en\",\n            \"original_title\": \"Escaping Paradise\",\n            \"overview\": \"\",\n            \"popularity\": 385.931,\n            \"poster_path\": \"/3UCTls0hVKMCwWtkTmwKcCOzlgu.jpg\",\n            \"release_date\": \"2023-07-08\",\n            \"title\": \"Escaping Paradise\",\n            \"video\": false,\n            \"vote_average\": 4.7,\n            \"vote_count\": 3\n        },\n        {\n            \"adult\": false,\n            \"backdrop_path\": \"/rMvPXy8PUjj1o8o1pzgQbdNCsvj.jpg\",\n            \"genre_ids\": [\n                28,\n                12,\n                53\n            ],\n            \"id\": 299054,\n            \"original_language\": \"en\",\n            \"original_title\": \"Expend4bles\",\n            \"overview\": \"\",\n            \"popularity\": 417.742,\n            \"poster_path\": \"/iwsMu0ehRPbtaSxqiaUDQB9qMWT.jpg\",\n            \"release_date\": \"2023-09-15\",\n            \"title\": \"Expend4bles\",\n            \"video\": false,\n            \"vote_average\": 6.4,\n            \"vote_count\": 908\n        },\n        {\n            \"adult\": false,\n            \"backdrop_path\": \"/AucuqDaUW4z1oT5XyL71qwRY2F6.jpg\",\n            \"genre_ids\": [\n                27,\n                53\n            ],\n            \"id\": 983507,\n            \"original_language\": \"no\",\n            \"original_title\": \"Meg, deg & Frank\",\n            \"overview\": \"\",\n            \"popularity\": 359.501,\n            \"poster_path\": \"/9DPG1gxLwV2oyFdHq3SnISsWbse.jpg\",\n            \"release_date\": \"2022-06-03\",\n            \"title\": \"Meg, deg & Frank\",\n            \"video\": false,\n            \"vote_average\": 6.8,\n            \"vote_count\": 112\n        },\n        {\n            \"adult\": false,\n            \"backdrop_path\": \"/tB59fpPnQITgnfxPfMf2gxASTeC.jpg\",\n            \"genre_ids\": [\n                28,\n                53,\n                18\n            ],\n            \"id\": 656156,\n            \"original_language\": \"ko\",\n            \"original_title\": \"보호자\",\n            \"overview\": \"\",\n            \"popularity\": 343.068,\n            \"poster_path\": \"/2XwxhT1acqFHBPaVDvriX7iuul3.jpg\",\n            \"release_date\": \"2023-08-15\",\n            \"title\": \"보호자\",\n            \"video\": false,\n            \"vote_average\": 6.5,\n            \"vote_count\": 31\n        },\n        {\n            \"adult\": false,\n            \"backdrop_path\": \"/nHf61UzkfFno5X1ofIhugCPus2R.jpg\",\n            \"genre_ids\": [\n                35,\n                12,\n                14\n            ],\n            \"id\": 346698,\n            \"original_language\": \"en\",\n            \"original_title\": \"Barbie\",\n            \"overview\": \"\",\n            \"popularity\": 397.506,\n            \"poster_path\": \"/iuFNMS8U5cb6xfzi51Dbkovj7vM.jpg\",\n            \"release_date\": \"2023-07-19\",\n            \"title\": \"Barbie\",\n            \"video\": false,\n            \"vote_average\": 7.2,\n            \"vote_count\": 6383\n        }\n    ],\n    \"total_pages\": 41588,\n    \"total_results\": 831745\n}"
+						}
+					]
+				},
+				{
+					"name": "Genres",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/api/movies/tmdb/genres",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"movies",
+								"tmdb",
+								"genres"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "New Request",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:8080/api/movies/tmdb/genres",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"api",
+										"movies",
+										"tmdb",
+										"genres"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "547"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"223-LQoB/NR2PthLWi4PNWIBnIl/doI\""
+								},
+								{
+									"key": "Date",
+									"value": "Fri, 22 Dec 2023 01:33:00 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"genres\": [\n        {\n            \"id\": 28,\n            \"name\": \"Action\"\n        },\n        {\n            \"id\": 12,\n            \"name\": \"Adventure\"\n        },\n        {\n            \"id\": 16,\n            \"name\": \"Animation\"\n        },\n        {\n            \"id\": 35,\n            \"name\": \"Comedy\"\n        },\n        {\n            \"id\": 80,\n            \"name\": \"Crime\"\n        },\n        {\n            \"id\": 99,\n            \"name\": \"Documentary\"\n        },\n        {\n            \"id\": 18,\n            \"name\": \"Drama\"\n        },\n        {\n            \"id\": 10751,\n            \"name\": \"Family\"\n        },\n        {\n            \"id\": 14,\n            \"name\": \"Fantasy\"\n        },\n        {\n            \"id\": 36,\n            \"name\": \"History\"\n        },\n        {\n            \"id\": 27,\n            \"name\": \"Horror\"\n        },\n        {\n            \"id\": 10402,\n            \"name\": \"Music\"\n        },\n        {\n            \"id\": 9648,\n            \"name\": \"Mystery\"\n        },\n        {\n            \"id\": 10749,\n            \"name\": \"Romance\"\n        },\n        {\n            \"id\": 878,\n            \"name\": \"Science Fiction\"\n        },\n        {\n            \"id\": 10770,\n            \"name\": \"TV Movie\"\n        },\n        {\n            \"id\": 53,\n            \"name\": \"Thriller\"\n        },\n        {\n            \"id\": 10752,\n            \"name\": \"War\"\n        },\n        {\n            \"id\": 37,\n            \"name\": \"Western\"\n        }\n    ]\n}"
+						}
+					]
+				},
+				{
+					"name": "single Movie",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/api/movies/tmdb/movie/:id",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"movies",
+								"tmdb",
+								"movie",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "572802"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Movie Images",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/api/movies/tmdb/movie/:id/image",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"movies",
+								"tmdb",
+								"movie",
+								":id",
+								"image"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "572802"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Movie Credits",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/api/movies/tmdb/movie_credits/:actorId",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"movies",
+								"tmdb",
+								"movie_credits",
+								":actorId"
+							],
+							"variable": [
+								{
+									"key": "actorId",
+									"value": "572802"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Movie Reviews",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/api/movies/tmdb/movie/:actorId/review",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"movies",
+								"tmdb",
+								"movie",
+								":actorId",
+								"review"
+							],
+							"variable": [
+								{
+									"key": "actorId",
+									"value": "572802"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Upcoming Movies",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/api/movies/tmdb/upcoming?page=1&language=us-EN",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"movies",
+								"tmdb",
+								"upcoming"
+							],
+							"query": [
+								{
+									"key": "page",
+									"value": "1"
+								},
+								{
+									"key": "language",
+									"value": "us-EN"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Trending Movies",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/api/movies/tmdb/trending?page=1&language=us-EN",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"movies",
+								"tmdb",
+								"trending"
+							],
+							"query": [
+								{
+									"key": "page",
+									"value": "1"
+								},
+								{
+									"key": "language",
+									"value": "us-EN"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "localhost:8080/api/movies/tmdb/genres",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"username\":\"user17788\",\r\n    \"password\":\"tAA@#est87981\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8080/api/movies/tmdb/genres",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"movies",
+								"tmdb",
+								"genres"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
