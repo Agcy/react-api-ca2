@@ -1,0 +1,2597 @@
+swagger: '2.0'
+info:
+  version: '1.0'
+  title: web-ca2
+  contact: {}
+host: localhost:8080
+basePath: /api
+securityDefinitions: {}
+schemes:
+- http
+consumes:
+- application/json
+produces:
+- application/json
+paths:
+  /actors/tmdb/actors:
+    get:
+      summary: all actor
+      tags:
+      - actor
+      operationId: allactor
+      deprecated: false
+      produces:
+      - application/json
+      parameters:
+      - name: page
+        in: query
+        required: true
+        type: integer
+        format: int32
+        description: ''
+      - name: language
+        in: query
+        required: true
+        type: string
+        description: ''
+      responses:
+        '200':
+          description: ''
+          headers: {}
+  /actors/tmdb/actor/{id}:
+    get:
+      summary: single Actor
+      tags:
+      - actor
+      operationId: singleActor
+      deprecated: false
+      produces:
+      - application/json; charset=utf-8
+      parameters:
+      - name: id
+        in: path
+        required: true
+        type: integer
+        format: int32
+        description: ''
+      responses:
+        '200':
+          description: OK
+          schema:
+            $ref: '#/definitions/NewRequest'
+          examples:
+            application/json; charset=utf-8:
+              adult: false
+              also_known_as: []
+              biography: Jeremy Samuel Piven (born July 26, 1965) is an American film producer and actor best known for his role as Ari Gold in the television series Entourage for which he has won three Primetime Emmy Awards as well as several other nominations for Best Supporting Actor.
+              birthday: 1965-07-26
+              deathday: null
+              gender: 2
+              homepage: https://jeremy-piven.com/
+              id: 12799
+              imdb_id: nm0005315
+              known_for_department: Acting
+              name: Jeremy Piven
+              place_of_birth: New York City, New York, USA
+              popularity: 161.077
+              profile_path: /pqdR8zqAWF87chGYlbdYr0YfC7g.jpg
+          headers:
+            X-Powered-By:
+              type: string
+              default: Express
+            Access-Control-Allow-Origin:
+              type: string
+              default: '*'
+            Content-Length:
+              type: string
+              default: '608'
+            ETag:
+              type: string
+              default: W/"260-wH8hyyY7ivYdRkwMJ7hzlPxyPGc"
+            Date:
+              type: string
+              default: Fri, 22 Dec 2023 01:40:13 GMT
+            Connection:
+              type: string
+              default: keep-alive
+            Keep-Alive:
+              type: string
+              default: timeout=5
+  /actors/tmdb/movie_credits/{id}:
+    get:
+      summary: Actor Movie Credits
+      tags:
+      - actor
+      operationId: ActorMovieCredits
+      deprecated: false
+      produces:
+      - application/json; charset=utf-8
+      parameters:
+      - name: language
+        in: query
+        required: true
+        type: string
+        description: ''
+      - name: id
+        in: path
+        required: true
+        type: integer
+        format: int32
+        description: ''
+      responses:
+        '200':
+          description: OK
+          schema:
+            $ref: '#/definitions/NewRequest1'
+          headers:
+            X-Powered-By:
+              type: string
+              default: Express
+            Access-Control-Allow-Origin:
+              type: string
+              default: '*'
+            Content-Length:
+              type: string
+              default: '56518'
+            ETag:
+              type: string
+              default: W/"dcc6-GLejXB4xaECMJqsKgGkPof3KwqI"
+            Date:
+              type: string
+              default: Fri, 22 Dec 2023 01:41:44 GMT
+            Connection:
+              type: string
+              default: keep-alive
+            Keep-Alive:
+              type: string
+              default: timeout=5
+  /users/tmdb/{id}/favorites:
+    get:
+      summary: User Favorites
+      tags:
+      - favorites
+      operationId: UserFavorites
+      deprecated: false
+      produces:
+      - application/json; charset=utf-8
+      parameters:
+      - name: id
+        in: path
+        required: true
+        type: string
+        description: ''
+      responses:
+        '200':
+          description: OK
+          schema:
+            type: array
+            default: ''
+            items:
+              type: integer
+              format: int32
+          examples:
+            application/json; charset=utf-8:
+            - 572802
+          headers:
+            X-Powered-By:
+              type: string
+              default: Express
+            Access-Control-Allow-Origin:
+              type: string
+              default: '*'
+            Content-Length:
+              type: string
+              default: '8'
+            ETag:
+              type: string
+              default: W/"8-aOjNm3A1lmLv6Ehit12l6Vido2E"
+            Date:
+              type: string
+              default: Fri, 22 Dec 2023 01:43:23 GMT
+            Connection:
+              type: string
+              default: keep-alive
+            Keep-Alive:
+              type: string
+              default: timeout=5
+    post:
+      summary: add Favorite
+      tags:
+      - favorites
+      operationId: addFavorite
+      deprecated: false
+      produces:
+      - application/json; charset=utf-8
+      parameters:
+      - name: id
+        in: path
+        required: true
+        type: string
+        description: ''
+      - name: Body
+        in: body
+        required: true
+        description: ''
+        schema:
+          $ref: '#/definitions/addFavoriteRequest'
+      responses:
+        '200':
+          description: OK
+          schema:
+            $ref: '#/definitions/NewRequest2'
+          examples:
+            application/json; charset=utf-8:
+              message: Movie added to favorites
+          headers:
+            X-Powered-By:
+              type: string
+              default: Express
+            Access-Control-Allow-Origin:
+              type: string
+              default: '*'
+            Content-Length:
+              type: string
+              default: '38'
+            ETag:
+              type: string
+              default: W/"26-NTUYDUMcfX0GAK3NqCnITzJBIo8"
+            Date:
+              type: string
+              default: Fri, 22 Dec 2023 01:46:02 GMT
+            Connection:
+              type: string
+              default: keep-alive
+            Keep-Alive:
+              type: string
+              default: timeout=5
+  /users/tmdb/{id}/favorites/{movieId}:
+    delete:
+      summary: remove Favorite
+      tags:
+      - favorites
+      operationId: removeFavorite
+      deprecated: false
+      produces:
+      - application/json; charset=utf-8
+      parameters:
+      - name: id
+        in: path
+        required: true
+        type: string
+        description: ''
+      - name: movieId
+        in: path
+        required: true
+        type: integer
+        format: int32
+        description: ''
+      responses:
+        '200':
+          description: OK
+          schema:
+            $ref: '#/definitions/NewRequest2'
+          examples:
+            application/json; charset=utf-8:
+              message: Movie removed from favorites
+          headers:
+            X-Powered-By:
+              type: string
+              default: Express
+            Access-Control-Allow-Origin:
+              type: string
+              default: '*'
+            Content-Length:
+              type: string
+              default: '42'
+            ETag:
+              type: string
+              default: W/"2a-HuOfZHmr6YUHgrqSjWmgBV/WGmA"
+            Date:
+              type: string
+              default: Fri, 22 Dec 2023 01:47:09 GMT
+            Connection:
+              type: string
+              default: keep-alive
+            Keep-Alive:
+              type: string
+              default: timeout=5
+  /users/tmdb/{id}/marked:
+    get:
+      summary: User Marked Movies
+      tags:
+      - marked
+      operationId: UserMarkedMovies
+      deprecated: false
+      produces:
+      - application/json; charset=utf-8
+      parameters:
+      - name: id
+        in: path
+        required: true
+        type: string
+        description: ''
+      responses:
+        '200':
+          description: OK
+          schema:
+            type: array
+            default: ''
+            items:
+              type: string
+          examples:
+            application/json; charset=utf-8: []
+          headers:
+            X-Powered-By:
+              type: string
+              default: Express
+            Access-Control-Allow-Origin:
+              type: string
+              default: '*'
+            Content-Length:
+              type: string
+              default: '2'
+            ETag:
+              type: string
+              default: W/"2-l9Fw4VUO7kr8CvBlt4zaMCqXZ0w"
+            Date:
+              type: string
+              default: Fri, 22 Dec 2023 01:48:16 GMT
+            Connection:
+              type: string
+              default: keep-alive
+            Keep-Alive:
+              type: string
+              default: timeout=5
+    post:
+      summary: add Marked Movie
+      tags:
+      - marked
+      operationId: addMarkedMovie
+      deprecated: false
+      produces:
+      - application/json; charset=utf-8
+      parameters:
+      - name: id
+        in: path
+        required: true
+        type: string
+        description: ''
+      - name: Body
+        in: body
+        required: true
+        description: ''
+        schema:
+          $ref: '#/definitions/addMarkedMovieRequest'
+      responses:
+        '200':
+          description: OK
+          schema:
+            $ref: '#/definitions/NewRequest2'
+          examples:
+            application/json; charset=utf-8:
+              message: Movie marked successfully
+          headers:
+            X-Powered-By:
+              type: string
+              default: Express
+            Access-Control-Allow-Origin:
+              type: string
+              default: '*'
+            Content-Length:
+              type: string
+              default: '39'
+            ETag:
+              type: string
+              default: W/"27-4Fqnvog2jDne5/BzI3ZkjA7q8y0"
+            Date:
+              type: string
+              default: Fri, 22 Dec 2023 01:49:30 GMT
+            Connection:
+              type: string
+              default: keep-alive
+            Keep-Alive:
+              type: string
+              default: timeout=5
+  /users/tmdb/{id}/marked/{movieId}:
+    delete:
+      summary: remove Marked Movie
+      tags:
+      - marked
+      operationId: removeMarkedMovie
+      deprecated: false
+      produces:
+      - application/json; charset=utf-8
+      parameters:
+      - name: id
+        in: path
+        required: true
+        type: string
+        description: ''
+      - name: movieId
+        in: path
+        required: true
+        type: integer
+        format: int32
+        description: ''
+      responses:
+        '200':
+          description: OK
+          schema:
+            $ref: '#/definitions/NewRequest2'
+          examples:
+            application/json; charset=utf-8:
+              message: Movie unmarked successfully
+          headers:
+            X-Powered-By:
+              type: string
+              default: Express
+            Access-Control-Allow-Origin:
+              type: string
+              default: '*'
+            Content-Length:
+              type: string
+              default: '41'
+            ETag:
+              type: string
+              default: W/"29-fVeAIuz+VBwyhmDMoBI4pvspyrg"
+            Date:
+              type: string
+              default: Fri, 22 Dec 2023 01:50:27 GMT
+            Connection:
+              type: string
+              default: keep-alive
+            Keep-Alive:
+              type: string
+              default: timeout=5
+  /users/tmdb/{id}/follow:
+    get:
+      summary: User Followed Actors
+      tags:
+      - follow
+      operationId: UserFollowedActors
+      deprecated: false
+      produces:
+      - application/json; charset=utf-8
+      parameters:
+      - name: id
+        in: path
+        required: true
+        type: string
+        description: ''
+      responses:
+        '200':
+          description: OK
+          schema:
+            type: array
+            default: ''
+            items:
+              type: integer
+              format: int32
+          examples:
+            application/json; charset=utf-8:
+            - 12799
+          headers:
+            X-Powered-By:
+              type: string
+              default: Express
+            Access-Control-Allow-Origin:
+              type: string
+              default: '*'
+            Content-Length:
+              type: string
+              default: '7'
+            ETag:
+              type: string
+              default: W/"7-JjKsTTsQAUUr7RHiZ9FxWgQ5/i8"
+            Date:
+              type: string
+              default: Fri, 22 Dec 2023 01:51:25 GMT
+            Connection:
+              type: string
+              default: keep-alive
+            Keep-Alive:
+              type: string
+              default: timeout=5
+    post:
+      summary: follow Actor
+      tags:
+      - follow
+      operationId: followActor
+      deprecated: false
+      produces:
+      - application/json; charset=utf-8
+      parameters:
+      - name: id
+        in: path
+        required: true
+        type: string
+        description: ''
+      - name: Body
+        in: body
+        required: true
+        description: ''
+        schema:
+          $ref: '#/definitions/followActorRequest'
+      responses:
+        '200':
+          description: OK
+          schema:
+            $ref: '#/definitions/NewRequest2'
+          examples:
+            application/json; charset=utf-8:
+              message: Actor followed successfully
+          headers:
+            X-Powered-By:
+              type: string
+              default: Express
+            Access-Control-Allow-Origin:
+              type: string
+              default: '*'
+            Content-Length:
+              type: string
+              default: '41'
+            ETag:
+              type: string
+              default: W/"29-ER9rKQSO6/SXqQHo8lTdMfDPCBc"
+            Date:
+              type: string
+              default: Fri, 22 Dec 2023 01:53:00 GMT
+            Connection:
+              type: string
+              default: keep-alive
+            Keep-Alive:
+              type: string
+              default: timeout=5
+  /users/tmdb/{id}/follow/{actorId}:
+    delete:
+      summary: unfollow Actor
+      tags:
+      - follow
+      operationId: unfollowActor
+      deprecated: false
+      produces:
+      - application/json; charset=utf-8
+      parameters:
+      - name: id
+        in: path
+        required: true
+        type: string
+        description: ''
+      - name: actorId
+        in: path
+        required: true
+        type: integer
+        format: int32
+        description: ''
+      responses:
+        '200':
+          description: OK
+          schema:
+            $ref: '#/definitions/NewRequest2'
+          examples:
+            application/json; charset=utf-8:
+              message: Actor unfollowed successfully
+          headers:
+            X-Powered-By:
+              type: string
+              default: Express
+            Access-Control-Allow-Origin:
+              type: string
+              default: '*'
+            Content-Length:
+              type: string
+              default: '43'
+            ETag:
+              type: string
+              default: W/"2b-huvv3APRMhbi3J2Acdyr5Gn3U4U"
+            Date:
+              type: string
+              default: Fri, 22 Dec 2023 01:54:01 GMT
+            Connection:
+              type: string
+              default: keep-alive
+            Keep-Alive:
+              type: string
+              default: timeout=5
+  /reviews/tmdb/all:
+    get:
+      summary: All Movie Reviews
+      tags:
+      - reviews
+      operationId: AllMovieReviews
+      deprecated: false
+      produces:
+      - application/json; charset=utf-8
+      parameters: []
+      responses:
+        '200':
+          description: OK
+          schema:
+            type: array
+            default: ''
+            items:
+              $ref: '#/definitions/NewRequest8'
+          examples:
+            application/json; charset=utf-8:
+            - _id: 65844cef30ad0fbe23c6cf06
+              movieId: 466420
+              userId: 65843b1d6ed1e8bdcf1f61ea
+              author: Haopeng
+              review: All you ever wanted to know about Movies!
+              rating: 3
+              createdAt: 2023-12-21T14:34:23.122Z
+              __v: 0
+            - _id: 658450226973108d594482cf
+              movieId: 466420
+              userId: 65843b1d6ed1e8bdcf1f61ea
+              author: Haopeng
+              review: Killers of the Flower Moon
+              rating: 3
+              createdAt: 2023-12-21T14:48:02.618Z
+              __v: 0
+            - _id: 658457ea38ebd9465bc50c5a
+              movieId: 572802
+              userId: 65843b1d6ed1e8bdcf1f61ea
+              author: Haopeng
+              review: >2-
+
+                All you ever wanted to know about Movies!
+              rating: 3
+              createdAt: 2023-12-21T15:21:14.043Z
+              __v: 0
+            - _id: 658466d2526f904a970fccf6
+              movieId: 572802
+              userId: 65843b1d6ed1e8bdcf1f61ea
+              author: Haopeng
+              review: All you ever wanted to know about Movies!
+              rating: 5
+              createdAt: 2023-12-21T16:24:50.011Z
+              __v: 0
+            - _id: 6584cf097237f2869edb0ded
+              movieId: 572802
+              userId: 6584bc8c54dd0c01c7144b37
+              author: qfqf
+              review: my all time favorite movie, family, who know !!!
+              rating: 5
+              createdAt: 2023-12-21T23:49:29.398Z
+              __v: 0
+          headers:
+            X-Powered-By:
+              type: string
+              default: Express
+            Access-Control-Allow-Origin:
+              type: string
+              default: '*'
+            Content-Length:
+              type: string
+              default: '1082'
+            ETag:
+              type: string
+              default: W/"43a-sLOYcKXLJFp4+SrLXwWpD6pqVgI"
+            Date:
+              type: string
+              default: Fri, 22 Dec 2023 01:54:44 GMT
+            Connection:
+              type: string
+              default: keep-alive
+            Keep-Alive:
+              type: string
+              default: timeout=5
+  /reviews/tmdb/user/{id}:
+    get:
+      summary: User Movie Reviews
+      tags:
+      - reviews
+      operationId: UserMovieReviews
+      deprecated: false
+      produces:
+      - application/json; charset=utf-8
+      parameters:
+      - name: id
+        in: path
+        required: true
+        type: string
+        description: ''
+      responses:
+        '200':
+          description: OK
+          schema:
+            $ref: '#/definitions/NewRequest9'
+          examples:
+            application/json; charset=utf-8:
+              reviews:
+              - _id: 6584cf097237f2869edb0ded
+                movieId: 572802
+                userId: 6584bc8c54dd0c01c7144b37
+                author: qfqf
+                review: my all time favorite movie, family, who know !!!
+                rating: 5
+                createdAt: 2023-12-21T23:49:29.398Z
+                __v: 0
+          headers:
+            X-Powered-By:
+              type: string
+              default: Express
+            Access-Control-Allow-Origin:
+              type: string
+              default: '*'
+            Content-Length:
+              type: string
+              default: '235'
+            ETag:
+              type: string
+              default: W/"eb-557vjGsaolEw1seAfAo90QVKHjo"
+            Date:
+              type: string
+              default: Fri, 22 Dec 2023 01:55:24 GMT
+            Connection:
+              type: string
+              default: keep-alive
+            Keep-Alive:
+              type: string
+              default: timeout=5
+  /reviews/tmdb/{movieId}:
+    post:
+      summary: add To Review
+      tags:
+      - reviews
+      operationId: addToReview
+      deprecated: false
+      produces:
+      - application/json; charset=utf-8
+      parameters:
+      - name: movieId
+        in: path
+        required: true
+        type: integer
+        format: int32
+        description: ''
+      - name: Body
+        in: body
+        required: true
+        description: ''
+        schema:
+          $ref: '#/definitions/addToReviewRequest'
+      responses:
+        '201':
+          description: Created
+          schema:
+            $ref: '#/definitions/NewRequest8'
+          examples:
+            application/json; charset=utf-8:
+              movieId: 572802
+              userId: 6584bc8c54dd0c01c7144b37
+              author: hpl
+              review: hahahah hahahah hahah tooooo funnnyyyy
+              rating: 5
+              _id: 6584ed3b7237f2869edb0e11
+              createdAt: 2023-12-22T01:58:19.366Z
+              __v: 0
+          headers:
+            X-Powered-By:
+              type: string
+              default: Express
+            Access-Control-Allow-Origin:
+              type: string
+              default: '*'
+            Content-Length:
+              type: string
+              default: '210'
+            ETag:
+              type: string
+              default: W/"d2-gVW3NJDTd7PEMzchfq0ZF9mI8EE"
+            Date:
+              type: string
+              default: Fri, 22 Dec 2023 01:58:19 GMT
+            Connection:
+              type: string
+              default: keep-alive
+            Keep-Alive:
+              type: string
+              default: timeout=5
+  /reviews/tmdb/{reviewId}:
+    delete:
+      summary: delete Review
+      tags:
+      - reviews
+      operationId: deleteReview
+      deprecated: false
+      produces:
+      - application/json; charset=utf-8
+      parameters:
+      - name: reviewId
+        in: path
+        required: true
+        type: string
+        description: ''
+      responses:
+        '200':
+          description: OK
+          schema:
+            $ref: '#/definitions/NewRequest2'
+          examples:
+            application/json; charset=utf-8:
+              message: Review deleted successfully
+          headers:
+            X-Powered-By:
+              type: string
+              default: Express
+            Access-Control-Allow-Origin:
+              type: string
+              default: '*'
+            Content-Length:
+              type: string
+              default: '41'
+            ETag:
+              type: string
+              default: W/"29-eJZH9QbGPKzQCQgLPX3JFUdcheo"
+            Date:
+              type: string
+              default: Fri, 22 Dec 2023 02:07:28 GMT
+            Connection:
+              type: string
+              default: keep-alive
+            Keep-Alive:
+              type: string
+              default: timeout=5
+  /users:
+    post:
+      summary: userlogin
+      tags:
+      - user
+      operationId: userlogin
+      deprecated: false
+      produces:
+      - application/json; charset=utf-8
+      parameters:
+      - name: Body
+        in: body
+        required: true
+        description: ''
+        schema:
+          $ref: '#/definitions/userloginrequest'
+      responses:
+        '200':
+          description: OK
+          schema:
+            $ref: '#/definitions/NewRequest12'
+          examples:
+            application/json; charset=utf-8:
+              success: true
+              msg: User login successfully
+              token: BEARER eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6InVzZXIxIiwiaWF0IjoxNzAzMjA4MzI5fQ.7BV1AnkQt_iZSip5jY1nsrmC4zoM2rYnkiPzG14h6a8
+              user:
+                id: 6584bc8c54dd0c01c7144b37
+                username: user1
+                email: 123@163.com
+          headers:
+            X-Powered-By:
+              type: string
+              default: Express
+            Access-Control-Allow-Origin:
+              type: string
+              default: '*'
+            Content-Length:
+              type: string
+              default: '279'
+            ETag:
+              type: string
+              default: W/"117-hsCheFobR9o1j/FklEyzOFlxIhE"
+            Date:
+              type: string
+              default: Fri, 22 Dec 2023 01:25:29 GMT
+            Connection:
+              type: string
+              default: keep-alive
+            Keep-Alive:
+              type: string
+              default: timeout=5
+    get:
+      summary: all user
+      tags:
+      - user
+      operationId: alluser
+      deprecated: false
+      produces:
+      - application/json; charset=utf-8
+      parameters: []
+      responses:
+        '200':
+          description: OK
+          schema:
+            type: array
+            default: ''
+            items:
+              $ref: '#/definitions/NewRequest13'
+          examples:
+            application/json; charset=utf-8:
+            - _id: 6584bc8c54dd0c01c7144b38
+              username: user2
+              email: test@qq.com
+              password: $2b$10$wCordlF048U3VaviwjsVY.aHbEtDR/zB6FTqGAx.mWj3sTpEfRMCu
+              favorites: []
+              marked: []
+              follow: []
+              __v: 0
+            - _id: 6584bc8c54dd0c01c7144b37
+              username: user1
+              email: 123@163.com
+              password: $2b$10$QH6lzsHAMDf2Kg3g/dQZO.P0wNSq6BEvxuc4CBD70X56A5goRQymS
+              favorites:
+              - 572802
+              marked: []
+              follow: []
+              __v: 0
+            - _id: 6584ce3b7237f2869edb0dd9
+              username: 123qq
+              email: hpl@gmail.co
+              password: $2b$10$qU1Wrtt4is69OHh7i8bSP.Lqm5sGi61kteJnyVDGcp/E7xH7buBY.
+              favorites: []
+              marked: []
+              follow: []
+              __v: 0
+          headers:
+            X-Powered-By:
+              type: string
+              default: Express
+            Access-Control-Allow-Origin:
+              type: string
+              default: '*'
+            Content-Length:
+              type: string
+              default: '599'
+            ETag:
+              type: string
+              default: W/"257-reqhV7N0x/d1caiUpTXCRhhuikw"
+            Date:
+              type: string
+              default: Fri, 22 Dec 2023 01:20:07 GMT
+            Connection:
+              type: string
+              default: keep-alive
+            Keep-Alive:
+              type: string
+              default: timeout=5
+  /movies/tmdb/home:
+    get:
+      summary: all movies
+      tags:
+      - movies
+      operationId: allmovies
+      deprecated: false
+      produces:
+      - application/json; charset=utf-8
+      parameters:
+      - name: page
+        in: query
+        required: true
+        type: integer
+        format: int32
+        description: ''
+      - name: language
+        in: query
+        required: true
+        type: string
+        description: ''
+      responses:
+        '200':
+          description: OK
+          schema:
+            $ref: '#/definitions/NewRequest15'
+          examples:
+            application/json; charset=utf-8:
+              page: 1
+              results:
+              - adult: false
+                backdrop_path: /bmlkLCjrIWnnZzdAQ4uNPG9JFdj.jpg
+                genre_ids:
+                - 35
+                - 10751
+                - 14
+                id: 787699
+                original_language: en
+                original_title: Wonka
+                overview: ''
+                popularity: 1035.485
+                poster_path: /qhb1qOilapbapxWQn9jtRCMwXJF.jpg
+                release_date: 2023-12-06
+                title: Wonka
+                video: false
+                vote_average: 7.2
+                vote_count: 410
+              - adult: false
+                backdrop_path: /jXJxMcVoEuXzym3vFnjqDW4ifo6.jpg
+                genre_ids:
+                - 28
+                - 12
+                - 14
+                id: 572802
+                original_language: en
+                original_title: Aquaman and the Lost Kingdom
+                overview: ''
+                popularity: 1350.815
+                poster_path: /8xV47NDrjdZDpkVcCFqkdHa3T0C.jpg
+                release_date: 2023-12-20
+                title: Aquaman and the Lost Kingdom
+                video: false
+                vote_average: 7.2
+                vote_count: 57
+              - adult: false
+                backdrop_path: /1X7vow16X7CnCoexXh4H4F2yDJv.jpg
+                genre_ids:
+                - 80
+                - 18
+                - 36
+                id: 466420
+                original_language: en
+                original_title: Killers of the Flower Moon
+                overview: ''
+                popularity: 753.442
+                poster_path: /pi0kmFJAEcHpTjqITHPFUic9omf.jpg
+                release_date: 2023-10-18
+                title: Killers of the Flower Moon
+                video: false
+                vote_average: 7.6
+                vote_count: 1531
+              - adult: false
+                backdrop_path: /8GnWDLn2AhnmkQ7hlQ9NJUYobSS.jpg
+                genre_ids:
+                - 18
+                - 878
+                - 28
+                id: 695721
+                original_language: en
+                original_title: 'The Hunger Games: The Ballad of Songbirds & Snakes'
+                overview: ''
+                popularity: 1134.139
+                poster_path: /mBaXZ95R2OxueZhvQbcEWy2DqyO.jpg
+                release_date: 2023-11-15
+                title: 'The Hunger Games: The Ballad of Songbirds & Snakes'
+                video: false
+                vote_average: 7.3
+                vote_count: 853
+              - adult: false
+                backdrop_path: /k1KrbaCMACQiq7EA0Yhw3bdzMv7.jpg
+                genre_ids:
+                - 16
+                - 10751
+                - 10402
+                - 14
+                - 35
+                id: 901362
+                original_language: en
+                original_title: Trolls Band Together
+                overview: ''
+                popularity: 675.752
+                poster_path: /bkpPTZUdq31UGDovmszsg2CchiI.jpg
+                release_date: 2023-10-12
+                title: Trolls Band Together
+                video: false
+                vote_average: 7.2
+                vote_count: 394
+              - adult: false
+                backdrop_path: /9jPoyxjiEYPylUIMI3Ntixf8z3M.jpg
+                genre_ids:
+                - 16
+                - 12
+                - 35
+                - 10751
+                id: 520758
+                original_language: en
+                original_title: 'Chicken Run: Dawn of the Nugget'
+                overview: ''
+                popularity: 913.414
+                poster_path: /exNtEY8QUuQh9e23wSQjkPxKIU3.jpg
+                release_date: 2023-12-08
+                title: 'Chicken Run: Dawn of the Nugget'
+                video: false
+                vote_average: 7.6
+                vote_count: 177
+              - adult: false
+                backdrop_path: /zIYROrkHJPYB3VTiW1L9QVgaQO.jpg
+                genre_ids:
+                - 28
+                - 35
+                id: 897087
+                original_language: en
+                original_title: Freelance
+                overview: ''
+                popularity: 704.958
+                poster_path: /7Bd4EUOqQDKZXA6Od5gkfzRNb0.jpg
+                release_date: 2023-01-05
+                title: Freelance
+                video: false
+                vote_average: 6.5
+                vote_count: 345
+              - adult: false
+                backdrop_path: /tLsc8SCFO0rMVgVyNm9XtfnyX84.jpg
+                genre_ids:
+                - 18
+                - 9648
+                - 53
+                - 878
+                id: 726209
+                original_language: en
+                original_title: Leave the World Behind
+                overview: ''
+                popularity: 615.517
+                poster_path: /29rhl1xopxA7JlGVVsf1UHfYPvN.jpg
+                release_date: 2023-11-22
+                title: Leave the World Behind
+                video: false
+                vote_average: 6.6
+                vote_count: 970
+              - adult: false
+                backdrop_path: /15Fe18IglCCP1jJoj5F529on0IA.jpg
+                genre_ids:
+                - 28
+                - 35
+                id: 1029575
+                original_language: en
+                original_title: The Family Plan
+                overview: ''
+                popularity: 882.342
+                poster_path: /jLLtx3nTRSLGPAKl4RoIv1FbEBr.jpg
+                release_date: 2023-12-14
+                title: The Family Plan
+                video: false
+                vote_average: 7.6
+                vote_count: 246
+              - adult: false
+                backdrop_path: /9PqD3wSIjntyJDBzMNuxuKHwpUD.jpg
+                genre_ids:
+                - 16
+                - 35
+                - 10751
+                id: 1075794
+                original_language: en
+                original_title: Leo
+                overview: ''
+                popularity: 540.5
+                poster_path: /pD6sL4vntUOXHmuvJPPZAgvyfd9.jpg
+                release_date: 2023-11-17
+                title: Leo
+                video: false
+                vote_average: 7.6
+                vote_count: 622
+              - adult: false
+                backdrop_path: /fm6KqXpk3M2HVveHwCrBSSBaO0V.jpg
+                genre_ids:
+                - 18
+                - 36
+                id: 872585
+                original_language: en
+                original_title: Oppenheimer
+                overview: ''
+                popularity: 685.028
+                poster_path: /ptpr0kGAckfQkJeJIt8st5dglvd.jpg
+                release_date: 2023-07-19
+                title: Oppenheimer
+                video: false
+                vote_average: 8.1
+                vote_count: 5520
+              - adult: false
+                backdrop_path: /t5zCBSB5xMDKcDqe91qahCOUYVV.jpg
+                genre_ids:
+                - 27
+                - 9648
+                id: 507089
+                original_language: en
+                original_title: Five Nights at Freddy's
+                overview: ''
+                popularity: 533.387
+                poster_path: /7BpNtNfxuocYEVREzVMO75hso1l.jpg
+                release_date: 2023-10-25
+                title: Five Nights at Freddy's
+                video: false
+                vote_average: 7.8
+                vote_count: 2902
+              - adult: false
+                backdrop_path: /kjQBrc00fB2RjHZB3PGR4w9ibpz.jpg
+                genre_ids:
+                - 28
+                - 12
+                - 18
+                id: 670292
+                original_language: en
+                original_title: The Creator
+                overview: ''
+                popularity: 476.847
+                poster_path: /vBZ0qvaRxqEhZwl6LWmruJqWE8Z.jpg
+                release_date: 2023-09-27
+                title: The Creator
+                video: false
+                vote_average: 7.1
+                vote_count: 1520
+              - adult: false
+                backdrop_path: /4XM8DUTQb3lhLemJC51Jx4a2EuA.jpg
+                genre_ids:
+                - 28
+                - 80
+                - 53
+                id: 385687
+                original_language: en
+                original_title: Fast X
+                overview: ''
+                popularity: 498.088
+                poster_path: /fiVW06jE7z9YnO4trhaMEdclSiC.jpg
+                release_date: 2023-05-17
+                title: Fast X
+                video: false
+                vote_average: 7.2
+                vote_count: 4500
+              - adult: false
+                backdrop_path: /gvNmnvu13TPAewP54hvCyuHwNwR.jpg
+                genre_ids:
+                - 28
+                - 27
+                - 878
+                id: 920081
+                original_language: en
+                original_title: Megaboa
+                overview: ''
+                popularity: 574.885
+                poster_path: /sAnAMv3eyQiGI1z2k8NsvH0Y6r5.jpg
+                release_date: 2021-11-26
+                title: Megaboa
+                video: false
+                vote_average: 6.5
+                vote_count: 438
+              - adult: false
+                backdrop_path: /3d39m2S3WynknLVGpsOxhiSKbgQ.jpg
+                genre_ids:
+                - 53
+                - 28
+                id: 1146225
+                original_language: en
+                original_title: Escaping Paradise
+                overview: ''
+                popularity: 385.931
+                poster_path: /3UCTls0hVKMCwWtkTmwKcCOzlgu.jpg
+                release_date: 2023-07-08
+                title: Escaping Paradise
+                video: false
+                vote_average: 4.7
+                vote_count: 3
+              - adult: false
+                backdrop_path: /rMvPXy8PUjj1o8o1pzgQbdNCsvj.jpg
+                genre_ids:
+                - 28
+                - 12
+                - 53
+                id: 299054
+                original_language: en
+                original_title: Expend4bles
+                overview: ''
+                popularity: 417.742
+                poster_path: /iwsMu0ehRPbtaSxqiaUDQB9qMWT.jpg
+                release_date: 2023-09-15
+                title: Expend4bles
+                video: false
+                vote_average: 6.4
+                vote_count: 908
+              - adult: false
+                backdrop_path: /AucuqDaUW4z1oT5XyL71qwRY2F6.jpg
+                genre_ids:
+                - 27
+                - 53
+                id: 983507
+                original_language: no
+                original_title: Meg, deg & Frank
+                overview: ''
+                popularity: 359.501
+                poster_path: /9DPG1gxLwV2oyFdHq3SnISsWbse.jpg
+                release_date: 2022-06-03
+                title: Meg, deg & Frank
+                video: false
+                vote_average: 6.8
+                vote_count: 112
+              - adult: false
+                backdrop_path: /tB59fpPnQITgnfxPfMf2gxASTeC.jpg
+                genre_ids:
+                - 28
+                - 53
+                - 18
+                id: 656156
+                original_language: ko
+                original_title: 보호자
+                overview: ''
+                popularity: 343.068
+                poster_path: /2XwxhT1acqFHBPaVDvriX7iuul3.jpg
+                release_date: 2023-08-15
+                title: 보호자
+                video: false
+                vote_average: 6.5
+                vote_count: 31
+              - adult: false
+                backdrop_path: /nHf61UzkfFno5X1ofIhugCPus2R.jpg
+                genre_ids:
+                - 35
+                - 12
+                - 14
+                id: 346698
+                original_language: en
+                original_title: Barbie
+                overview: ''
+                popularity: 397.506
+                poster_path: /iuFNMS8U5cb6xfzi51Dbkovj7vM.jpg
+                release_date: 2023-07-19
+                title: Barbie
+                video: false
+                vote_average: 7.2
+                vote_count: 6383
+              total_pages: 41588
+              total_results: 831745
+          headers:
+            X-Powered-By:
+              type: string
+              default: Express
+            Access-Control-Allow-Origin:
+              type: string
+              default: '*'
+            Content-Length:
+              type: string
+              default: '7137'
+            ETag:
+              type: string
+              default: W/"1be1-+zzHhiJoHyGMHjn20jqTdobs0tg"
+            Date:
+              type: string
+              default: Fri, 22 Dec 2023 01:21:01 GMT
+            Connection:
+              type: string
+              default: keep-alive
+            Keep-Alive:
+              type: string
+              default: timeout=5
+  /movies/tmdb/genres:
+    get:
+      summary: Genres
+      tags:
+      - movies
+      operationId: Genres
+      deprecated: false
+      produces:
+      - application/json; charset=utf-8
+      parameters: []
+      responses:
+        '200':
+          description: OK
+          schema:
+            $ref: '#/definitions/NewRequest16'
+          examples:
+            application/json; charset=utf-8:
+              genres:
+              - id: 28
+                name: Action
+              - id: 12
+                name: Adventure
+              - id: 16
+                name: Animation
+              - id: 35
+                name: Comedy
+              - id: 80
+                name: Crime
+              - id: 99
+                name: Documentary
+              - id: 18
+                name: Drama
+              - id: 10751
+                name: Family
+              - id: 14
+                name: Fantasy
+              - id: 36
+                name: History
+              - id: 27
+                name: Horror
+              - id: 10402
+                name: Music
+              - id: 9648
+                name: Mystery
+              - id: 10749
+                name: Romance
+              - id: 878
+                name: Science Fiction
+              - id: 10770
+                name: TV Movie
+              - id: 53
+                name: Thriller
+              - id: 10752
+                name: War
+              - id: 37
+                name: Western
+          headers:
+            X-Powered-By:
+              type: string
+              default: Express
+            Access-Control-Allow-Origin:
+              type: string
+              default: '*'
+            Content-Length:
+              type: string
+              default: '547'
+            ETag:
+              type: string
+              default: W/"223-LQoB/NR2PthLWi4PNWIBnIl/doI"
+            Date:
+              type: string
+              default: Fri, 22 Dec 2023 01:33:00 GMT
+            Connection:
+              type: string
+              default: keep-alive
+            Keep-Alive:
+              type: string
+              default: timeout=5
+  /movies/tmdb/movie/{id}:
+    get:
+      summary: single Movie
+      tags:
+      - movies
+      operationId: singleMovie
+      deprecated: false
+      produces:
+      - application/json
+      parameters:
+      - name: id
+        in: path
+        required: true
+        type: integer
+        format: int32
+        description: ''
+      responses:
+        '200':
+          description: ''
+          headers: {}
+  /movies/tmdb/movie/{id}/image:
+    get:
+      summary: Movie Images
+      tags:
+      - movies
+      operationId: MovieImages
+      deprecated: false
+      produces:
+      - application/json
+      parameters:
+      - name: id
+        in: path
+        required: true
+        type: integer
+        format: int32
+        description: ''
+      responses:
+        '200':
+          description: ''
+          headers: {}
+  /movies/tmdb/movie_credits/{actorId}:
+    get:
+      summary: Movie Credits
+      tags:
+      - movies
+      operationId: MovieCredits
+      deprecated: false
+      produces:
+      - application/json
+      parameters:
+      - name: actorId
+        in: path
+        required: true
+        type: integer
+        format: int32
+        description: ''
+      responses:
+        '200':
+          description: ''
+          headers: {}
+  /movies/tmdb/movie/{actorId}/review:
+    get:
+      summary: Movie Reviews
+      tags:
+      - movies
+      operationId: MovieReviews
+      deprecated: false
+      produces:
+      - application/json
+      parameters:
+      - name: actorId
+        in: path
+        required: true
+        type: integer
+        format: int32
+        description: ''
+      responses:
+        '200':
+          description: ''
+          headers: {}
+  /movies/tmdb/upcoming:
+    get:
+      summary: Upcoming Movies
+      tags:
+      - movies
+      operationId: UpcomingMovies
+      deprecated: false
+      produces:
+      - application/json
+      parameters:
+      - name: page
+        in: query
+        required: true
+        type: integer
+        format: int32
+        description: ''
+      - name: language
+        in: query
+        required: true
+        type: string
+        description: ''
+      responses:
+        '200':
+          description: ''
+          headers: {}
+  /movies/tmdb/trending:
+    get:
+      summary: Trending Movies
+      tags:
+      - movies
+      operationId: TrendingMovies
+      deprecated: false
+      produces:
+      - application/json
+      parameters:
+      - name: page
+        in: query
+        required: true
+        type: integer
+        format: int32
+        description: ''
+      - name: language
+        in: query
+        required: true
+        type: string
+        description: ''
+      responses:
+        '200':
+          description: ''
+          headers: {}
+definitions:
+  NewRequest:
+    title: NewRequest
+    example:
+      adult: false
+      also_known_as: []
+      biography: Jeremy Samuel Piven (born July 26, 1965) is an American film producer and actor best known for his role as Ari Gold in the television series Entourage for which he has won three Primetime Emmy Awards as well as several other nominations for Best Supporting Actor.
+      birthday: 1965-07-26
+      deathday: null
+      gender: 2
+      homepage: https://jeremy-piven.com/
+      id: 12799
+      imdb_id: nm0005315
+      known_for_department: Acting
+      name: Jeremy Piven
+      place_of_birth: New York City, New York, USA
+      popularity: 161.077
+      profile_path: /pqdR8zqAWF87chGYlbdYr0YfC7g.jpg
+    type: object
+    properties:
+      adult:
+        type: boolean
+      also_known_as:
+        type: array
+        items:
+          type: string
+      biography:
+        type: string
+      birthday:
+        type: string
+      deathday:
+        type: string
+      gender:
+        type: integer
+        format: int32
+      homepage:
+        type: string
+      id:
+        type: integer
+        format: int32
+      imdb_id:
+        type: string
+      known_for_department:
+        type: string
+      name:
+        type: string
+      place_of_birth:
+        type: string
+      popularity:
+        type: number
+        format: double
+      profile_path:
+        type: string
+    required:
+    - adult
+    - also_known_as
+    - biography
+    - birthday
+    - deathday
+    - gender
+    - homepage
+    - id
+    - imdb_id
+    - known_for_department
+    - name
+    - place_of_birth
+    - popularity
+    - profile_path
+  NewRequest1:
+    title: NewRequest1
+    type: object
+    properties:
+      cast:
+        type: array
+        items:
+          $ref: '#/definitions/Cast'
+      crew:
+        type: array
+        items:
+          $ref: '#/definitions/Crew'
+      id:
+        type: integer
+        format: int32
+    required:
+    - cast
+    - crew
+    - id
+  Cast:
+    title: Cast
+    example:
+      adult: false
+      backdrop_path: /4CxQXuitlZFNndvis2uv2YUzAQ7.jpg
+      genre_ids:
+      - 35
+      id: 14425
+      original_language: en
+      original_title: PCU
+      overview: Nervous high school senior Tom Lawrence visits Port Chester University, where he gets a taste of politically correct college life when he's guided by fraternity wild man Droz and his housemates at The Pit. But Droz and his pals have rivals in nasty preppy Rand McPherson and the school's steely president. With their house threatened with expulsion, Droz and company decide to throw a raging party where the various factions will collide.
+      popularity: 20.291
+      poster_path: /hAaFdW1zjJgBH9VVP6h30S4i2a7.jpg
+      release_date: 1994-04-29
+      title: PCU
+      video: false
+      vote_average: 5.939
+      vote_count: 114
+      character: Droz
+      credit_id: 52fe45f29251416c75067e05
+      order: 0
+    type: object
+    properties:
+      adult:
+        type: boolean
+      backdrop_path:
+        type: string
+      genre_ids:
+        type: array
+        items: {}
+      id:
+        type: integer
+        format: int32
+      original_language:
+        type: string
+      original_title:
+        type: string
+      overview:
+        type: string
+      popularity:
+        type: number
+        format: double
+      poster_path:
+        type: string
+      release_date:
+        type: string
+      title:
+        type: string
+      video:
+        type: boolean
+      vote_average: {}
+      vote_count:
+        type: integer
+        format: int32
+      character:
+        type: string
+      credit_id:
+        type: string
+      order:
+        type: integer
+        format: int32
+    required:
+    - adult
+    - backdrop_path
+    - genre_ids
+    - id
+    - original_language
+    - original_title
+    - overview
+    - popularity
+    - poster_path
+    - release_date
+    - title
+    - video
+    - vote_average
+    - vote_count
+    - character
+    - credit_id
+    - order
+  Crew:
+    title: Crew
+    example:
+      adult: false
+      backdrop_path: /sPuANGEwysJe3ey3BmrX1vdvz7G.jpg
+      genre_ids:
+      - 35
+      id: 675480
+      original_language: en
+      original_title: Last Call
+      overview: A real estate developer returns to his old Philly neighborhood and must decide to raze or resurrect the family bar.
+      popularity: 7.208
+      poster_path: /bySCgLjkmPFuUd0ExwruObY9VHn.jpg
+      release_date: 2021-03-19
+      title: Last Call
+      video: false
+      vote_average: 5.1
+      vote_count: 11
+      credit_id: 600a32dc2d531a0057635070
+      department: Production
+      job: Co-Producer
+    type: object
+    properties:
+      adult:
+        type: boolean
+      backdrop_path:
+        type: string
+      genre_ids:
+        type: array
+        items:
+          type: integer
+          format: int32
+      id:
+        type: integer
+        format: int32
+      original_language:
+        type: string
+      original_title:
+        type: string
+      overview:
+        type: string
+      popularity:
+        type: number
+        format: double
+      poster_path:
+        type: string
+      release_date:
+        type: string
+      title:
+        type: string
+      video:
+        type: boolean
+      vote_average: {}
+      vote_count:
+        type: integer
+        format: int32
+      credit_id:
+        type: string
+      department:
+        type: string
+      job:
+        type: string
+    required:
+    - adult
+    - backdrop_path
+    - genre_ids
+    - id
+    - original_language
+    - original_title
+    - overview
+    - popularity
+    - poster_path
+    - release_date
+    - title
+    - video
+    - vote_average
+    - vote_count
+    - credit_id
+    - department
+    - job
+  addFavoriteRequest:
+    title: addFavoriteRequest
+    example:
+      movieId: 901362
+    type: object
+    properties:
+      movieId:
+        type: integer
+        format: int32
+    required:
+    - movieId
+  NewRequest2:
+    title: NewRequest2
+    example:
+      message: Movie added to favorites
+    type: object
+    properties:
+      message:
+        type: string
+    required:
+    - message
+  addMarkedMovieRequest:
+    title: addMarkedMovieRequest
+    example:
+      movieId: 901362
+    type: object
+    properties:
+      movieId:
+        type: integer
+        format: int32
+    required:
+    - movieId
+  followActorRequest:
+    title: followActorRequest
+    example:
+      actorId: 64295
+    type: object
+    properties:
+      actorId:
+        type: integer
+        format: int32
+    required:
+    - actorId
+  NewRequest8:
+    title: NewRequest8
+    example:
+      _id: 65844cef30ad0fbe23c6cf06
+      movieId: 466420
+      userId: 65843b1d6ed1e8bdcf1f61ea
+      author: Haopeng
+      review: All you ever wanted to know about Movies!
+      rating: 3
+      createdAt: 2023-12-21T14:34:23.122Z
+      __v: 0
+    type: object
+    properties:
+      _id:
+        type: string
+      movieId:
+        type: integer
+        format: int32
+      userId:
+        type: string
+      author:
+        type: string
+      review:
+        type: string
+      rating:
+        type: integer
+        format: int32
+      createdAt:
+        type: string
+      __v:
+        type: integer
+        format: int32
+    required:
+    - _id
+    - movieId
+    - userId
+    - author
+    - review
+    - rating
+    - createdAt
+    - __v
+  NewRequest9:
+    title: NewRequest9
+    example:
+      reviews:
+      - _id: 6584cf097237f2869edb0ded
+        movieId: 572802
+        userId: 6584bc8c54dd0c01c7144b37
+        author: qfqf
+        review: my all time favorite movie, family, who know !!!
+        rating: 5
+        createdAt: 2023-12-21T23:49:29.398Z
+        __v: 0
+    type: object
+    properties:
+      reviews:
+        type: array
+        items:
+          $ref: '#/definitions/Review'
+    required:
+    - reviews
+  Review:
+    title: Review
+    example:
+      _id: 6584cf097237f2869edb0ded
+      movieId: 572802
+      userId: 6584bc8c54dd0c01c7144b37
+      author: qfqf
+      review: my all time favorite movie, family, who know !!!
+      rating: 5
+      createdAt: 2023-12-21T23:49:29.398Z
+      __v: 0
+    type: object
+    properties:
+      _id:
+        type: string
+      movieId:
+        type: integer
+        format: int32
+      userId:
+        type: string
+      author:
+        type: string
+      review:
+        type: string
+      rating:
+        type: integer
+        format: int32
+      createdAt:
+        type: string
+      __v:
+        type: integer
+        format: int32
+    required:
+    - _id
+    - movieId
+    - userId
+    - author
+    - review
+    - rating
+    - createdAt
+    - __v
+  addToReviewRequest:
+    title: addToReviewRequest
+    example:
+      userId: 6584bc8c54dd0c01c7144b37
+      author: hpl
+      review: hahahah hahahah hahah tooooo funnnyyyy
+      rating: 5
+    type: object
+    properties:
+      userId:
+        type: string
+      author:
+        type: string
+      review:
+        type: string
+      rating:
+        type: integer
+        format: int32
+    required:
+    - userId
+    - author
+    - review
+    - rating
+  userloginrequest:
+    title: userloginrequest
+    example:
+      account: user1
+      password: test123@
+    type: object
+    properties:
+      account:
+        type: string
+      password:
+        type: string
+    required:
+    - account
+    - password
+  NewRequest12:
+    title: NewRequest12
+    example:
+      success: true
+      msg: User login successfully
+      token: BEARER eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6InVzZXIxIiwiaWF0IjoxNzAzMjA4MzI5fQ.7BV1AnkQt_iZSip5jY1nsrmC4zoM2rYnkiPzG14h6a8
+      user:
+        id: 6584bc8c54dd0c01c7144b37
+        username: user1
+        email: 123@163.com
+    type: object
+    properties:
+      success:
+        type: boolean
+      msg:
+        type: string
+      token:
+        type: string
+      user:
+        $ref: '#/definitions/User'
+    required:
+    - success
+    - msg
+    - token
+    - user
+  User:
+    title: User
+    example:
+      id: 6584bc8c54dd0c01c7144b37
+      username: user1
+      email: 123@163.com
+    type: object
+    properties:
+      id:
+        type: string
+      username:
+        type: string
+      email:
+        type: string
+    required:
+    - id
+    - username
+    - email
+  NewRequest13:
+    title: NewRequest13
+    example:
+      _id: 6584bc8c54dd0c01c7144b38
+      username: user2
+      email: test@qq.com
+      password: $2b$10$wCordlF048U3VaviwjsVY.aHbEtDR/zB6FTqGAx.mWj3sTpEfRMCu
+      favorites: []
+      marked: []
+      follow: []
+      __v: 0
+    type: object
+    properties:
+      _id:
+        type: string
+      username:
+        type: string
+      email:
+        type: string
+      password:
+        type: string
+      favorites:
+        type: array
+        items: {}
+      marked:
+        type: array
+        items:
+          type: string
+      follow:
+        type: array
+        items:
+          type: string
+      __v:
+        type: integer
+        format: int32
+    required:
+    - _id
+    - username
+    - email
+    - password
+    - favorites
+    - marked
+    - follow
+    - __v
+  userregisterrequest:
+    title: userregisterrequest
+    example:
+      username: user7654
+      email: user7654@qq.com
+      password: leng@**haha852
+    type: object
+    properties:
+      username:
+        type: string
+      email:
+        type: string
+      password:
+        type: string
+    required:
+    - username
+    - email
+    - password
+  NewRequest15:
+    title: NewRequest15
+    example:
+      page: 1
+      results:
+      - adult: false
+        backdrop_path: /bmlkLCjrIWnnZzdAQ4uNPG9JFdj.jpg
+        genre_ids:
+        - 35
+        - 10751
+        - 14
+        id: 787699
+        original_language: en
+        original_title: Wonka
+        overview: ''
+        popularity: 1035.485
+        poster_path: /qhb1qOilapbapxWQn9jtRCMwXJF.jpg
+        release_date: 2023-12-06
+        title: Wonka
+        video: false
+        vote_average: 7.2
+        vote_count: 410
+      - adult: false
+        backdrop_path: /jXJxMcVoEuXzym3vFnjqDW4ifo6.jpg
+        genre_ids:
+        - 28
+        - 12
+        - 14
+        id: 572802
+        original_language: en
+        original_title: Aquaman and the Lost Kingdom
+        overview: ''
+        popularity: 1350.815
+        poster_path: /8xV47NDrjdZDpkVcCFqkdHa3T0C.jpg
+        release_date: 2023-12-20
+        title: Aquaman and the Lost Kingdom
+        video: false
+        vote_average: 7.2
+        vote_count: 57
+      - adult: false
+        backdrop_path: /1X7vow16X7CnCoexXh4H4F2yDJv.jpg
+        genre_ids:
+        - 80
+        - 18
+        - 36
+        id: 466420
+        original_language: en
+        original_title: Killers of the Flower Moon
+        overview: ''
+        popularity: 753.442
+        poster_path: /pi0kmFJAEcHpTjqITHPFUic9omf.jpg
+        release_date: 2023-10-18
+        title: Killers of the Flower Moon
+        video: false
+        vote_average: 7.6
+        vote_count: 1531
+      - adult: false
+        backdrop_path: /8GnWDLn2AhnmkQ7hlQ9NJUYobSS.jpg
+        genre_ids:
+        - 18
+        - 878
+        - 28
+        id: 695721
+        original_language: en
+        original_title: 'The Hunger Games: The Ballad of Songbirds & Snakes'
+        overview: ''
+        popularity: 1134.139
+        poster_path: /mBaXZ95R2OxueZhvQbcEWy2DqyO.jpg
+        release_date: 2023-11-15
+        title: 'The Hunger Games: The Ballad of Songbirds & Snakes'
+        video: false
+        vote_average: 7.3
+        vote_count: 853
+      - adult: false
+        backdrop_path: /k1KrbaCMACQiq7EA0Yhw3bdzMv7.jpg
+        genre_ids:
+        - 16
+        - 10751
+        - 10402
+        - 14
+        - 35
+        id: 901362
+        original_language: en
+        original_title: Trolls Band Together
+        overview: ''
+        popularity: 675.752
+        poster_path: /bkpPTZUdq31UGDovmszsg2CchiI.jpg
+        release_date: 2023-10-12
+        title: Trolls Band Together
+        video: false
+        vote_average: 7.2
+        vote_count: 394
+      - adult: false
+        backdrop_path: /9jPoyxjiEYPylUIMI3Ntixf8z3M.jpg
+        genre_ids:
+        - 16
+        - 12
+        - 35
+        - 10751
+        id: 520758
+        original_language: en
+        original_title: 'Chicken Run: Dawn of the Nugget'
+        overview: ''
+        popularity: 913.414
+        poster_path: /exNtEY8QUuQh9e23wSQjkPxKIU3.jpg
+        release_date: 2023-12-08
+        title: 'Chicken Run: Dawn of the Nugget'
+        video: false
+        vote_average: 7.6
+        vote_count: 177
+      - adult: false
+        backdrop_path: /zIYROrkHJPYB3VTiW1L9QVgaQO.jpg
+        genre_ids:
+        - 28
+        - 35
+        id: 897087
+        original_language: en
+        original_title: Freelance
+        overview: ''
+        popularity: 704.958
+        poster_path: /7Bd4EUOqQDKZXA6Od5gkfzRNb0.jpg
+        release_date: 2023-01-05
+        title: Freelance
+        video: false
+        vote_average: 6.5
+        vote_count: 345
+      - adult: false
+        backdrop_path: /tLsc8SCFO0rMVgVyNm9XtfnyX84.jpg
+        genre_ids:
+        - 18
+        - 9648
+        - 53
+        - 878
+        id: 726209
+        original_language: en
+        original_title: Leave the World Behind
+        overview: ''
+        popularity: 615.517
+        poster_path: /29rhl1xopxA7JlGVVsf1UHfYPvN.jpg
+        release_date: 2023-11-22
+        title: Leave the World Behind
+        video: false
+        vote_average: 6.6
+        vote_count: 970
+      - adult: false
+        backdrop_path: /15Fe18IglCCP1jJoj5F529on0IA.jpg
+        genre_ids:
+        - 28
+        - 35
+        id: 1029575
+        original_language: en
+        original_title: The Family Plan
+        overview: ''
+        popularity: 882.342
+        poster_path: /jLLtx3nTRSLGPAKl4RoIv1FbEBr.jpg
+        release_date: 2023-12-14
+        title: The Family Plan
+        video: false
+        vote_average: 7.6
+        vote_count: 246
+      - adult: false
+        backdrop_path: /9PqD3wSIjntyJDBzMNuxuKHwpUD.jpg
+        genre_ids:
+        - 16
+        - 35
+        - 10751
+        id: 1075794
+        original_language: en
+        original_title: Leo
+        overview: ''
+        popularity: 540.5
+        poster_path: /pD6sL4vntUOXHmuvJPPZAgvyfd9.jpg
+        release_date: 2023-11-17
+        title: Leo
+        video: false
+        vote_average: 7.6
+        vote_count: 622
+      - adult: false
+        backdrop_path: /fm6KqXpk3M2HVveHwCrBSSBaO0V.jpg
+        genre_ids:
+        - 18
+        - 36
+        id: 872585
+        original_language: en
+        original_title: Oppenheimer
+        overview: ''
+        popularity: 685.028
+        poster_path: /ptpr0kGAckfQkJeJIt8st5dglvd.jpg
+        release_date: 2023-07-19
+        title: Oppenheimer
+        video: false
+        vote_average: 8.1
+        vote_count: 5520
+      - adult: false
+        backdrop_path: /t5zCBSB5xMDKcDqe91qahCOUYVV.jpg
+        genre_ids:
+        - 27
+        - 9648
+        id: 507089
+        original_language: en
+        original_title: Five Nights at Freddy's
+        overview: ''
+        popularity: 533.387
+        poster_path: /7BpNtNfxuocYEVREzVMO75hso1l.jpg
+        release_date: 2023-10-25
+        title: Five Nights at Freddy's
+        video: false
+        vote_average: 7.8
+        vote_count: 2902
+      - adult: false
+        backdrop_path: /kjQBrc00fB2RjHZB3PGR4w9ibpz.jpg
+        genre_ids:
+        - 28
+        - 12
+        - 18
+        id: 670292
+        original_language: en
+        original_title: The Creator
+        overview: ''
+        popularity: 476.847
+        poster_path: /vBZ0qvaRxqEhZwl6LWmruJqWE8Z.jpg
+        release_date: 2023-09-27
+        title: The Creator
+        video: false
+        vote_average: 7.1
+        vote_count: 1520
+      - adult: false
+        backdrop_path: /4XM8DUTQb3lhLemJC51Jx4a2EuA.jpg
+        genre_ids:
+        - 28
+        - 80
+        - 53
+        id: 385687
+        original_language: en
+        original_title: Fast X
+        overview: ''
+        popularity: 498.088
+        poster_path: /fiVW06jE7z9YnO4trhaMEdclSiC.jpg
+        release_date: 2023-05-17
+        title: Fast X
+        video: false
+        vote_average: 7.2
+        vote_count: 4500
+      - adult: false
+        backdrop_path: /gvNmnvu13TPAewP54hvCyuHwNwR.jpg
+        genre_ids:
+        - 28
+        - 27
+        - 878
+        id: 920081
+        original_language: en
+        original_title: Megaboa
+        overview: ''
+        popularity: 574.885
+        poster_path: /sAnAMv3eyQiGI1z2k8NsvH0Y6r5.jpg
+        release_date: 2021-11-26
+        title: Megaboa
+        video: false
+        vote_average: 6.5
+        vote_count: 438
+      - adult: false
+        backdrop_path: /3d39m2S3WynknLVGpsOxhiSKbgQ.jpg
+        genre_ids:
+        - 53
+        - 28
+        id: 1146225
+        original_language: en
+        original_title: Escaping Paradise
+        overview: ''
+        popularity: 385.931
+        poster_path: /3UCTls0hVKMCwWtkTmwKcCOzlgu.jpg
+        release_date: 2023-07-08
+        title: Escaping Paradise
+        video: false
+        vote_average: 4.7
+        vote_count: 3
+      - adult: false
+        backdrop_path: /rMvPXy8PUjj1o8o1pzgQbdNCsvj.jpg
+        genre_ids:
+        - 28
+        - 12
+        - 53
+        id: 299054
+        original_language: en
+        original_title: Expend4bles
+        overview: ''
+        popularity: 417.742
+        poster_path: /iwsMu0ehRPbtaSxqiaUDQB9qMWT.jpg
+        release_date: 2023-09-15
+        title: Expend4bles
+        video: false
+        vote_average: 6.4
+        vote_count: 908
+      - adult: false
+        backdrop_path: /AucuqDaUW4z1oT5XyL71qwRY2F6.jpg
+        genre_ids:
+        - 27
+        - 53
+        id: 983507
+        original_language: no
+        original_title: Meg, deg & Frank
+        overview: ''
+        popularity: 359.501
+        poster_path: /9DPG1gxLwV2oyFdHq3SnISsWbse.jpg
+        release_date: 2022-06-03
+        title: Meg, deg & Frank
+        video: false
+        vote_average: 6.8
+        vote_count: 112
+      - adult: false
+        backdrop_path: /tB59fpPnQITgnfxPfMf2gxASTeC.jpg
+        genre_ids:
+        - 28
+        - 53
+        - 18
+        id: 656156
+        original_language: ko
+        original_title: 보호자
+        overview: ''
+        popularity: 343.068
+        poster_path: /2XwxhT1acqFHBPaVDvriX7iuul3.jpg
+        release_date: 2023-08-15
+        title: 보호자
+        video: false
+        vote_average: 6.5
+        vote_count: 31
+      - adult: false
+        backdrop_path: /nHf61UzkfFno5X1ofIhugCPus2R.jpg
+        genre_ids:
+        - 35
+        - 12
+        - 14
+        id: 346698
+        original_language: en
+        original_title: Barbie
+        overview: ''
+        popularity: 397.506
+        poster_path: /iuFNMS8U5cb6xfzi51Dbkovj7vM.jpg
+        release_date: 2023-07-19
+        title: Barbie
+        video: false
+        vote_average: 7.2
+        vote_count: 6383
+      total_pages: 41588
+      total_results: 831745
+    type: object
+    properties:
+      page:
+        type: integer
+        format: int32
+      results:
+        type: array
+        items:
+          $ref: '#/definitions/Result'
+      total_pages:
+        type: integer
+        format: int32
+      total_results:
+        type: integer
+        format: int32
+    required:
+    - page
+    - results
+    - total_pages
+    - total_results
+  Result:
+    title: Result
+    example:
+      adult: false
+      backdrop_path: /bmlkLCjrIWnnZzdAQ4uNPG9JFdj.jpg
+      genre_ids:
+      - 35
+      - 10751
+      - 14
+      id: 787699
+      original_language: en
+      original_title: Wonka
+      overview: ''
+      popularity: 1035.485
+      poster_path: /qhb1qOilapbapxWQn9jtRCMwXJF.jpg
+      release_date: 2023-12-06
+      title: Wonka
+      video: false
+      vote_average: 7.2
+      vote_count: 410
+    type: object
+    properties:
+      adult:
+        type: boolean
+      backdrop_path:
+        type: string
+      genre_ids:
+        type: array
+        items:
+          type: integer
+          format: int32
+      id:
+        type: integer
+        format: int32
+      original_language:
+        type: string
+      original_title:
+        type: string
+      overview:
+        type: string
+      popularity:
+        type: number
+        format: double
+      poster_path:
+        type: string
+      release_date:
+        type: string
+      title:
+        type: string
+      video:
+        type: boolean
+      vote_average:
+        type: number
+        format: double
+      vote_count:
+        type: integer
+        format: int32
+    required:
+    - adult
+    - backdrop_path
+    - genre_ids
+    - id
+    - original_language
+    - original_title
+    - overview
+    - popularity
+    - poster_path
+    - release_date
+    - title
+    - video
+    - vote_average
+    - vote_count
+  NewRequest16:
+    title: NewRequest16
+    example:
+      genres:
+      - id: 28
+        name: Action
+      - id: 12
+        name: Adventure
+      - id: 16
+        name: Animation
+      - id: 35
+        name: Comedy
+      - id: 80
+        name: Crime
+      - id: 99
+        name: Documentary
+      - id: 18
+        name: Drama
+      - id: 10751
+        name: Family
+      - id: 14
+        name: Fantasy
+      - id: 36
+        name: History
+      - id: 27
+        name: Horror
+      - id: 10402
+        name: Music
+      - id: 9648
+        name: Mystery
+      - id: 10749
+        name: Romance
+      - id: 878
+        name: Science Fiction
+      - id: 10770
+        name: TV Movie
+      - id: 53
+        name: Thriller
+      - id: 10752
+        name: War
+      - id: 37
+        name: Western
+    type: object
+    properties:
+      genres:
+        type: array
+        items:
+          $ref: '#/definitions/Genre'
+    required:
+    - genres
+  Genre:
+    title: Genre
+    example:
+      id: 28
+      name: Action
+    type: object
+    properties:
+      id:
+        type: integer
+        format: int32
+      name:
+        type: string
+    required:
+    - id
+    - name
+tags:
+- name: actor
+- name: favorites
+- name: marked
+- name: follow
+- name: reviews
+- name: user
+- name: movies
