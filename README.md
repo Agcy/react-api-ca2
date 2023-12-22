@@ -81,7 +81,7 @@ ______________________
 ## API Design
 SWAGGER HUB: https://app.swaggerhub.com/apis/LIANG765407782/web-ca_2/1.0
 
-![image-20231222142317622](.\images\image-20231222142317622.png)
+![image-20231222142317622](./images/image-20231222142317622.png)
 
 
 
@@ -107,13 +107,13 @@ Describe how you integrated your React app with the API. List the views that use
 1. First of all, I first transfer all the tmdb-api to the back-end for requesting, and then create the corresponding routes one by one, and finally get all the pages rendered through the reception of the front-end
 
 2. I then created a MongoDB data model to store the user's comments, which would include the user's id and the author name of the comment, the content, and the rating; after that, I created add and delete functionality for the comments to ensure that the comments could only be deleted by the user who added the comment, and I also created a function to fetch all the comments, which would allow all the users to see the comments made by the other users on the This allows all users to see what other users have said about the movie.
-   ![image-20231221235009786](.\images\image-20231221235009786.png)
+   ![image-20231221235009786](./images/image-20231221235009786.png)
 
-   ![image-20231221235201464](.\images\image-20231221235201464.png)
+   ![image-20231221235201464](./images/image-20231221235201464.png)
 
 3. Finally, it is the part of login and registration, I put all the functions to judge whether the login and registration are successful or not except whether the passwords entered twice in the registration process match into the back-end; moreover, I added three fields of favorite, marked and followed in the user's data model, after the login is completed, the user will add the favorite movie, marked movie and followed actor, and their ids will be stored in this data model. After logging in, users add favorite movie, marked movie and followed actor, their ids will be stored in this data model, and after the next successful login, the request for these three fields will be made, and then getMovie or getActor will be used to match the movie and actor by their ids and display them on the corresponding pages.
 
-![image-20231221234708650](.\images\image-20231221234708650.png)
+![image-20231221234708650](./images/image-20231221234708650.png)
 
 ## Independent learning (if relevant)
 
