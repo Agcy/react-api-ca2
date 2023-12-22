@@ -8,9 +8,13 @@ import reviewRouter from './api/reviews'
 import authenticate from './authenticate';
 import './db';
 import defaultErrHandler from './errHandler'
+const swaggerUi = require('swagger-ui-express');
+const YAML = require('yamljs');
 
 dotenv.config();
 
+const path = require('path');
+const swaggerDocument = YAML.load(path.join(__dirname, './web-ca2.yaml'));
 const app = express();
 const port = process.env.PORT;
 
@@ -20,7 +24,8 @@ app.use('/api/users', usersRouter);
 app.use(defaultErrHandler);
 app.use('/api/movies',  moviesRouter);
 app.use('/api/actors',  actorsRouter);
-app.use('/api/reviews', reviewRouter)
+app.use('/api/reviews', reviewRouter);
+app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDocument));
 
 app.listen(port, () => {
     console.info(`Server running at ${port}`);

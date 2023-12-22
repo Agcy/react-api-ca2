@@ -89,7 +89,7 @@ router.get('/tmdb/movie_credits/:id', asyncHandler(async (req, res) => {
     res.status(200).json(movieCredits);
 }));
 
-router.get('/tmdb/movie/:id/image', asyncHandler(async (req, res) => {
+    router.get('/tmdb/movie/:id/image', asyncHandler(async (req, res) => {
     const id = req.params.id;
     const movieImgs = await getMovieImages(id);
     res.status(200).json(movieImgs);

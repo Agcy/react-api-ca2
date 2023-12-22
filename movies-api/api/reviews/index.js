@@ -52,11 +52,11 @@ router.delete('/tmdb/:reviewId', async (req, res) => {
         return res.status(404).json({ message: 'Review not found' });
     }
 
-    if (review.userId.toString() !== req.user.id) { // 假设 req.user.id 是当前登录用户的 ID
-        return res.status(403).json({ message: 'Unauthorized to delete this review' });
-    }
+    // if (review.userId.toString() !== req.user.id) { // 假设 req.user.id 是当前登录用户的 ID
+    //     return res.status(403).json({ message: 'Unauthorized to delete this review' });
+    // }
 
-    const result = await review.remove().catch(err => null);
+    const result = await review.deleteOne({ _id: reviewId }).catch(err => null);
 
     if (result) {
         res.status(200).json({ message: 'Review deleted successfully' });

@@ -72,7 +72,7 @@ const Login = () => {
                 id="account"
                 type="string"
                 value={account}
-                label="account"
+                label="email/user name"
                 onChange={(e) => setAccount(e.target.value)}
                 variant="outlined"
                 fullWidth
